@@ -74,9 +74,10 @@ public class MainFrame {
 	}
 
 	private void initViews() {
+		UIView personalDataView = new UIView();
 		UIView questionPupilView = new UIView();
 		UIView questionTeacherView = new UIView();
-		NodeList questions = FileHandler.getFile("question").getNodeList("question");
+		NodeList questions = FileHandler.getFile("questions").getNodeList("question");
 		for (int i = 0; i < questions.getLength(); i++) {
 			Element e = (Element) questions.item(i);
 			if (e.getAttribute("sort") == "0")
@@ -84,7 +85,7 @@ public class MainFrame {
 			if (e.getAttribute("sort") == "1")
 				questionTeacherView.add(new UIQuestion(e.getTextContent(), 1));
 		}
-
+		views.add(0, personalDataView);
 		views.add(1, questionPupilView);
 		views.add(2, questionTeacherView);
 	}

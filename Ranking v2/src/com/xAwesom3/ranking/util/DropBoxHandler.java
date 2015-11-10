@@ -35,6 +35,7 @@ public class DropBoxHandler {
 	public static File load(String target, String source) {
 		File f = new File(XMLHandler.getPath() + target + ".xml");
 		try {
+			f.getParentFile().mkdirs();
 			f.createNewFile();
 			FileOutputStream stream = new FileOutputStream(f);
 			client.getFile(directory + source + ".xml", null, stream);
