@@ -1,113 +1,151 @@
 package com.xAwesom3.ranking.UI;
 
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.DisplayMode;
-import java.awt.GraphicsEnvironment;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.border.LineBorder;
 
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-
-import com.xAwesom3.ranking.UI.components.UIQuestion;
-import com.xAwesom3.ranking.UI.components.UIView;
-import com.xAwesom3.ranking.util.FileHandler;
+import com.xAwesom3.ranking.UI.views.AveragePupilView;
+import com.xAwesom3.ranking.UI.views.AveragePupilView2;
+import com.xAwesom3.ranking.UI.views.AveragePupilView3;
+import com.xAwesom3.ranking.UI.views.AveragePupilView4;
+import com.xAwesom3.ranking.UI.views.PersonalView;
+import com.xAwesom3.ranking.UI.views.QuestionView;
 
 public class MainFrame {
 
-	public static int		WIDTH, HEIGHT;
-	private int				buttonWidth, buttonHeight;
+	private JFrame		f;
 
-	private JFrame			f;
-	private JPanel			contentPane;
-	private JButton			btnLeft, btnRight, btnReady;
-	private JScrollPane		scrollPane;
+	private JButton		btnLeft, btnReady, btnRight;
+	private JScrollPane	scrollPane;
 
-	private List<UIView>	views	= new ArrayList<UIView>();
-
-	static {
-		DisplayMode mode = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode();
-		WIDTH = (int) (mode.getWidth() * 0.7);
-		HEIGHT = (int) (mode.getHeight() * 0.7);
-	}
+	private List<View>	views	= new ArrayList<View>();
+	private int			index;
 
 	public MainFrame() {
-		f = new JFrame();
-		f.setSize(WIDTH, HEIGHT);
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setMinimumSize(new Dimension(800, 600));
-		f.setResizable(true);
+		/*
+		 * init variables
+		 */
 
-		contentPane = (JPanel) f.getContentPane();
-		contentPane.addComponentListener(new ComponentAdapter() {
-			public void componentResized(ComponentEvent e) {
-				super.componentResized(e);
-				resize();
+		int width = (int) (1920 * 0.75);
+		int height = width / 16 * 9;
+		int buttonWidth = (int) (width * 0.17);
+		int buttonHeight = (int) (buttonWidth * 0.15);
+
+		/*
+		 * init frame
+		 */
+
+		f = new JFrame();
+		f.setSize(width, height);
+		f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		f.setLocationRelativeTo(null);
+		f.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				System.exit(0);
 			}
 		});
+		f.setResizable(false);
+
+		/*
+		 * init components
+		 */
+
+		Container contentPane = f.getContentPane();
 		contentPane.setLayout(null);
+		contentPane.setBackground(new Color(133, 135, 140));
 
 		btnLeft = new JButton("<--");
+		btnLeft.setBounds(10, 10, buttonWidth, buttonHeight);
+		btnLeft.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				index--;
+				btnRight.setEnabled(true);
+				if (index == 0)
+					btnLeft.setEnabled(false);
+				setView(index);
+			}
+
+		});
 		contentPane.add(btnLeft);
 
 		btnRight = new JButton("-->");
+		btnRight.setBounds(width - buttonWidth - 15, 10, buttonWidth, buttonHeight);
+		btnRight.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				index++;
+				btnLeft.setEnabled(true);
+				if (index == views.size() - 1)
+					btnRight.setEnabled(false);
+				setView(index);
+
+			}
+
+		});
 		contentPane.add(btnRight);
 
 		btnReady = new JButton("Abstimmen");
+		btnReady.setBounds(width / 2 - buttonWidth / 2, 10, buttonWidth, buttonHeight);
+		btnReady.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+			}
+
+		});
 		contentPane.add(btnReady);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		scrollPane.setBounds(10, 20 + buttonHeight, width - 25, height - buttonHeight - 55);
+		scrollPane.setBorder(LineBorder.createBlackLineBorder());
 		contentPane.add(scrollPane);
+
+		/*
+		 * post init
+		 */
+
 		initViews();
-
-		setView(1);
+		setView(0);
 	}
 
-	private void initViews() {
-		UIView personalDataView = new UIView();
-		UIView questionPupilView = new UIView();
-		UIView questionTeacherView = new UIView();
-		NodeList questions = FileHandler.getFile("questions").getNodeList("question");
-		for (int i = 0; i < questions.getLength(); i++) {
-			Element e = (Element) questions.item(i);
-			if (e.getAttribute("sort") == "0")
-				questionPupilView.add(new UIQuestion(e.getTextContent(), 0));
-			if (e.getAttribute("sort") == "1")
-				questionTeacherView.add(new UIQuestion(e.getTextContent(), 1));
-		}
-		views.add(0, personalDataView);
-		views.add(1, questionPupilView);
-		views.add(2, questionTeacherView);
-	}
-
-	public void setView(int view) {
+	private void setView(int view) {
+		index = view;
 		scrollPane.setViewportView(views.get(view));
 	}
 
-	private void resize() {
-		WIDTH = contentPane.getWidth();
-		HEIGHT = contentPane.getHeight();
-		buttonWidth = (int) (WIDTH * 0.12);
-		buttonHeight = (int) (HEIGHT * 0.04);
-		btnLeft.setBounds(10, 10, buttonWidth, buttonHeight);
-		btnRight.setBounds(WIDTH - buttonWidth - 10, 10, buttonWidth, buttonHeight);
-		btnReady.setBounds(WIDTH / 2 - buttonWidth / 2, 10, buttonWidth, buttonHeight);
-		scrollPane.setBounds(10, buttonHeight + 40, WIDTH - 20, HEIGHT - buttonHeight - 50);
+	private void initViews() {
+		int viewPortWidth = scrollPane.getWidth() - 10;
+		int viewPortHeight = scrollPane.getHeight();
+		View personalView = new PersonalView(viewPortWidth, viewPortHeight);
+		views.add(personalView);
+		View averagePupilView = new AveragePupilView(viewPortWidth, viewPortHeight);
+		views.add(averagePupilView);
+		View averagePupilView2 = new AveragePupilView2(viewPortWidth, viewPortHeight);
+		views.add(averagePupilView2);
+		View averagePupilView3 = new AveragePupilView3(viewPortWidth, viewPortHeight);
+		views.add(averagePupilView3);
+		View averagePupilView4 = new AveragePupilView4(viewPortWidth, viewPortHeight);
+		views.add(averagePupilView4);
+		QuestionView questionView1 = new QuestionView(viewPortWidth, viewPortHeight, 0);
+		views.add(questionView1);
+		QuestionView questionView2 = new QuestionView(viewPortWidth, viewPortHeight, 1);
+		views.add(questionView2);
 	}
 
 	public void show(String name) {
 		f.setTitle("Ranking - " + name);
-		resize();
 		f.setVisible(true);
 	}
+
 }

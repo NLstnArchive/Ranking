@@ -1,10 +1,14 @@
 package com.xAwesom3.ranking.UI;
 
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.DisplayMode;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,123 +18,216 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
-import com.xAwesom3.ranking.Pupil;
+import com.xAwesom3.ranking.Human;
 import com.xAwesom3.ranking.util.FileHandler;
 
-public class Login {
+public class Login extends JFrame {
+	private static final long		serialVersionUID	= 1L;
 
-	private static int		WIDTH;
-	private static int		HEIGHT;
+	private static MainFrame		mainFrame;
 
-	private static float	SIZE_MULTIPLIER	= 0.35f;
+	private Font					lblFont;
+	private Font					txtFont;
 
-	private static float	FONT_SIZE;
+	private JLabel					lblName, lblPassword;
+	private static JTextField		txtName;
+	private static JPasswordField	txtPassword;
+	private static JButton			btnStart;
 
-	private static int		TXT_WIDTH;
-	private static int		BTN_WIDTH, BTN_HEIGHT;
-
-	private JFrame			f;
-
-	private JLabel			lblName;
-	private JTextField		txtName;
-	private JLabel			lblPassword;
-	private JPasswordField	txtPassword;
-	private JButton			btnStart;
-
-	private Font			font			= new Font("Arial Black", Font.PLAIN, (int) (FONT_SIZE * 0.9));
-	private Font			txtFont			= new Font("Comic Sans MS", Font.BOLD, (int) (FONT_SIZE * 0.9));
-
-	private MainFrame		frame;
-
-	static {
-		DisplayMode mode = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode();
-		WIDTH = (int) (mode.getWidth() * SIZE_MULTIPLIER);
-		HEIGHT = (int) (mode.getHeight() * SIZE_MULTIPLIER);
-		FONT_SIZE = WIDTH * 0.033333333333333f;
-		TXT_WIDTH = (int) (WIDTH * 0.6);
-		BTN_WIDTH = (int) (WIDTH * 0.2);
-		BTN_HEIGHT = (int) (HEIGHT * 0.08);
-	}
+	static boolean					finishedLoading		= false;
 
 	public Login() {
-		Thread thread = new Thread() {
-			public void run() {
-				FileHandler.loadFiles();
-				frame = new MainFrame();
-			}
-		};
-		thread.start();
+
+		/*
+		 * init variables
+		 */
+
+		DisplayMode displayMode = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode();
+		int width = (int) (displayMode.getWidth() * 0.35);
+		int height = (int) (width / 16 * 9);
+		lblFont = new Font("Arial Black", Font.PLAIN, (int) (width * 0.04));
+		txtFont = new Font("Comic Sans MS", Font.BOLD, (int) (width * 0.03));
+		int txtWidth = (int) (width * 0.7);
+		int txtHeight = txtFont.getSize() + 10;
+		int btnWidth = (int) (width * 0.2);
+
+		/*
+		 * init frame
+		 */
+
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		}
-		catch (Exception e) {
+		catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
 			e.printStackTrace();
 		}
-		f = new JFrame();
+		setTitle("Ranking - Login");
+		setSize(width, height);
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
 
-		f.setTitle("Ranking");
-		f.setSize(WIDTH, HEIGHT);
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setResizable(false);
-		f.setLocationRelativeTo(null);
-		f.setLayout(null);
-		f.getContentPane().setBackground(Color.DARK_GRAY);
-		f.setVisible(true);
+		/*
+		 * init components
+		 */
+
+		Container contentPane = getContentPane();
+		contentPane.setBackground(Color.DARK_GRAY);
+		contentPane.setLayout(null);
 
 		lblName = new JLabel("Name:");
-		lblName.setFont(font);
-		lblName.setBounds(0, (int) (HEIGHT * 0.09), WIDTH, lblName.getFont().getSize());
+		lblName.setFont(lblFont);
+		lblName.setForeground(Color.BLACK);
 		lblName.setHorizontalAlignment(SwingConstants.CENTER);
-		f.add(lblName);
+		lblName.setBounds(10, (int) (height * 0.1f), width - 20, lblName.getFont().getSize());
+		add(lblName);
 
-		txtName = new JTextField();
+		txtName = new JTextField("Niklas Lahnstein");
 		txtName.setFont(txtFont);
-		txtName.setBounds(WIDTH / 2 - TXT_WIDTH / 2, lblName.getY() + lblName.getHeight() + 15, TXT_WIDTH, (int) (txtName.getFont().getSize() * 1.6));
+		txtName.setForeground(Color.BLACK);
 		txtName.setHorizontalAlignment(SwingConstants.CENTER);
-		f.add(txtName);
+		txtName.setBounds(width / 2 - txtWidth / 2, lblName.getY() + lblName.getHeight() + 15, txtWidth, txtHeight);
+		add(txtName);
 
 		lblPassword = new JLabel("Passwort:");
-		lblPassword.setFont(font);
-		lblPassword.setBounds(0, txtName.getY() + txtName.getHeight() + 30, WIDTH, lblPassword.getFont().getSize());
+		lblPassword.setFont(lblFont);
+		lblPassword.setForeground(Color.BLACK);
 		lblPassword.setHorizontalAlignment(SwingConstants.CENTER);
-		f.add(lblPassword);
+		lblPassword.setBounds(10, (int) (height * 0.4), width - 20, lblPassword.getFont().getSize());
+		add(lblPassword);
 
-		txtPassword = new JPasswordField();
+		txtPassword = new JPasswordField("31Mai1997");
 		txtPassword.setFont(txtFont);
-		txtPassword.setBounds(WIDTH / 2 - TXT_WIDTH / 2, lblPassword.getY() + lblPassword.getHeight() + 15, TXT_WIDTH, (int) (txtPassword.getFont().getSize() * 1.6));
+		txtPassword.setForeground(Color.BLACK);
 		txtPassword.setHorizontalAlignment(SwingConstants.CENTER);
-		f.add(txtPassword);
+		txtPassword.setBounds(width / 2 - txtWidth / 2, lblPassword.getY() + lblPassword.getHeight() + 15, txtWidth, txtHeight);
+		add(txtPassword);
 
-		btnStart = new JButton("Login");
-		btnStart.setFont(font);
-		btnStart.setBounds(WIDTH / 2 - BTN_WIDTH / 2, txtPassword.getY() + txtPassword.getHeight() + 65, BTN_WIDTH, BTN_HEIGHT);
-		btnStart.addActionListener((ActionEvent e) -> login());
-		f.add(btnStart);
+		btnStart = new JButton("Lädt...");
+		btnStart.setFont(lblFont);
+		btnStart.setForeground(Color.BLACK);
+		btnStart.setBounds(width / 2 - btnWidth / 2, (int) (height * 0.7), btnWidth, txtHeight);
+		btnStart.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				login();
+			}
+
+		});
+		add(btnStart);
+
+		/*
+		 * postInit
+		 */
+
+		KeyAdapter keyAdapter = new KeyAdapter() {
+			public void keyReleased(KeyEvent e) {
+				if (!btnStart.isEnabled())
+					return;
+				if (e.getKeyCode() == KeyEvent.VK_ENTER)
+					login();
+			}
+		};
+		btnStart.setEnabled(false);
+		txtName.addKeyListener(keyAdapter);
+		txtPassword.addKeyListener(keyAdapter);
+		new ButtonStateController(btnStart, txtName, txtPassword);
+		setVisible(true);
 	}
 
 	private void login() {
-		Pupil pupil = Pupil.getByName(txtName.getText());
-		if (pupil != null) {
-			if (new String(txtPassword.getPassword()).equals(pupil.getPassword())) {
-				// TODO: check progress!
-				frame.show(txtName.getText());
-				f.dispose();
+		Human human = Human.getManByName(txtName.getText());
+		if (human == null)
+			human = Human.getWomanByName(txtName.getText());
+		if (human != null) {
+			if (new String(txtPassword.getPassword()).equals(human.getPassword())) {
+				mainFrame.show(human.getName());
+				dispose();
 			}
 			else {
-				JOptionPane.showMessageDialog(f, "Falsches Passwort!");
+				JOptionPane.showConfirmDialog(this, "Falsches Passwort!");
 				txtPassword.setText("");
+				return;
 			}
 		}
 		else {
-			JOptionPane.showMessageDialog(f, "Dieser Name existiert nicht in der Stufenliste!");
+			JOptionPane.showConfirmDialog(this, "Name wurde nicht in der Liste deiner Stufe gefunden!");
 			txtName.setText("");
 			txtPassword.setText("");
+			return;
 		}
 	}
 
+	private static void finishedLoading() {
+		finishedLoading = true;
+		btnStart.setText("Start");
+		btnStart.setEnabled(!txtName.getText().equalsIgnoreCase("") && !new String(txtPassword.getPassword()).equalsIgnoreCase(""));
+	}
+
 	public static void main(String[] args) {
+		new Thread("FileLoading") {
+			public void run() {
+				FileHandler.loadFiles();
+				mainFrame = new MainFrame();
+				finishedLoading();
+			}
+		}.start();
 		new Login();
+	}
+
+}
+
+class ButtonStateController {
+
+	private JButton			button;
+	private JTextField		name;
+	private JPasswordField	password;
+
+	public ButtonStateController(JButton button, JTextField name, JPasswordField password) {
+		this.button = button;
+		this.name = name;
+		this.password = password;
+
+		name.getDocument().addDocumentListener(new DocumentListener() {
+
+			public void insertUpdate(DocumentEvent e) {
+				onContentChanged();
+			}
+
+			public void removeUpdate(DocumentEvent e) {
+				onContentChanged();
+			}
+
+			public void changedUpdate(DocumentEvent e) {
+				onContentChanged();
+			}
+
+		});
+		password.getDocument().addDocumentListener(new DocumentListener() {
+
+			public void insertUpdate(DocumentEvent e) {
+				onContentChanged();
+			}
+
+			public void removeUpdate(DocumentEvent e) {
+				onContentChanged();
+			}
+
+			public void changedUpdate(DocumentEvent e) {
+				onContentChanged();
+			}
+
+		});
+	}
+
+	public void onContentChanged() {
+		if (Login.finishedLoading) {
+			button.setEnabled(!name.getText().equalsIgnoreCase("") && !new String(password.getPassword()).equalsIgnoreCase(""));
+		}
 	}
 
 }

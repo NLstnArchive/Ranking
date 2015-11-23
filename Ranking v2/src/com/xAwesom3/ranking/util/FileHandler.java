@@ -6,32 +6,48 @@ import java.util.Map;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-import com.xAwesom3.ranking.Pupil;
+import com.xAwesom3.ranking.Human;
 
 public class FileHandler {
 
-	private static Map<String, XMLHandler> files = new HashMap<String, XMLHandler>();
+	private static String					path		= ("./files/");
 
-	private FileHandler() {
-	}
+	private static Map<String, XMLHandler>	xmlFiles	= new HashMap<String, XMLHandler>();
 
 	public static void loadFiles() {
-		XMLHandler names = new XMLHandler("names");
-		names.loadFromDropbox("names");
-		files.put("names", names);
+		XMLHandler xmlIndex = new XMLHandler("index");
+		xmlIndex.loadFromDropBox("index");
+		xmlFiles.put("index", xmlIndex);
 
-		NodeList list = names.getNodeList("schuler");
-		for (int i = 0; i < list.getLength(); i++) {
-			Element e = (Element) list.item(i);
-			Pupil.add(new Pupil(e.getAttribute("name"), e.getAttribute("password")));
-		}
+		XMLHandler xmlNames = new XMLHandler("names");
+		xmlNames.loadFromDropBox("names");
+		xmlFiles.put("names", xmlNames);
 
-		XMLHandler questions = new XMLHandler("questions");
-		questions.loadFromDropbox("questions");
-		files.put("questions", questions);
+		XMLHandler xmlQuestions = new XMLHandler("questions");
+		xmlQuestions.loadFromDropBox("questions");
+		xmlFiles.put("questions", xmlQuestions);
+
+		processNames();
 	}
 
-	public static XMLHandler getFile(String name) {
-		return files.get(name);
+	private static void processNames() {
+		NodeList list = xmlFiles.get("names").getNodeList("schuler");
+		for (int i = 0; i < list.getLength(); i++) {
+			Element e = (Element) list.item(i);
+			Human.add(new Human(e.getTextContent(), e.getAttribute("password"), Integer.parseInt(e.getAttribute("gender"))));
+		}
+		NodeList list2 = xmlFiles.get("names").getNodeList("lehrer");
+		for (int i = 0; i < list2.getLength(); i++) {
+			Element e = (Element) list2.item(i);
+			Human.add(new Human(e.getTextContent(), e.getAttribute("password"), Integer.parseInt(e.getAttribute("gender"))));
+		}
+	}
+
+	public static XMLHandler getXMLFile(String name) {
+		return xmlFiles.get(name);
+	}
+
+	public static String getPath() {
+		return path;
 	}
 }
