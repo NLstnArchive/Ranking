@@ -19,10 +19,10 @@ public class PersonalView extends View {
 	private JComboBox<String>	dayBox, monthBox, yearBox, lk1Box, lk2Box, lk3Box, favoriteTeacherBox;
 	private BorderedTextArea	txtFuture, txtThank;
 
-	private String[]			days				= { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" };
-	private String[]			months				= { "Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember" };
-	private String[]			years				= { "1998", "1997", "1996", "1995" };
-	private String[]			classes				= { "Deutsch", "Mathematik", "Physik", "Englisch", "Sozialkunde", "Erdkunde", "Geschichte", "Latein", "Französisch", "Religion" };
+	private String[]			days				= { "", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" };
+	private String[]			months				= { "", "Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember" };
+	private String[]			years				= { "", "1998", "1997", "1996", "1995" };
+	private String[]			classes				= { "", "Deutsch", "Mathematik", "Physik", "Englisch", "Sozialkunde", "Erdkunde", "Geschichte", "Latein", "Französisch", "Religion" };
 
 	public PersonalView(int width, int height) {
 		super(width, height);

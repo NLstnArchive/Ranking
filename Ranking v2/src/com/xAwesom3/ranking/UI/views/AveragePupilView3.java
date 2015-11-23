@@ -131,7 +131,7 @@ public class AveragePupilView3 extends AbstractAveragePupilView {
 
 		// lblPokemon, lblDiddl, lblYugiOh, lblCardCollecting, lblGameBoy, lblBarbies, lblActionFiguren, lblBoyGroupFan, lblAlcohol, lblCigaretts;
 
-		lblBarbies = processLabel("Barbies`?", midX, lblGameBoy);
+		lblBarbies = processLabel("Barbies?", midX, lblGameBoy);
 		add(lblBarbies);
 
 		checkBarbies = new xCheckBox(getRightSideX(lblBarbies), centerBoxY(lblBarbies));

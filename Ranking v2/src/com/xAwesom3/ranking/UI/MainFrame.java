@@ -109,6 +109,7 @@ public class MainFrame {
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 20 + buttonHeight, width - 25, height - buttonHeight - 55);
 		scrollPane.setBorder(LineBorder.createBlackLineBorder());
+		scrollPane.getVerticalScrollBar().setUnitIncrement(12);
 		contentPane.add(scrollPane);
 
 		/*
@@ -122,6 +123,7 @@ public class MainFrame {
 	private void setView(int view) {
 		index = view;
 		scrollPane.setViewportView(views.get(view));
+		f.revalidate();
 	}
 
 	private void initViews() {

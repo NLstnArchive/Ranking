@@ -3,7 +3,6 @@ package com.xAwesom3.ranking.UI.components;
 import java.awt.Color;
 import java.awt.Font;
 
-import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.DefaultListSelectionModel;
 import javax.swing.JList;
@@ -12,6 +11,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
+import javax.swing.border.LineBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
@@ -42,25 +43,31 @@ public class Question extends JPanel {
 
 	protected Font					font				= new Font("Ludicida Sans Unicode", Font.BOLD, 16);
 
-	public Question(String text, int reply) {
-		super();
+	public Question(String text, int reply, int width, int height) {
 		this.reply = reply;
 		this.text = text;
+
+		setLayout(null);
+		setBackground(bg_false);
+		setBorder(LineBorder.createBlackLineBorder());
 
 		txtQuestionArea = new JTextField(text);
 		txtQuestionArea.setEditable(false);
 		txtQuestionArea.setHorizontalAlignment(SwingConstants.CENTER);
 		txtQuestionArea.setFont(font);
-		txtQuestionArea.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		txtQuestionArea.setBorder(LineBorder.createBlackLineBorder());
 		txtQuestionArea.setBackground(txt_false);
+		txtQuestionArea.setBounds(10, 10, width - 20, 50);
 		add(txtQuestionArea);
 
 		txtMaleInputArea = new JTextField();
 		txtMaleInputArea.setFont(font);
+		txtMaleInputArea.setBounds(10, txtQuestionArea.getY() + txtQuestionArea.getHeight() + 10, width / 2 - 20, font.getSize() + 10);
 		add(txtMaleInputArea);
 
 		txtFemaleInputArea = new JTextField();
 		txtFemaleInputArea.setFont(font);
+		txtFemaleInputArea.setBounds(width / 2 + 10, txtQuestionArea.getY() + txtQuestionArea.getHeight() + 10, width / 2 - 20, font.getSize() + 10);
 		add(txtFemaleInputArea);
 
 		Document maleDoc = txtMaleInputArea.getDocument();
@@ -69,15 +76,15 @@ public class Question extends JPanel {
 		maleDocListener = new DocumentListener() {
 
 			public void changedUpdate(DocumentEvent e) {
-				changeMaleContents();
+				SwingUtilities.invokeLater(() -> changeMaleContents());
 			}
 
 			public void insertUpdate(DocumentEvent e) {
-				changeMaleContents();
+				SwingUtilities.invokeLater(() -> changeMaleContents());
 			}
 
 			public void removeUpdate(DocumentEvent e) {
-				changeMaleContents();
+				SwingUtilities.invokeLater(() -> changeMaleContents());
 			}
 		};
 		maleDoc.addDocumentListener(maleDocListener);
@@ -85,15 +92,15 @@ public class Question extends JPanel {
 		femaleDocListener = new DocumentListener() {
 
 			public void insertUpdate(DocumentEvent e) {
-				changeFemaleContent();
+				SwingUtilities.invokeLater(() -> changeFemaleContent());
 			}
 
 			public void removeUpdate(DocumentEvent e) {
-				changeFemaleContent();
+				SwingUtilities.invokeLater(() -> changeFemaleContent());
 			}
 
 			public void changedUpdate(DocumentEvent e) {
-				changeFemaleContent();
+				SwingUtilities.invokeLater(() -> changeFemaleContent());
 			}
 
 		};
@@ -111,10 +118,14 @@ public class Question extends JPanel {
 		femaleListListener = new ListSelectionListener() {
 
 			public void valueChanged(ListSelectionEvent e) {
-				setAnswered(true);
-				txtFemaleInputArea.getDocument().removeDocumentListener(femaleDocListener);
-				txtFemaleInputArea.setText(femaleList.getSelectedValue());
-				txtFemaleInputArea.getDocument().addDocumentListener(femaleDocListener);
+				SwingUtilities.invokeLater(new Runnable() {
+					public void run() {
+						setAnswered(maleList.getSelectedIndex() != -1);
+						txtFemaleInputArea.getDocument().removeDocumentListener(femaleDocListener);
+						txtFemaleInputArea.setText(femaleList.getSelectedValue());
+						txtFemaleInputArea.getDocument().addDocumentListener(femaleDocListener);
+					}
+				});
 			}
 		};
 		femaleList.addListSelectionListener(femaleListListener);
@@ -131,33 +142,32 @@ public class Question extends JPanel {
 		maleListListener = new ListSelectionListener() {
 
 			public void valueChanged(ListSelectionEvent e) {
-				setAnswered(true);
-				txtMaleInputArea.getDocument().removeDocumentListener(maleDocListener);
-				txtMaleInputArea.setText(maleList.getSelectedValue());
-				txtMaleInputArea.getDocument().addDocumentListener(maleDocListener);
+				SwingUtilities.invokeLater(new Runnable() {
+					public void run() {
+						setAnswered(femaleList.getSelectedIndex() != -1);
+						txtMaleInputArea.getDocument().removeDocumentListener(maleDocListener);
+						txtMaleInputArea.setText(maleList.getSelectedValue());
+						txtMaleInputArea.getDocument().addDocumentListener(maleDocListener);
+					}
+				});
 			}
 		};
 		maleList.addListSelectionListener(maleListListener);
 
 		scrollMalePane = new JScrollPane(maleList);
+		scrollMalePane.setBounds(txtMaleInputArea.getX(), txtMaleInputArea.getY() + txtMaleInputArea.getHeight(), txtMaleInputArea.getWidth(), height - txtMaleInputArea.getY() + txtMaleInputArea.getHeight() - 61);
 		add(scrollMalePane);
 
 		scrollFemalePane = new JScrollPane(femaleList);
+		scrollFemalePane.setBounds(txtFemaleInputArea.getX(), txtFemaleInputArea.getY() + txtFemaleInputArea.getHeight(), txtFemaleInputArea.getWidth(), height - txtFemaleInputArea.getY() + txtFemaleInputArea.getHeight() - 61);
 		add(scrollFemalePane);
 
-	}
-
-	public void resize(int width, int height) {
-		txtQuestionArea.setBounds(10, 10, WIDTH - 20, 40);
-		scrollMalePane.setBounds(WIDTH / 4 - width / 2, 65 + 30, width / 2, HEIGHT - 100);
-		scrollFemalePane.setBounds(WIDTH * 3 / 4 - width / 2, 65 + 30, width / 2, HEIGHT - 100);
-		txtMaleInputArea.setBounds(WIDTH / 4 - width / 2, 65, width / 2, 30);
-		txtFemaleInputArea.setBounds(WIDTH * 3 / 4 - width / 4, 65, width / 2, 30);
 	}
 
 	private void changeMaleContents() {
 		setAnswered(false);
 		maleList.removeListSelectionListener(maleListListener);
+		txtMaleInputArea.getDocument().removeDocumentListener(maleDocListener);
 		DefaultListModel<String> model = new DefaultListModel<String>();
 		for (int i = 0; i < Human.getMen().size(); i++) {
 			if (Human.getMen().get(i).getName().toLowerCase().startsWith(txtMaleInputArea.getText().toLowerCase()))
@@ -165,11 +175,13 @@ public class Question extends JPanel {
 		}
 		maleList.setModel(model);
 		maleList.addListSelectionListener(maleListListener);
+		txtMaleInputArea.getDocument().addDocumentListener(maleDocListener);
 	}
 
 	private void changeFemaleContent() {
 		setAnswered(false);
 		femaleList.removeListSelectionListener(maleListListener);
+		txtFemaleInputArea.getDocument().removeDocumentListener(femaleDocListener);
 		DefaultListModel<String> model = new DefaultListModel<String>();
 		for (int i = 0; i < Human.getWomen().size(); i++) {
 			if (Human.getWomen().get(i).getName().toLowerCase().startsWith(txtFemaleInputArea.getText().toLowerCase()))
@@ -177,6 +189,7 @@ public class Question extends JPanel {
 		}
 		femaleList.setModel(model);
 		femaleList.addListSelectionListener(maleListListener);
+		txtFemaleInputArea.getDocument().addDocumentListener(femaleDocListener);
 	}
 
 	public void setAnswered(boolean answered) {

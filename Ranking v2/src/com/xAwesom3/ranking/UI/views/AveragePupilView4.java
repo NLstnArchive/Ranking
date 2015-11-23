@@ -1,5 +1,7 @@
 package com.xAwesom3.ranking.UI.views;
 
+import java.awt.Font;
+
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
@@ -171,6 +173,7 @@ public class AveragePupilView4 extends AbstractAveragePupilView {
 		add(checkRaR);
 
 		lblDrugs = processLabel("Schonmal Drogen genommen?", midX, lblRaR);
+		lblDrugs.setFont(new Font(lblFont.getName(), lblFont.getStyle(), 18));
 		add(lblDrugs);
 
 		checkDrugs = new xCheckBox(getRightSideX(lblDrugs), centerBoxY(lblDrugs));
