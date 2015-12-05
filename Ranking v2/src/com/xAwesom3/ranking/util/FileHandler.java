@@ -12,6 +12,9 @@ import com.xAwesom3.ranking.UI.View;
 
 public class FileHandler {
 
+	public static final int					NONE		= 0,
+													PROGRESS = 1, FINISHED = 2;
+
 	private static String					path		= ("./files/");
 
 	private static Map<String, XMLHandler>	xmlFiles	= new HashMap<String, XMLHandler>();
@@ -105,5 +108,24 @@ public class FileHandler {
 		indexHandler.saveToDropBox("index");
 
 		xLogger.log("Finished saving xmlFiles");
+	}
+
+	public static int getProgress(String name) {
+		XMLHandler index = xmlFiles.get("index");
+		NodeList list = index.getNodeList("finished");
+		for (int i = 0; i < list.getLength(); i++) {
+			if (list.item(i).getTextContent().equalsIgnoreCase(name))
+				return FINISHED;
+		}
+		list = index.getNodeList("progress");
+		for (int i = 0; i < list.getLength(); i++) {
+			if (list.item(i).getTextContent().equalsIgnoreCase(name))
+				return PROGRESS;
+		}
+		return NONE;
+	}
+
+	public static void loadProgress() {
+		
 	}
 }

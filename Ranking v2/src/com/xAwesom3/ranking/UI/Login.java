@@ -148,9 +148,22 @@ public class Login extends JFrame {
 			human = Human.getWomanByName(txtName.getText());
 		if (human != null) {
 			if (new String(txtPassword.getPassword()).equals(human.getPassword())) {
-				mainFrame.show(human.getName());
-				Human.setUser(human);
-				dispose();
+				switch (FileHandler.getProgress(txtName.getText())) {
+				case FileHandler.NONE:
+					mainFrame.show(human.getName());
+					Human.setUser(human);
+					dispose();
+					break;
+				case FileHandler.PROGRESS:
+					FileHandler.loadProgress();
+					mainFrame.show(human.getName());
+					Human.setUser(human);
+					dispose();
+				case FileHandler.FINISHED:
+					JOptionPane.showConfirmDialog(this, "Du hast schon alle Fragen beantwortet!");
+					dispose();
+					System.exit(0);
+				}
 			}
 			else {
 				xLogger.log("Wrong password was entered for " + human.getName() + new String(txtPassword.getPassword()) + " != " + human.getPassword());
