@@ -1,13 +1,19 @@
 package com.xAwesom3.ranking.UI.views;
 
 import java.awt.Font;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import org.w3c.dom.Element;
+
 import com.xAwesom3.ranking.UI.components.BorderedTextField;
+import com.xAwesom3.ranking.UI.components.BorderedTextField.Type;
 import com.xAwesom3.ranking.UI.components.xCheckBox;
+import com.xAwesom3.ranking.util.XMLHandler;
 
 public class AveragePupilView2 extends AbstractAveragePupilView {
 	private static final long	serialVersionUID	= 1L;
@@ -18,7 +24,7 @@ public class AveragePupilView2 extends AbstractAveragePupilView {
 	private BorderedTextField	txtTimeInBath, txtSchoolWayTime, txtTV, txtPC, txtMusic, txtHandy, txtGaming, txtBooks, txtSports, txtSleep;
 	private xCheckBox			checkBreakfast, checkBelieve;
 
-	private static String[]		hourValues			= { "", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" };
+	private static String[]		hourValues			= { "", "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" };
 	private static String[]		minuteValues		= { "", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" };
 	private static String[]		schoolWayValues		= { "", "Bus", "Zug", "Auto", "Fahrrad", "Zu Fuß" };
 	private static String[]		confessionValues	= { "", "katholisch", "evangelisch" };
@@ -53,7 +59,7 @@ public class AveragePupilView2 extends AbstractAveragePupilView {
 		lblTimeInBath.setBounds(leftX, 100, lblWidth, lblHeight);
 		add(lblTimeInBath);
 
-		txtTimeInBath = processTextField(lblTimeInBath);
+		txtTimeInBath = processTextField(lblTimeInBath, Type.INT);
 		add(txtTimeInBath);
 
 		lblMins = createUnitLabel("min", txtTimeInBath);
@@ -62,7 +68,7 @@ public class AveragePupilView2 extends AbstractAveragePupilView {
 		lblSchoolWayTime = processLabel("Dauer des Schulwegs", leftX, lblTimeInBath);
 		add(lblSchoolWayTime);
 
-		txtSchoolWayTime = processTextField(lblSchoolWayTime);
+		txtSchoolWayTime = processTextField(lblSchoolWayTime, Type.FLOAT);
 		add(txtSchoolWayTime);
 
 		lblMins2 = createUnitLabel("min", txtSchoolWayTime);
@@ -129,7 +135,7 @@ public class AveragePupilView2 extends AbstractAveragePupilView {
 		lblTV.setBounds(leftX, everythingStartY, lblWidth, lblHeight);
 		add(lblTV);
 
-		txtTV = processTextField(lblTV);
+		txtTV = processTextField(lblTV, Type.INT);
 		add(txtTV);
 
 		lblH = createUnitLabel("h", txtTV);
@@ -140,7 +146,7 @@ public class AveragePupilView2 extends AbstractAveragePupilView {
 		lblPC = processLabel("PC pro Tag", leftX, lblTV);
 		add(lblPC);
 
-		txtPC = processTextField(lblPC);
+		txtPC = processTextField(lblPC, Type.FLOAT);
 		add(txtPC);
 
 		lblH2 = createUnitLabel("h", txtPC);
@@ -149,7 +155,7 @@ public class AveragePupilView2 extends AbstractAveragePupilView {
 		lblMusic = processLabel("Musik am Tag", leftX, lblPC);
 		add(lblMusic);
 
-		txtMusic = processTextField(lblMusic);
+		txtMusic = processTextField(lblMusic, Type.FLOAT);
 		add(txtMusic);
 
 		lblH3 = createUnitLabel("h", txtMusic);
@@ -158,7 +164,7 @@ public class AveragePupilView2 extends AbstractAveragePupilView {
 		lblHandy = processLabel("Handy am Tag", leftX, lblMusic);
 		add(lblHandy);
 
-		txtHandy = processTextField(lblHandy);
+		txtHandy = processTextField(lblHandy, Type.FLOAT);
 		add(txtHandy);
 
 		lblH4 = createUnitLabel("h", txtHandy);
@@ -167,7 +173,7 @@ public class AveragePupilView2 extends AbstractAveragePupilView {
 		lblGaming = processLabel("Computer/Konsole pro Tag", leftX, lblHandy);
 		add(lblGaming);
 
-		txtGaming = processTextField(lblGaming);
+		txtGaming = processTextField(lblGaming, Type.FLOAT);
 		add(txtGaming);
 
 		lblH5 = createUnitLabel("h", txtGaming);
@@ -176,13 +182,13 @@ public class AveragePupilView2 extends AbstractAveragePupilView {
 		lblBooks = processLabel("Bücher pro Jahr", leftX, lblGaming);
 		add(lblBooks);
 
-		txtBooks = processTextField(lblBooks);
+		txtBooks = processTextField(lblBooks, Type.INT);
 		add(txtBooks);
 
 		lblSports = processLabel("Sport pro Woche", leftX, lblBooks);
 		add(lblSports);
 
-		txtSports = processTextField(lblSports);
+		txtSports = processTextField(lblSports, Type.FLOAT);
 		add(txtSports);
 
 		lblH6 = createUnitLabel("h", txtSports);
@@ -191,7 +197,7 @@ public class AveragePupilView2 extends AbstractAveragePupilView {
 		lblSleep = processLabel("Schlaf pro Nacht", leftX, lblSports);
 		add(lblSleep);
 
-		txtSleep = processTextField(lblSleep);
+		txtSleep = processTextField(lblSleep, Type.FLOAT);
 		add(txtSleep);
 
 		lblH7 = createUnitLabel("h", txtSleep);
@@ -236,6 +242,36 @@ public class AveragePupilView2 extends AbstractAveragePupilView {
 		add(voteBox);
 	}
 
-	public void handleResults() {
+	public boolean isFilledIn() {
+		return txtTimeInBath.getText() != "" && txtSchoolWayTime.getText() != "" && txtTV.getText() != "" && txtPC.getText() != "" && txtMusic.getText() != "" && txtHandy.getText() != "" && txtGaming.getText() != "" && txtBooks.getText() != "" && txtSports.getText() != "" && txtSleep.getText() != "" && alarmClockHBox.getSelectedIndex() != 0 && alarmClockMinBox.getSelectedIndex() != 0 && schoolWayBox.getSelectedIndex() != 0 && confessionBox.getSelectedIndex() != 0 && schoolMessBox.getSelectedIndex() != 0 && voteBox.getSelectedIndex() != 0;
+	}
+
+	// private BorderedTextField txtTimeInBath, txtSchoolWayTime, txtTV, txtPC, txtMusic, txtHandy, txtGaming, txtBooks, txtSports, txtSleep;
+	// private JComboBox<String> alarmClockHBox, alarmClockMinBox, schoolWayBox, confessionBox, schoolMessBox, voteBox;
+	// private xCheckBox checkBreakfast, checkBelieve;
+
+	public List<Element> getResults(XMLHandler handler) {
+		List<Element> resultList = new ArrayList<Element>();
+		resultList.add(handler.createElement("txtTimeInBath", txtTimeInBath.getText()));
+		resultList.add(handler.createElement("txtSchoolWayTime", txtSchoolWayTime.getText()));
+		resultList.add(handler.createElement("txtTV", txtTV.getText()));
+		resultList.add(handler.createElement("txtPC", txtPC.getText()));
+		resultList.add(handler.createElement("txtHandy", txtHandy.getText()));
+		resultList.add(handler.createElement("txtGaming", txtGaming.getText()));
+		resultList.add(handler.createElement("txtBooks", txtBooks.getText()));
+		resultList.add(handler.createElement("txtSports", txtSports.getText()));
+		resultList.add(handler.createElement("txtSleep", txtSleep.getText()));
+
+		resultList.add(handler.createElement("alarmClockHBox", (String) alarmClockHBox.getSelectedItem()));
+		resultList.add(handler.createElement("alarmClockMinBox", (String) alarmClockMinBox.getSelectedItem()));
+		resultList.add(handler.createElement("schoolWayBox", (String) schoolWayBox.getSelectedItem()));
+		resultList.add(handler.createElement("confessionBox", (String) confessionBox.getSelectedItem()));
+		resultList.add(handler.createElement("schoolMessBox", (String) schoolMessBox.getSelectedItem()));
+		resultList.add(handler.createElement("voteBox", (String) voteBox.getSelectedItem()));
+
+		resultList.add(handler.createElement("checkBreakfast", checkBreakfast.isChecked().toString()));
+		resultList.add(handler.createElement("checkBelieve", checkBelieve.isChecked().toString()));
+
+		return resultList;
 	}
 }

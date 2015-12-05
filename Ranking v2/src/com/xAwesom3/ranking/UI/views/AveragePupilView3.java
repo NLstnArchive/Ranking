@@ -1,10 +1,17 @@
 package com.xAwesom3.ranking.UI.views;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
+import org.w3c.dom.Element;
+
 import com.xAwesom3.ranking.UI.components.BorderedTextField;
+import com.xAwesom3.ranking.UI.components.BorderedTextField.Type;
 import com.xAwesom3.ranking.UI.components.xCheckBox;
+import com.xAwesom3.ranking.util.XMLHandler;
 
 public class AveragePupilView3 extends AbstractAveragePupilView {
 	private static final long	serialVersionUID	= 1L;
@@ -84,13 +91,13 @@ public class AveragePupilView3 extends AbstractAveragePupilView {
 		lblAlcohol.setBounds(leftX, startYouthSinY, lblWidth, lblHeight);
 		add(lblAlcohol);
 
-		txtAlcohol = processTextField(lblAlcohol);
+		txtAlcohol = processTextField(lblAlcohol, Type.INT);
 		add(txtAlcohol);
 
 		lblCigaretts = processLabel("Erstes Mal Zigaretten?", leftX, lblAlcohol);
 		add(lblCigaretts);
 
-		txtCigaretts = processTextField(lblCigaretts);
+		txtCigaretts = processTextField(lblCigaretts, Type.INT);
 		add(txtCigaretts);
 
 		/*
@@ -154,8 +161,33 @@ public class AveragePupilView3 extends AbstractAveragePupilView {
 		 */
 	}
 
-	public void handleResults() {
+	// private JComboBox<String> futureHomeTownBox;
+	// private xCheckBox checkWedding, checkChildren, checkPokemon, checkDiddl, checkYugiOh, checkCardCollecting, checkGameBoy, checkBarbies, checkActionFiguren, checkBoygroupfan;
+	// private BorderedTextField txtCigaretts, txtAlcohol;
 
+	public List<Element> getResults(XMLHandler handler) {
+		List<Element> resultList = new ArrayList<Element>();
+		resultList.add(handler.createElement("futureHomeTown", (String) futureHomeTownBox.getSelectedItem()));
+
+		resultList.add(handler.createElement("checkWedding", checkWedding.isChecked().toString()));
+		resultList.add(handler.createElement("checkChildren", checkChildren.isChecked().toString()));
+		resultList.add(handler.createElement("checkPokemon", checkPokemon.isChecked().toString()));
+		resultList.add(handler.createElement("checkDiddl", checkDiddl.isChecked().toString()));
+		resultList.add(handler.createElement("checkYugiOh", checkYugiOh.isChecked().toString()));
+		resultList.add(handler.createElement("checkCardCollecting", checkCardCollecting.isChecked().toString()));
+		resultList.add(handler.createElement("checkGameBoy", checkGameBoy.isChecked().toString()));
+		resultList.add(handler.createElement("checkBarbies", checkBarbies.isChecked().toString()));
+		resultList.add(handler.createElement("checkActionFiguren", checkActionFiguren.isChecked().toString()));
+		resultList.add(handler.createElement("checkBoygroupfan", checkBoygroupfan.isChecked().toString()));
+
+		resultList.add(handler.createElement("txtCigaretts", txtCigaretts.getText()));
+		resultList.add(handler.createElement("txtAlcohol", txtAlcohol.getText()));
+
+		return resultList;
+	}
+
+	public boolean isFilledIn() {
+		return futureHomeTownBox.getSelectedIndex() != 0 && txtCigaretts.getText() != "" && txtAlcohol.getText() != "";
 	}
 
 }

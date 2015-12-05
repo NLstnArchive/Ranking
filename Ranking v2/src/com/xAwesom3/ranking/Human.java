@@ -5,9 +5,20 @@ import java.util.List;
 
 public class Human {
 
-	private static List<Human>	men			= new ArrayList<Human>();
-	private static List<Human>	women		= new ArrayList<Human>();
-	private static List<Human>	teachers	= new ArrayList<Human>();
+	private static List<Human>	men				= new ArrayList<Human>();
+	private static List<Human>	women			= new ArrayList<Human>();
+	private static List<Human>	menTeachers		= new ArrayList<Human>();
+	private static List<Human>	womenTeachers	= new ArrayList<Human>();
+
+	private static Human		currentHuman;
+
+	public static void setUser(Human human) {
+		currentHuman = human;
+	}
+
+	public static Human getUser() {
+		return currentHuman;
+	}
 
 	public static Human getManByName(String name) {
 		Human result = null;
@@ -27,25 +38,52 @@ public class Human {
 		return null;
 	}
 
-	public static Human getTeacherByName(String name) {
-		for (Human human : teachers) {
+	public static Human getTeacherManByName(String name) {
+		for (Human human : menTeachers) {
 			if (human.getName().equalsIgnoreCase(name))
 				return human;
 		}
 		return null;
 	}
 
+	public static Human getTeacherWomanByName(String name) {
+		for (Human human : womenTeachers) {
+			if (human.getName().equalsIgnoreCase(name))
+				return human;
+		}
+		return null;
+	}
+
+	public static List<Human> getByID(int id) {
+		if (id == 1)
+			return men;
+		if (id == 2)
+			return women;
+		if (id == 3)
+			return menTeachers;
+		if (id == 4)
+			return womenTeachers;
+		else
+			return null;
+	}
+
 	public static void add(Human human) {
-		if (human.getGender() == 0)
-			teachers.add(human);
+		if (human.getGender() == 3)
+			menTeachers.add(human);
+		if (human.getGender() == 4)
+			womenTeachers.add(human);
 		if (human.getGender() == 1)
 			men.add(human);
 		if (human.getGender() == 2)
 			women.add(human);
 	}
 
-	public static List<Human> getTeachers() {
-		return teachers;
+	public static List<Human> getMenTeachers() {
+		return menTeachers;
+	}
+
+	public static List<Human> getWomenTeachers() {
+		return womenTeachers;
 	}
 
 	public static List<Human> getMen() {

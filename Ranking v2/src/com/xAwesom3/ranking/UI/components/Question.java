@@ -2,6 +2,7 @@ package com.xAwesom3.ranking.UI.components;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.DefaultListSelectionModel;
@@ -43,9 +44,20 @@ public class Question extends JPanel {
 
 	protected Font					font				= new Font("Ludicida Sans Unicode", Font.BOLD, 16);
 
+	private List<Human>				menList, womenList;
+
 	public Question(String text, int reply, int width, int height) {
 		this.reply = reply;
 		this.text = text;
+
+		if (reply == 0) {
+			menList = Human.getMen();
+			womenList = Human.getWomen();
+		}
+		else {
+			menList = Human.getMenTeachers();
+			womenList = Human.getWomenTeachers();
+		}
 
 		setLayout(null);
 		setBackground(bg_false);
@@ -106,10 +118,7 @@ public class Question extends JPanel {
 		};
 		femaleDoc.addDocumentListener(femaleDocListener);
 
-		DefaultListModel<String> list = new DefaultListModel<String>();
-		for (int i = 0; i < Human.getWomen().size(); i++)
-			list.addElement(Human.getWomen().get(i).getName());
-		femaleList = new JList<String>(list);
+		femaleList = new JList<String>(toNamesArray(womenList));
 		femaleList.setVisibleRowCount(5);
 		femaleList.setSelectionBackground(new Color(74, 238, 98));
 		femaleList.setSelectionForeground(Color.BLACK);
@@ -130,10 +139,7 @@ public class Question extends JPanel {
 		};
 		femaleList.addListSelectionListener(femaleListListener);
 
-		list = new DefaultListModel<String>();
-		for (int i = 0; i < Human.getMen().size(); i++)
-			list.addElement(Human.getMen().get(i).getName());
-		maleList = new JList<String>(list);
+		maleList = new JList<String>(toNamesArray(menList));
 		maleList.setVisibleRowCount(5);
 		maleList.setSelectionBackground(new Color(74, 238, 98));
 		maleList.setSelectionForeground(Color.BLACK);
@@ -169,9 +175,9 @@ public class Question extends JPanel {
 		maleList.removeListSelectionListener(maleListListener);
 		txtMaleInputArea.getDocument().removeDocumentListener(maleDocListener);
 		DefaultListModel<String> model = new DefaultListModel<String>();
-		for (int i = 0; i < Human.getMen().size(); i++) {
-			if (Human.getMen().get(i).getName().toLowerCase().startsWith(txtMaleInputArea.getText().toLowerCase()))
-				model.addElement(Human.getMen().get(i).getName());
+		for (int i = 0; i < menList.size(); i++) {
+			if (toNamesArray(menList)[i].toLowerCase().startsWith(txtMaleInputArea.getText().toLowerCase()))
+				model.addElement(toNamesArray(menList)[i]);
 		}
 		maleList.setModel(model);
 		maleList.addListSelectionListener(maleListListener);
@@ -183,9 +189,9 @@ public class Question extends JPanel {
 		femaleList.removeListSelectionListener(maleListListener);
 		txtFemaleInputArea.getDocument().removeDocumentListener(femaleDocListener);
 		DefaultListModel<String> model = new DefaultListModel<String>();
-		for (int i = 0; i < Human.getWomen().size(); i++) {
-			if (Human.getWomen().get(i).getName().toLowerCase().startsWith(txtFemaleInputArea.getText().toLowerCase()))
-				model.addElement(Human.getWomen().get(i).getName());
+		for (int i = 0; i < toNamesArray(womenList).length; i++) {
+			if (toNamesArray(womenList)[i].toLowerCase().startsWith(txtFemaleInputArea.getText().toLowerCase()))
+				model.addElement(toNamesArray(womenList)[i]);
 		}
 		femaleList.setModel(model);
 		femaleList.addListSelectionListener(maleListListener);
@@ -234,6 +240,14 @@ public class Question extends JPanel {
 			if (model.getElementAt(i).equalsIgnoreCase(name))
 				maleList.setSelectedIndex(i);
 		}
+	}
+
+	private String[] toNamesArray(List<Human> list) {
+		String[] result = new String[list.size()];
+		for (int i = 0; i < list.size(); i++) {
+			result[i] = list.get(i).getName();
+		}
+		return result;
 	}
 }
 

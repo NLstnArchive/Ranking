@@ -1,11 +1,18 @@
 package com.xAwesom3.ranking.UI.views;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import org.w3c.dom.Element;
+
 import com.xAwesom3.ranking.UI.components.BorderedTextField;
+import com.xAwesom3.ranking.UI.components.BorderedTextField.Type;
 import com.xAwesom3.ranking.UI.components.xCheckBox;
+import com.xAwesom3.ranking.util.XMLHandler;
 
 public class AveragePupilView extends AbstractAveragePupilView {
 	private static final long	serialVersionUID		= 1L;
@@ -53,7 +60,7 @@ public class AveragePupilView extends AbstractAveragePupilView {
 		lblSize.setBounds(leftX, aboutMeStartY, lblWidth, lblHeight);
 		add(lblSize);
 
-		txtHeight = processTextField(lblSize);
+		txtHeight = processTextField(lblSize, Type.FLOAT);
 		add(txtHeight);
 
 		lblM = createUnitLabel("m", txtHeight);
@@ -62,7 +69,7 @@ public class AveragePupilView extends AbstractAveragePupilView {
 		lblWeight = processLabel("Gewicht", leftX, lblSize);
 		add(lblWeight);
 
-		txtWeight = processTextField(lblWeight);
+		txtWeight = processTextField(lblWeight, Type.INT);
 		add(txtWeight);
 
 		lblKG = createUnitLabel("kg", txtWeight);
@@ -71,13 +78,13 @@ public class AveragePupilView extends AbstractAveragePupilView {
 		lblShoeSize = processLabel("Schuhgröße", leftX, lblWeight);
 		add(lblShoeSize);
 
-		txtShoeSize = processTextField(lblShoeSize);
+		txtShoeSize = processTextField(lblShoeSize, Type.INT);
 		add(txtShoeSize);
 
 		lblShower = processLabel("Duschen pro Woche", leftX, lblShoeSize);
 		add(lblShower);
 
-		txtShower = processTextField(lblShower);
+		txtShower = processTextField(lblShower, Type.INT);
 		add(txtShower);
 
 		lblSiblings = processLabel("Geschweisterzahl", leftX, lblShower);
@@ -177,7 +184,7 @@ public class AveragePupilView extends AbstractAveragePupilView {
 		lblAbiPreparations.setBounds(leftX, schoolCareerStartY, lblWidth, lblHeight);
 		add(lblAbiPreparations);
 
-		txtAbiPreparations = processTextField(lblAbiPreparations);
+		txtAbiPreparations = processTextField(lblAbiPreparations, Type.INT);
 		add(txtAbiPreparations);
 
 		lblWo = createUnitLabel("Wo.", txtAbiPreparations);
@@ -186,7 +193,7 @@ public class AveragePupilView extends AbstractAveragePupilView {
 		lblTimeLearning = processLabel("Lernen pro Tag", leftX, lblAbiPreparations);
 		add(lblTimeLearning);
 
-		txtTimeLearning = processTextField(lblTimeLearning);
+		txtTimeLearning = processTextField(lblTimeLearning, Type.INT);
 		add(txtTimeLearning);
 
 		lblH = createUnitLabel("h", txtTimeLearning);
@@ -195,7 +202,7 @@ public class AveragePupilView extends AbstractAveragePupilView {
 		lblHoursMissed = processLabel("Fehlstunden gesamt", leftX, lblTimeLearning);
 		add(lblHoursMissed);
 
-		txtHoursMissed = processTextField(lblHoursMissed);
+		txtHoursMissed = processTextField(lblHoursMissed, Type.INT);
 		add(txtHoursMissed);
 
 		/*
@@ -239,7 +246,41 @@ public class AveragePupilView extends AbstractAveragePupilView {
 		 */
 	}
 
-	public void handleResults() {
+	// private BorderedTextField txtHeight, txtWeight, txtShoeSize, txtShower, txtSiblings, txtAbiPreparations, txtTimeLearning, txtHoursMissed;
+	// private JComboBox<String> hairLengthBox, hairColorBox, eyeColorBox, livingLocationBox, starSignBox;
+	// private xCheckBox checkPiercing, checkTattoo, checkSmoker, checkGlasses, checkVegetarian, checkRegretLK, checkRepeated, checkSkipped, checkWorkSubmitted, checkWorkCanceled;
 
+	public boolean isFilledIn() {
+		return txtHeight.getText() != "" && txtWeight.getText() != "" && txtShoeSize.getText() != "" && txtShower.getText() != "" && txtSiblings.getText() != "" && txtAbiPreparations.getText() != "" && txtTimeLearning.getText() != "" && txtHoursMissed.getText() != "" && hairLengthBox.getSelectedIndex() != 0 && hairColorBox.getSelectedIndex() != 0 && eyeColorBox.getSelectedIndex() != 0 && livingLocationBox.getSelectedIndex() != 0 && starSignBox.getSelectedIndex() != 0;
+	}
+
+	public List<Element> getResults(XMLHandler handler) {
+		List<Element> resultList = new ArrayList<Element>();
+		resultList.add(handler.createElement("txtHeight", txtHeight.getText()));
+		resultList.add(handler.createElement("txtWeight", txtWeight.getText()));
+		resultList.add(handler.createElement("txtShoeSize", txtShoeSize.getText()));
+		resultList.add(handler.createElement("txtShower", txtShower.getText()));
+		resultList.add(handler.createElement("txtSiblings", txtSiblings.getText()));
+		resultList.add(handler.createElement("txtAbiPreparations", txtAbiPreparations.getText()));
+		resultList.add(handler.createElement("txtTimeLearning", txtTimeLearning.getText()));
+		resultList.add(handler.createElement("txtHoursMissed", txtHoursMissed.getText()));
+
+		resultList.add(handler.createElement("hairLengthBox", (String) hairLengthBox.getSelectedItem()));
+		resultList.add(handler.createElement("hairColorBox", (String) hairColorBox.getSelectedItem()));
+		resultList.add(handler.createElement("eyeColorBox", (String) eyeColorBox.getSelectedItem()));
+		resultList.add(handler.createElement("livingLocationBox", (String) livingLocationBox.getSelectedItem()));
+		resultList.add(handler.createElement("starSignBox", (String) starSignBox.getSelectedItem()));
+
+		resultList.add(handler.createElement("checkPiercing", checkPiercing.isChecked().toString()));
+		resultList.add(handler.createElement("checkTattoo", checkTattoo.isChecked().toString()));
+		resultList.add(handler.createElement("checkSmoker", checkSmoker.isChecked().toString()));
+		resultList.add(handler.createElement("checkGlasses", checkGlasses.isChecked().toString()));
+		resultList.add(handler.createElement("checkVegetarian", checkVegetarian.isChecked().toString()));
+		resultList.add(handler.createElement("checkRegretLK", checkRegretLK.isChecked().toString()));
+		resultList.add(handler.createElement("checkRepeated", checkRepeated.isChecked().toString()));
+		resultList.add(handler.createElement("checkSkipped", checkSkipped.isChecked().toString()));
+		resultList.add(handler.createElement("checkWorkSubmitted", checkWorkSubmitted.isChecked().toString()));
+		resultList.add(handler.createElement("checkWorkCanceled", checkWorkCanceled.isChecked().toString()));
+		return resultList;
 	}
 }

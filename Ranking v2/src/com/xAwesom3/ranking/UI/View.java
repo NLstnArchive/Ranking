@@ -2,8 +2,13 @@ package com.xAwesom3.ranking.UI;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.util.List;
 
 import javax.swing.JPanel;
+
+import org.w3c.dom.Element;
+
+import com.xAwesom3.ranking.util.XMLHandler;
 
 public abstract class View extends JPanel {
 	private static final long	serialVersionUID	= 1L;
@@ -30,5 +35,7 @@ public abstract class View extends JPanel {
 		setLayout(null);
 	}
 
-	public abstract void handleResults();
+	public abstract List<Element> getResults(XMLHandler handler);
+	
+	public abstract boolean isFilledIn();
 }

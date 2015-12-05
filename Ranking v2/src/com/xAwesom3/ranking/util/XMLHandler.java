@@ -3,6 +3,7 @@ package com.xAwesom3.ranking.util;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -13,6 +14,7 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
@@ -21,6 +23,8 @@ public class XMLHandler {
 	private Document	doc;
 	private String		name;
 	private File		f;
+
+	private Element		rootElement;
 
 	public XMLHandler(String name) {
 		this.name = name;
@@ -39,8 +43,9 @@ public class XMLHandler {
 			doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new FileInputStream(f));
 		}
 		catch (SAXException | IOException | ParserConfigurationException e) {
-			e.printStackTrace();
+			xLogger.log("Failed to load XML file " + f.getPath() + ", cause: " + e.getMessage());
 		}
+		rootElement = (Element) doc.getElementsByTagName("root").item(0);
 	}
 
 	public void loadFromDropBox(String dbPath) {
@@ -50,11 +55,15 @@ public class XMLHandler {
 
 	public void create() {
 		try {
+			f.createNewFile();
 			doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
 		}
-		catch (ParserConfigurationException e) {
-			e.printStackTrace();
+		catch (Exception e) {
+			xLogger.log("Failed to create empty XML file " + f.getPath() + ", cause: " + e.getMessage());
 		}
+		System.out.println(toValidString(name));
+		rootElement = doc.createElement(toValidString(name));
+		doc.appendChild(rootElement);
 	}
 
 	public void save() {
@@ -68,8 +77,33 @@ public class XMLHandler {
 			t.transform(source, result);
 		}
 		catch (Exception e) {
-			// xLogger.log("Failed to save File " + location + "cause: " + e.getMessage());
+			xLogger.log("Failed to save File " + f.getPath() + "cause: " + e.getMessage());
 		}
+	}
+
+	public void addElement(Element element) {
+		if (element == null)
+			return;
+		if (rootElement != null)
+			rootElement.appendChild((Node) element);
+		else
+			doc.appendChild((Node) element);
+	}
+
+	public void addElementList(List<Element> list) {
+		if (list == null)
+			return;
+
+		for (Element element : list) {
+			addElement(element);
+		}
+	}
+
+	public Element createElement(String name, String textContent) {
+		System.out.println(name);
+		Element e = doc.createElement(toValidString(name));
+		e.setTextContent(textContent);
+		return e;
 	}
 
 	public void saveToDropBox(String dbPath) {
@@ -83,5 +117,10 @@ public class XMLHandler {
 
 	public Element getRootElement(int index) {
 		return (Element) doc.getChildNodes().item(index);
+	}
+
+	private String toValidString(String string) {
+		String newString = string.replace(' ', '_');
+		return newString;
 	}
 }

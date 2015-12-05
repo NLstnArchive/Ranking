@@ -18,7 +18,7 @@ public class DropBoxHandler {
 	static {
 		DbxRequestConfig config = new DbxRequestConfig("xAwesome", Locale.getDefault().toString());
 		client = new DbxClient(config, "C5PkaBanyzUAAAAAAAAB6F-2RpM3FJc6_4DFWJXrE5PrRFm1sTvzt3c30jkI4Q-Z");
-		// xLogger.log("Staticly initialised");
+		xLogger.log("Staticly initialised");
 	}
 
 	public static void save(String target, String source) {
@@ -30,9 +30,9 @@ public class DropBoxHandler {
 			stream.close();
 		}
 		catch (Exception e) {
-			// xLogger.log("Failed to save file " + source + " to DropBox: " + e.getMessage());
+			xLogger.log("Failed to save file " + source + " to DropBox: " + e.getMessage());
 		}
-		// xLogger.log("Finished saving file " + source + ".xml to " + target + ".xml");
+		xLogger.log("Finished saving file " + source + ".xml to " + target + ".xml");
 	}
 
 	public static File load(String target, String source) {
@@ -45,9 +45,9 @@ public class DropBoxHandler {
 			System.out.println();
 		}
 		catch (Exception e) {
-			// xLogger.log("Failed to load file " + source + " from DropBox: " + e.getMessage());
+			xLogger.log("Failed to load file " + source + " from DropBox: " + e.getMessage());
 		}
-		// xLogger.log("Finished loading file " + source + ".xml to " + target + ".xml");
+		xLogger.log("Finished loading file " + source + ".xml to " + target + ".xml");
 		return f;
 	}
 }

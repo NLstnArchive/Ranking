@@ -48,4 +48,8 @@ public class xCheckBox extends JComponent {
 			g.drawImage(img_unchecked, 0, 0, getWidth(), getHeight(), null);
 	}
 
+	public Boolean isChecked() {
+		return checked;
+	}
+
 }

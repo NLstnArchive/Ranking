@@ -1,12 +1,18 @@
 package com.xAwesom3.ranking.UI.views;
 
 import java.awt.Font;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
+import org.w3c.dom.Element;
+
 import com.xAwesom3.ranking.UI.components.BorderedTextField;
+import com.xAwesom3.ranking.UI.components.BorderedTextField.Type;
 import com.xAwesom3.ranking.UI.components.xCheckBox;
+import com.xAwesom3.ranking.util.XMLHandler;
 
 public class AveragePupilView4 extends AbstractAveragePupilView {
 	private static final long	serialVersionUID	= 1L;
@@ -44,13 +50,13 @@ public class AveragePupilView4 extends AbstractAveragePupilView {
 		lblShoes.setBounds(leftX, mineStartY, lblWidth, lblHeight);
 		add(lblShoes);
 
-		txtShoes = processTextField(lblShoes);
+		txtShoes = processTextField(lblShoes, Type.INT);
 		add(txtShoes);
 
 		lblIncome = processLabel("Einkommen", leftX, lblShoes);
 		add(lblIncome);
 
-		txtIncome = processTextField(lblIncome);
+		txtIncome = processTextField(lblIncome, Type.INT);
 		add(txtIncome);
 
 		lblEuro1 = createUnitLabel("€", txtIncome);
@@ -59,7 +65,7 @@ public class AveragePupilView4 extends AbstractAveragePupilView {
 		lblPocketMoney = processLabel("...davon Taschengeld?", leftX, lblIncome);
 		add(lblPocketMoney);
 
-		txtPocketMoney = processTextField(lblPocketMoney);
+		txtPocketMoney = processTextField(lblPocketMoney, Type.INT);
 		add(txtPocketMoney);
 
 		lblEuro2 = createUnitLabel("€", txtPocketMoney);
@@ -130,13 +136,13 @@ public class AveragePupilView4 extends AbstractAveragePupilView {
 		lblConcerts.setBounds(leftX, rockStartY, lblWidth, lblHeight);
 		add(lblConcerts);
 
-		txtConcerts = processTextField(lblConcerts);
+		txtConcerts = processTextField(lblConcerts, Type.INT);
 		add(txtConcerts);
 
 		lblBeer = processLabel("Bier pro Woche", leftX, lblConcerts);
 		add(lblBeer);
 
-		txtBeer = processTextField(lblBeer);
+		txtBeer = processTextField(lblBeer, Type.FLOAT);
 		add(txtBeer);
 
 		lblL = createUnitLabel("L", txtBeer);
@@ -145,7 +151,7 @@ public class AveragePupilView4 extends AbstractAveragePupilView {
 		lblSchnapps = processLabel("Schnaps pro Woche", leftX, lblBeer);
 		add(lblSchnapps);
 
-		txtSchnapps = processTextField(lblSchnapps);
+		txtSchnapps = processTextField(lblSchnapps, Type.FLOAT);
 		add(txtSchnapps);
 
 		lblL2 = createUnitLabel("L", txtSchnapps);
@@ -154,7 +160,7 @@ public class AveragePupilView4 extends AbstractAveragePupilView {
 		lblCoffee = processLabel("Kaffee pro Woche", leftX, lblSchnapps);
 		add(lblCoffee);
 
-		txtCoffee = processTextField(lblCoffee);
+		txtCoffee = processTextField(lblCoffee, Type.INT);
 		add(txtCoffee);
 
 		lblTasse = createUnitLabel("T.", txtCoffee);
@@ -204,8 +210,38 @@ public class AveragePupilView4 extends AbstractAveragePupilView {
 		add(musicBox);
 	}
 
-	public void handleResults() {
+	// private xCheckBox checkHandy, checkSwitchOn, checkDrivingLicense, checkOwnCar, checkInstrument, checkJob, checkRaR, checkDrugs, checkSingle, checkJungfrau;
+	// private BorderedTextField txtShoes, txtIncome, txtPocketMoney, txtConcerts, txtBeer, txtSchnapps, txtCoffee;
+	// private JComboBox<String> musicBox;
 
+	public List<Element> getResults(XMLHandler handler) {
+		List<Element> resultList = new ArrayList<Element>();
+		resultList.add(handler.createElement("checkHandy", checkHandy.isChecked().toString()));
+		resultList.add(handler.createElement("checkSwitchOn", checkSwitchOn.isChecked().toString()));
+		resultList.add(handler.createElement("checkDrivingLicense", checkDrivingLicense.isChecked().toString()));
+		resultList.add(handler.createElement("checkOwnCar", checkOwnCar.isChecked().toString()));
+		resultList.add(handler.createElement("checkInstrument", checkInstrument.isChecked().toString()));
+		resultList.add(handler.createElement("checkJob", checkJob.isChecked().toString()));
+		resultList.add(handler.createElement("checkRaR", checkRaR.isChecked().toString()));
+		resultList.add(handler.createElement("checkDrugs", checkDrugs.isChecked().toString()));
+		resultList.add(handler.createElement("checkSingle", checkSingle.isChecked().toString()));
+		resultList.add(handler.createElement("checkJungfrau", checkJungfrau.isChecked().toString()));
+
+		resultList.add(handler.createElement("txtShoes", txtShoes.getText()));
+		resultList.add(handler.createElement("txtIncome", txtIncome.getText()));
+		resultList.add(handler.createElement("txtPocketMoney", txtPocketMoney.getText()));
+		resultList.add(handler.createElement("txtConcerts", txtConcerts.getText()));
+		resultList.add(handler.createElement("txtBeer", txtBeer.getText()));
+		resultList.add(handler.createElement("txtSchnapps", txtSchnapps.getText()));
+		resultList.add(handler.createElement("txtCoffee", txtCoffee.getText()));
+
+		resultList.add(handler.createElement("musicBox", (String) musicBox.getSelectedItem()));
+
+		return resultList;
+	}
+
+	public boolean isFilledIn() {
+		return false;
 	}
 
 }

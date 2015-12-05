@@ -11,15 +11,20 @@ import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
 
+import com.xAwesom3.ranking.Human;
 import com.xAwesom3.ranking.UI.views.AveragePupilView;
 import com.xAwesom3.ranking.UI.views.AveragePupilView2;
 import com.xAwesom3.ranking.UI.views.AveragePupilView3;
 import com.xAwesom3.ranking.UI.views.AveragePupilView4;
+import com.xAwesom3.ranking.UI.views.KeywordView;
 import com.xAwesom3.ranking.UI.views.PersonalView;
 import com.xAwesom3.ranking.UI.views.QuestionView;
+import com.xAwesom3.ranking.util.FileHandler;
+import com.xAwesom3.ranking.util.xLogger;
 
 public class MainFrame {
 
@@ -32,6 +37,9 @@ public class MainFrame {
 	private int			index;
 
 	public MainFrame() {
+
+		xLogger.log("Starting to build main frame");
+
 		/*
 		 * init variables
 		 */
@@ -100,7 +108,7 @@ public class MainFrame {
 		btnReady.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-
+				onVoteButtonPressed();
 			}
 
 		});
@@ -112,21 +120,47 @@ public class MainFrame {
 		scrollPane.getVerticalScrollBar().setUnitIncrement(12);
 		contentPane.add(scrollPane);
 
+		xLogger.log("Finished building main frame");
 		/*
 		 * post init
 		 */
 
+		btnLeft.setEnabled(false);
 		initViews();
 		setView(0);
+
+	}
+
+	private void onVoteButtonPressed() {
+		boolean ready = true;
+		for (View view : views) {
+			if (!view.isFilledIn())
+				ready = false;
+		}
+		if (ready)
+			FileHandler.saveProgress(views, true);
+		if (!ready) {
+			xLogger.log("Not all questions answered");
+			int decision = JOptionPane.showConfirmDialog(f, "Du hast nicht alles beantwortet. Möchtest du deine bisherigen Antworten speichern und später weiter machen?");
+			if (decision == JOptionPane.YES_OPTION) {
+				xLogger.log("User wants to save and quit");
+				FileHandler.saveProgress(views, false);
+				xLogger.log("Finished saving progress");
+				f.dispose();
+				System.exit(0);
+			}
+		}
 	}
 
 	private void setView(int view) {
+		xLogger.log("Set view from " + index + " to " + view);
 		index = view;
 		scrollPane.setViewportView(views.get(view));
 		f.revalidate();
 	}
 
 	private void initViews() {
+		xLogger.log("Starting to init views");
 		int viewPortWidth = scrollPane.getWidth() - 10;
 		int viewPortHeight = scrollPane.getHeight();
 		View personalView = new PersonalView(viewPortWidth, viewPortHeight);
@@ -143,6 +177,15 @@ public class MainFrame {
 		views.add(questionView1);
 		QuestionView questionView2 = new QuestionView(viewPortWidth, viewPortHeight, 1);
 		views.add(questionView2);
+		KeywordView keyWordView = new KeywordView(viewPortWidth, viewPortHeight);
+		views.add(keyWordView);
+		for (int i = 0; i < Human.getWomen().size(); i++) {
+			keyWordView.addKeyword(Human.getWomen().get(i).getName());
+		}
+		for (int i = 0; i < Human.getMen().size(); i++) {
+			keyWordView.addKeyword(Human.getMen().get(i).getName());
+		}
+		xLogger.log("Finished initing views");
 	}
 
 	public void show(String name) {

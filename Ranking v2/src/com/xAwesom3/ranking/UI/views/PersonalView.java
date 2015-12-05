@@ -1,14 +1,19 @@
 package com.xAwesom3.ranking.UI.views;
 
 import java.awt.Font;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import org.w3c.dom.Element;
+
 import com.xAwesom3.ranking.Human;
 import com.xAwesom3.ranking.UI.View;
 import com.xAwesom3.ranking.UI.components.BorderedTextArea;
+import com.xAwesom3.ranking.util.XMLHandler;
 
 public class PersonalView extends View {
 	private static final long	serialVersionUID	= 1L;
@@ -91,9 +96,12 @@ public class PersonalView extends View {
 		lblFavoriteTeacher.setBounds(width / 2 - 200, 80, 230, lblFont.getSize() + 5);
 		add(lblFavoriteTeacher);
 
-		String[] teachers = new String[Human.getTeachers().size()];
-		for (int i = 0; i < teachers.length; i++) {
-			teachers[i] = Human.getTeachers().get(i).getName();
+		String[] teachers = new String[Human.getMenTeachers().size() + Human.getWomenTeachers().size()];
+		for (int i = 0; i < Human.getMenTeachers().size(); i++) {
+			teachers[i] = Human.getMenTeachers().get(i).getName();
+		}
+		for (int i = 0; i < Human.getWomenTeachers().size(); i++) {
+			teachers[i + Human.getMenTeachers().size()] = Human.getWomenTeachers().get(i).getName();
 		}
 		favoriteTeacherBox = new JComboBox<String>(teachers);
 		favoriteTeacherBox.setBounds(lblFavoriteTeacher.getX() + lblFavoriteTeacher.getWidth() + 30, lblFavoriteTeacher.getY() + lblFavoriteTeacher.getHeight() / 2 - boxHeight / 2, boxWidth + 30, boxHeight);
@@ -121,9 +129,28 @@ public class PersonalView extends View {
 
 	}
 
-	public void handleResults() {
-		// TODO Auto-generated method stub
+	// private JComboBox<String> dayBox, monthBox, yearBox, lk1Box, lk2Box, lk3Box, favoriteTeacherBox;
+	// private BorderedTextArea txtFuture, txtThank;
 
+	public List<Element> getResults(XMLHandler handler) {
+		List<Element> resultList = new ArrayList<Element>();
+
+		resultList.add(handler.createElement("dayBox", (String) dayBox.getSelectedItem()));
+		resultList.add(handler.createElement("monthBox", (String) monthBox.getSelectedItem()));
+		resultList.add(handler.createElement("yearBox", (String) yearBox.getSelectedItem()));
+		resultList.add(handler.createElement("lk1Box", (String) lk1Box.getSelectedItem()));
+		resultList.add(handler.createElement("lk2Box", (String) lk2Box.getSelectedItem()));
+		resultList.add(handler.createElement("lk3Box", (String) lk3Box.getSelectedItem()));
+		resultList.add(handler.createElement("favoriteTeacherBox", (String) favoriteTeacherBox.getSelectedItem()));
+
+		resultList.add(handler.createElement("txtFuture", txtFuture.getText()));
+		resultList.add(handler.createElement("txtThank", txtThank.getText()));
+
+		return resultList;
+	}
+
+	public boolean isFilledIn() {
+		return dayBox.getSelectedIndex() != 0 && monthBox.getSelectedIndex() != 0 && yearBox.getSelectedIndex() != 0;
 	}
 
 }

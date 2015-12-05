@@ -12,12 +12,21 @@ public class BorderedTextField extends JPanel {
 
 	private JTextField			field;
 
-	public BorderedTextField(int x, int y, int width, int height) {
+	public enum Type {
+		FLOAT, TEXT, INT
+	}
+
+	public BorderedTextField(int x, int y, int width, int height, Type type) {
 		setBounds(x, y, width, height);
 		setBorder(LineBorder.createBlackLineBorder());
 		setLayout(null);
 
-		field = new JTextField();
+		if (type == Type.FLOAT)
+			field = new FloatTextField();
+		if (type == Type.INT)
+			field = new IntegerTextField();
+		else
+			field = new JTextField();
 		field.setBounds(1, 1, width - 2, height - 2);
 		field.setMargin(new Insets(5, 5, 5, 5));
 		add(field);

@@ -24,6 +24,7 @@ import javax.swing.event.DocumentListener;
 
 import com.xAwesom3.ranking.Human;
 import com.xAwesom3.ranking.util.FileHandler;
+import com.xAwesom3.ranking.util.xLogger;
 
 public class Login extends JFrame {
 	private static final long		serialVersionUID	= 1L;
@@ -41,6 +42,8 @@ public class Login extends JFrame {
 	static boolean					finishedLoading		= false;
 
 	public Login() {
+
+		xLogger.log("Starting to build login frame");
 
 		/*
 		 * init variables
@@ -146,20 +149,24 @@ public class Login extends JFrame {
 		if (human != null) {
 			if (new String(txtPassword.getPassword()).equals(human.getPassword())) {
 				mainFrame.show(human.getName());
+				Human.setUser(human);
 				dispose();
 			}
 			else {
+				xLogger.log("Wrong password was entered for " + human.getName() + new String(txtPassword.getPassword()) + " != " + human.getPassword());
 				JOptionPane.showConfirmDialog(this, "Falsches Passwort!");
 				txtPassword.setText("");
 				return;
 			}
 		}
 		else {
+			xLogger.log("Name was not found in the list");
 			JOptionPane.showConfirmDialog(this, "Name wurde nicht in der Liste deiner Stufe gefunden!");
 			txtName.setText("");
 			txtPassword.setText("");
 			return;
 		}
+		xLogger.log("Finished building login frame.");
 	}
 
 	private static void finishedLoading() {

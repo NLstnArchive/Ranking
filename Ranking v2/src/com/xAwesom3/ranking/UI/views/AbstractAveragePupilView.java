@@ -7,6 +7,7 @@ import javax.swing.SwingConstants;
 
 import com.xAwesom3.ranking.UI.View;
 import com.xAwesom3.ranking.UI.components.BorderedTextField;
+import com.xAwesom3.ranking.UI.components.BorderedTextField.Type;
 
 public abstract class AbstractAveragePupilView extends View {
 	private static final long	serialVersionUID	= 1L;
@@ -34,7 +35,14 @@ public abstract class AbstractAveragePupilView extends View {
 	}
 
 	protected BorderedTextField processTextField(JLabel label) {
-		BorderedTextField field = new BorderedTextField(getRightSideX(label), centerY(label), componentWidth, componentHeight);
+		BorderedTextField field = new BorderedTextField(getRightSideX(label), centerY(label), componentWidth, componentHeight, Type.TEXT);
+		field.setFont(txtFont);
+		field.setTextAlignment(SwingConstants.RIGHT);
+		return field;
+	}
+
+	protected BorderedTextField processTextField(JLabel label, BorderedTextField.Type type) {
+		BorderedTextField field = new BorderedTextField(getRightSideX(label), centerY(label), componentWidth, componentHeight, type);
 		field.setFont(txtFont);
 		field.setTextAlignment(SwingConstants.RIGHT);
 		return field;
