@@ -10,8 +10,6 @@ import javax.swing.border.LineBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-import com.xAwesom3.ranking.util.xLogger;
-
 public class Keyword extends JPanel {
 	private static final long	serialVersionUID	= 1L;
 
@@ -30,11 +28,11 @@ public class Keyword extends JPanel {
 	private BorderedTextArea	textField;
 
 	public Keyword(String name, int width, int height) {
+		this.name = name;
 		setLayout(null);
 		setBackground(bg_false);
 		setBorder(LineBorder.createBlackLineBorder());
 
-		xLogger.log("Setting up new Keyword(" + name + ")");
 		label = new JLabel(name);
 		label.setHorizontalAlignment(JTextField.CENTER);
 		label.setFont(font);
@@ -61,7 +59,6 @@ public class Keyword extends JPanel {
 
 		});
 		add(textField);
-		xLogger.log("Finished setting up KeyWord: " + name);
 	}
 
 	public void setAnswered(boolean answered) {
@@ -81,7 +78,14 @@ public class Keyword extends JPanel {
 	}
 
 	public String getContent() {
-		return textField.getText();
+		if (textField.getText() == null)
+			return "";
+		else
+			return textField.getText();
+	}
+
+	public void setContent(String content) {
+		textField.setText(content);
 	}
 
 	public boolean isAnswered() {

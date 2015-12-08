@@ -11,6 +11,7 @@ import com.xAwesom3.ranking.UI.View;
 import com.xAwesom3.ranking.UI.components.Question;
 import com.xAwesom3.ranking.util.FileHandler;
 import com.xAwesom3.ranking.util.XMLHandler;
+import com.xAwesom3.ranking.util.xLogger;
 
 public class QuestionView extends View {
 	private static final long	serialVersionUID	= 1L;
@@ -55,7 +56,7 @@ public class QuestionView extends View {
 		List<Element> resultList = new ArrayList<Element>();
 
 		for (int i = 0; i < questions.size(); i++) {
-			Element e = handler.createElement("question", questions.get(i).getAnswer());
+			Element e = handler.createElement("question" + questions.get(i).getReply(), questions.get(i).getAnswer());
 			e.setAttribute("id", String.valueOf(i));
 			resultList.add(e);
 		}
@@ -68,5 +69,23 @@ public class QuestionView extends View {
 			if (!question.isAnswered())
 				ready = false;
 		return ready;
+	}
+
+	public void loadResults(XMLHandler handler) {
+		for (int i = 0; i < questions.size(); i++) {
+			Element e = getQuestionByID(handler.getNodeList("question" + sort), i);
+			questions.get(i).setAnswer(e);
+		}
+		xLogger.log("Finished loading results for QuestionView" + sort);
+	}
+
+	private Element getQuestionByID(NodeList list, int id) {
+		Element result = null;
+		for (int i = 0; i < list.getLength(); i++) {
+			if (Integer.parseInt(((Element) list.item(i)).getAttribute("id")) == id)
+				result = (Element) list.item(i);
+		}
+		System.out.println("ID: " + id + ", returning " + result.getTextContent());
+		return result;
 	}
 }

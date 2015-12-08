@@ -36,6 +36,8 @@ public abstract class View extends JPanel {
 	}
 
 	public abstract List<Element> getResults(XMLHandler handler);
-	
+
 	public abstract boolean isFilledIn();
+
+	public abstract void loadResults(XMLHandler handler);
 }

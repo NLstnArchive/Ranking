@@ -148,17 +148,20 @@ public class Login extends JFrame {
 			human = Human.getWomanByName(txtName.getText());
 		if (human != null) {
 			if (new String(txtPassword.getPassword()).equals(human.getPassword())) {
+				xLogger.log("Right password!");
+				Human.setUser(human);
 				switch (FileHandler.getProgress(txtName.getText())) {
 				case FileHandler.NONE:
 					mainFrame.show(human.getName());
-					Human.setUser(human);
 					dispose();
 					break;
 				case FileHandler.PROGRESS:
-					FileHandler.loadProgress();
+					xLogger.log("Found progress, loading...");
+					FileHandler.loadProgress(mainFrame, human.getName());
+					xLogger.log("Finished loading progress!");
 					mainFrame.show(human.getName());
-					Human.setUser(human);
 					dispose();
+					break;
 				case FileHandler.FINISHED:
 					JOptionPane.showConfirmDialog(this, "Du hast schon alle Fragen beantwortet!");
 					dispose();

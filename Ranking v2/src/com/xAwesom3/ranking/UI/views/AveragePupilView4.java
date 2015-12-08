@@ -13,6 +13,7 @@ import com.xAwesom3.ranking.UI.components.BorderedTextField;
 import com.xAwesom3.ranking.UI.components.BorderedTextField.Type;
 import com.xAwesom3.ranking.UI.components.xCheckBox;
 import com.xAwesom3.ranking.util.XMLHandler;
+import com.xAwesom3.ranking.util.xLogger;
 
 public class AveragePupilView4 extends AbstractAveragePupilView {
 	private static final long	serialVersionUID	= 1L;
@@ -242,6 +243,31 @@ public class AveragePupilView4 extends AbstractAveragePupilView {
 
 	public boolean isFilledIn() {
 		return false;
+	}
+
+	public void loadResults(XMLHandler handler) {
+		txtShoes.setText(handler.getUniqueElementText("txtShoes"));
+		txtIncome.setText(handler.getUniqueElementText("txtIncome"));
+		txtPocketMoney.setText(handler.getUniqueElementText("txtPocketMoney"));
+		txtConcerts.setText(handler.getUniqueElementText("txtConcerts"));
+		txtBeer.setText(handler.getUniqueElementText("txtBeer"));
+		txtSchnapps.setText(handler.getUniqueElementText("txtSchnapps"));
+		txtCoffee.setText(handler.getUniqueElementText("txtCoffee"));
+
+		checkHandy.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkHandy")));
+		checkSwitchOn.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkSwitchOn")));
+		checkDrivingLicense.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkDrivingLicense")));
+		checkOwnCar.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkOwnCar")));
+		checkInstrument.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkInstrument")));
+		checkJob.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkJob")));
+		checkRaR.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkRaR")));
+		checkDrugs.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkDrugs")));
+		checkSingle.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkSingle")));
+		checkJungfrau.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkJungfrau")));
+
+		musicBox.setSelectedItem(handler.getUniqueElementText("musicBox"));
+		
+		xLogger.log("Finished loading results for AveragePupilView4");
 	}
 
 }

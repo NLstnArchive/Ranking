@@ -12,6 +12,7 @@ import com.xAwesom3.ranking.UI.components.BorderedTextField;
 import com.xAwesom3.ranking.UI.components.BorderedTextField.Type;
 import com.xAwesom3.ranking.UI.components.xCheckBox;
 import com.xAwesom3.ranking.util.XMLHandler;
+import com.xAwesom3.ranking.util.xLogger;
 
 public class AveragePupilView3 extends AbstractAveragePupilView {
 	private static final long	serialVersionUID	= 1L;
@@ -188,6 +189,26 @@ public class AveragePupilView3 extends AbstractAveragePupilView {
 
 	public boolean isFilledIn() {
 		return futureHomeTownBox.getSelectedIndex() != 0 && txtCigaretts.getText() != "" && txtAlcohol.getText() != "";
+	}
+
+	public void loadResults(XMLHandler handler) {
+		txtCigaretts.setText(handler.getUniqueElementText("txtCigaretts"));
+		txtAlcohol.setText(handler.getUniqueElementText("txtAlcohol"));
+
+		checkWedding.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkWedding")));
+		checkChildren.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkChildren")));
+		checkPokemon.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkPokemon")));
+		checkDiddl.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkDiddl")));
+		checkYugiOh.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkYugiOh")));
+		checkCardCollecting.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkCardCollecting")));
+		checkGameBoy.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkGameBoy")));
+		checkBarbies.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkBarbies")));
+		checkActionFiguren.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkActionFiguren")));
+		checkBoygroupfan.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkBoygroupfan")));
+
+		futureHomeTownBox.setSelectedItem(handler.getUniqueElementText("futureHomeTownBox"));
+		
+		xLogger.log("Finished loading results for AveragePupilView3");
 	}
 
 }

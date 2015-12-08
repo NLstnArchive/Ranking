@@ -45,6 +45,10 @@ public class BorderedTextArea extends JPanel {
 		field.setSelectedTextColor(color);
 	}
 
+	public void setText(String text) {
+		field.setText(text);
+	}
+
 	public Document getDocument() {
 		return field.getDocument();
 	}

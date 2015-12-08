@@ -52,4 +52,9 @@ public class xCheckBox extends JComponent {
 		return checked;
 	}
 
+	public void setChecked(boolean checked) {
+		this.checked = checked;
+		repaint();
+	}
+
 }

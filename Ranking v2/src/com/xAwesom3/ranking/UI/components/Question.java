@@ -20,7 +20,10 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.text.Document;
 
+import org.w3c.dom.Element;
+
 import com.xAwesom3.ranking.Human;
+import com.xAwesom3.ranking.util.xLogger;
 
 public class Question extends JPanel {
 	private static final long		serialVersionUID	= -4079364967299961090L;
@@ -130,9 +133,7 @@ public class Question extends JPanel {
 				SwingUtilities.invokeLater(new Runnable() {
 					public void run() {
 						setAnswered(maleList.getSelectedIndex() != -1);
-						txtFemaleInputArea.getDocument().removeDocumentListener(femaleDocListener);
 						txtFemaleInputArea.setText(femaleList.getSelectedValue());
-						txtFemaleInputArea.getDocument().addDocumentListener(femaleDocListener);
 					}
 				});
 			}
@@ -151,9 +152,7 @@ public class Question extends JPanel {
 				SwingUtilities.invokeLater(new Runnable() {
 					public void run() {
 						setAnswered(femaleList.getSelectedIndex() != -1);
-						txtMaleInputArea.getDocument().removeDocumentListener(maleDocListener);
 						txtMaleInputArea.setText(maleList.getSelectedValue());
-						txtMaleInputArea.getDocument().addDocumentListener(maleDocListener);
 					}
 				});
 			}
@@ -172,30 +171,22 @@ public class Question extends JPanel {
 
 	private void changeMaleContents() {
 		setAnswered(false);
-		maleList.removeListSelectionListener(maleListListener);
-		txtMaleInputArea.getDocument().removeDocumentListener(maleDocListener);
 		DefaultListModel<String> model = new DefaultListModel<String>();
 		for (int i = 0; i < menList.size(); i++) {
 			if (toNamesArray(menList)[i].toLowerCase().startsWith(txtMaleInputArea.getText().toLowerCase()))
 				model.addElement(toNamesArray(menList)[i]);
 		}
 		maleList.setModel(model);
-		maleList.addListSelectionListener(maleListListener);
-		txtMaleInputArea.getDocument().addDocumentListener(maleDocListener);
 	}
 
 	private void changeFemaleContent() {
 		setAnswered(false);
-		femaleList.removeListSelectionListener(maleListListener);
-		txtFemaleInputArea.getDocument().removeDocumentListener(femaleDocListener);
 		DefaultListModel<String> model = new DefaultListModel<String>();
 		for (int i = 0; i < toNamesArray(womenList).length; i++) {
 			if (toNamesArray(womenList)[i].toLowerCase().startsWith(txtFemaleInputArea.getText().toLowerCase()))
 				model.addElement(toNamesArray(womenList)[i]);
 		}
 		femaleList.setModel(model);
-		femaleList.addListSelectionListener(maleListListener);
-		txtFemaleInputArea.getDocument().addDocumentListener(femaleDocListener);
 	}
 
 	public void setAnswered(boolean answered) {
@@ -210,7 +201,12 @@ public class Question extends JPanel {
 		this.answered = answered;
 	}
 
-	public void setAnswerUnchangeable() {
+	private void setFemaleAnswerUnchangeable() {
+		femaleList.setSelectionModel(new DisabledItemSelectionModel());
+		txtFemaleInputArea.setEditable(false);
+	}
+
+	private void setMaleAnswerUnchangeable() {
 		maleList.setSelectionModel(new DisabledItemSelectionModel());
 		txtMaleInputArea.setEditable(false);
 	}
@@ -228,10 +224,25 @@ public class Question extends JPanel {
 	}
 
 	public String getAnswer() {
-		return new StringBuilder().append(maleList.getSelectedValue()).append("/").append(femaleList.getSelectedValue()).toString();
+		StringBuilder answer = new StringBuilder();
+		if (txtMaleInputArea.getText() != "")
+			answer.append(txtMaleInputArea.getText());
+		answer.append("/");
+		if (txtFemaleInputArea.getText() != "")
+			answer.append(txtMaleInputArea.getText());
+		return answer.toString();
 	}
 
-	public void setSelectedValue(String name) {
+	public void setAnswer(Element element) {
+		xLogger.log("Element " + element + " loading to " + text);
+		if (element != null) {
+			String answer = element.getTextContent();
+			xLogger.log("Setting " + answer + " to Question " + text);
+			applyAnswer(answer);
+		}
+	}
+
+	public void setSelectedMaleValue(String name) {
 		DefaultListModel<String> model = new DefaultListModel<String>();
 		for (int i = 0; i < maleList.getModel().getSize(); i++) {
 			model.addElement(maleList.getModel().getElementAt(i));
@@ -242,12 +253,50 @@ public class Question extends JPanel {
 		}
 	}
 
+	public void setSelectedFemaleValue(String name) {
+		DefaultListModel<String> model = new DefaultListModel<String>();
+		for (int i = 0; i < femaleList.getModel().getSize(); i++) {
+			model.addElement(femaleList.getModel().getElementAt(i));
+		}
+		for (int i = 0; i < model.getSize(); i++) {
+			if (model.getElementAt(i).equalsIgnoreCase(name))
+				femaleList.setSelectedIndex(i);
+		}
+	}
+
 	private String[] toNamesArray(List<Human> list) {
 		String[] result = new String[list.size()];
 		for (int i = 0; i < list.size(); i++) {
 			result[i] = list.get(i).getName();
 		}
 		return result;
+	}
+
+	private void applyAnswer(String answer) {
+		String[] strings = answer.split("/");
+
+		if (strings.length == 2) {
+			txtMaleInputArea.setText(strings[0]);
+			setMaleAnswerUnchangeable();
+
+			txtFemaleInputArea.setText(strings[1]);
+			setFemaleAnswerUnchangeable();
+		}
+
+		if (strings.length == 1) {
+			String string = strings[0];
+			if (menList.contains(string)) {
+				txtMaleInputArea.setText(string);
+				setMaleAnswerUnchangeable();
+			}
+			if (womenList.contains(string)) {
+				txtFemaleInputArea.setText(string);
+				setFemaleAnswerUnchangeable();
+			}
+			else {
+				xLogger.log("CRITICAL ERROR: trying to load answer: " + answer + " to " + text);
+			}
+		}
 	}
 }
 

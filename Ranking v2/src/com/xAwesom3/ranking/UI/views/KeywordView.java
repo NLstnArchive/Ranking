@@ -9,6 +9,7 @@ import org.w3c.dom.Element;
 import com.xAwesom3.ranking.UI.View;
 import com.xAwesom3.ranking.UI.components.Keyword;
 import com.xAwesom3.ranking.util.XMLHandler;
+import com.xAwesom3.ranking.util.xLogger;
 
 public class KeywordView extends View {
 	private static final long	serialVersionUID	= 1L;
@@ -25,7 +26,10 @@ public class KeywordView extends View {
 	public List<Element> getResults(XMLHandler handler) {
 		List<Element> resultList = new ArrayList<Element>();
 		for (int i = 0; i < keyWords.size(); i++) {
-			resultList.add(handler.createElement(keyWords.get(i).getName(), keyWords.get(i).getContent()));
+			if (keyWords.get(i).getContent() != null)
+				resultList.add(handler.createElement(keyWords.get(i).getName(), keyWords.get(i).getContent()));
+			else
+				resultList.add(handler.createElement(keyWords.get(i).getName(), ""));
 		}
 		return resultList;
 	}
@@ -52,6 +56,14 @@ public class KeywordView extends View {
 				ready = false;
 		}
 		return ready;
+	}
+
+	public void loadResults(XMLHandler handler) {
+		for (int i = 0; i < keyWords.size(); i++) {
+			keyWords.get(i).setContent(handler.getUniqueElementText(keyWords.get(i).getName()));
+		}
+
+		xLogger.log("Finished loading results for KeywordView");
 	}
 
 }

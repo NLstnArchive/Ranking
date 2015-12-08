@@ -33,7 +33,7 @@ public class MainFrame {
 	private JButton		btnLeft, btnReady, btnRight;
 	private JScrollPane	scrollPane;
 
-	private List<View>	views	= new ArrayList<View>();
+	public List<View>	views	= new ArrayList<View>();
 	private int			index;
 
 	public MainFrame() {
@@ -59,7 +59,7 @@ public class MainFrame {
 		f.setLocationRelativeTo(null);
 		f.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
-				System.exit(0);
+				onExit();
 			}
 		});
 		f.setResizable(false);
@@ -131,6 +131,12 @@ public class MainFrame {
 
 	}
 
+	private void onExit() {
+		int answer = JOptionPane.showConfirmDialog(f, "Alle nicht gespeicherten Ergenisse werde gelöscht! Beenden?");
+		if (answer == JOptionPane.OK_OPTION)
+			System.exit(0);
+	}
+
 	private void onVoteButtonPressed() {
 		boolean ready = true;
 		for (View view : views) {
@@ -153,8 +159,7 @@ public class MainFrame {
 	}
 
 	private void setView(int view) {
-		xLogger.log("Set view from " + index + " to " + view);
-		index = view;
+		xLogger.log("Set view to " + view);
 		scrollPane.setViewportView(views.get(view));
 		f.revalidate();
 	}

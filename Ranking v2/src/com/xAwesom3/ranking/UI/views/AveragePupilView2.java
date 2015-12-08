@@ -14,6 +14,7 @@ import com.xAwesom3.ranking.UI.components.BorderedTextField;
 import com.xAwesom3.ranking.UI.components.BorderedTextField.Type;
 import com.xAwesom3.ranking.UI.components.xCheckBox;
 import com.xAwesom3.ranking.util.XMLHandler;
+import com.xAwesom3.ranking.util.xLogger;
 
 public class AveragePupilView2 extends AbstractAveragePupilView {
 	private static final long	serialVersionUID	= 1L;
@@ -273,5 +274,29 @@ public class AveragePupilView2 extends AbstractAveragePupilView {
 		resultList.add(handler.createElement("checkBelieve", checkBelieve.isChecked().toString()));
 
 		return resultList;
+	}
+
+	public void loadResults(XMLHandler handler) {
+		txtTimeInBath.setText(handler.getUniqueElementText("txtTimeInBath"));
+		txtSchoolWayTime.setText(handler.getUniqueElementText("txtSchoolWayTime"));
+		txtTV.setText(handler.getUniqueElementText("txtTV"));
+		txtPC.setText(handler.getUniqueElementText("txtPC"));
+		txtHandy.setText(handler.getUniqueElementText("txtHandy"));
+		txtGaming.setText(handler.getUniqueElementText("txtGaming"));
+		txtBooks.setText(handler.getUniqueElementText("txtBooks"));
+		txtSports.setText(handler.getUniqueElementText("txtSports"));
+		txtSleep.setText(handler.getUniqueElementText("txtSleep"));
+
+		alarmClockHBox.setSelectedItem(handler.getUniqueElementText("alarmClockBox"));
+		alarmClockMinBox.setSelectedItem(handler.getUniqueElementText("alarmClockMinBox"));
+		schoolWayBox.setSelectedItem(handler.getUniqueElementText("schoolWayBox"));
+		confessionBox.setSelectedItem(handler.getUniqueElementText("confessionBox"));
+		schoolMessBox.setSelectedItem(handler.getUniqueElementText("schoolMessBox"));
+		voteBox.setSelectedItem(handler.getUniqueElementText("voteBox"));
+
+		checkBreakfast.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkBreakfast")));
+		checkBelieve.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkBelieve")));
+		
+		xLogger.log("Finished loading results for AveragePupilView2");
 	}
 }

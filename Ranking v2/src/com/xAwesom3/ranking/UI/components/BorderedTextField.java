@@ -45,4 +45,7 @@ public class BorderedTextField extends JPanel {
 		field.setHorizontalAlignment(textAlignment);
 	}
 
+	public void setText(String text) {
+		field.setText(text);
+	}
 }

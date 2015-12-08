@@ -44,6 +44,7 @@ public class XMLHandler {
 		}
 		catch (SAXException | IOException | ParserConfigurationException e) {
 			xLogger.log("Failed to load XML file " + f.getPath() + ", cause: " + e.getMessage());
+			return;
 		}
 		rootElement = (Element) doc.getElementsByTagName("root").item(0);
 	}
@@ -100,10 +101,17 @@ public class XMLHandler {
 	}
 
 	public Element createElement(String name, String textContent) {
-		System.out.println(name);
 		Element e = doc.createElement(toValidString(name));
 		e.setTextContent(textContent);
 		return e;
+	}
+
+	public String getUniqueElementText(String name) {
+		Element result = (Element) doc.getElementsByTagName(name).item(0);
+		if (result != null)
+			return result.getTextContent();
+		else
+			return "";
 	}
 
 	public void saveToDropBox(String dbPath) {
@@ -120,7 +128,16 @@ public class XMLHandler {
 	}
 
 	private String toValidString(String string) {
-		String newString = string.replace(' ', '_');
+		String newString = string;
+		if (string != null)
+			newString = string.replace(' ', '_');
+		xLogger.log("Converted " + string + " to " + newString);
 		return newString;
+	}
+
+	public boolean existInCloud() {
+		boolean value = DropBoxHandler.fileExists(name);
+		xLogger.log(name + " does exists: " + value);
+		return value;
 	}
 }

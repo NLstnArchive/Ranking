@@ -6,8 +6,11 @@ import java.io.FileOutputStream;
 import java.util.Locale;
 
 import com.dropbox.core.DbxClient;
+import com.dropbox.core.DbxEntry;
+import com.dropbox.core.DbxException;
 import com.dropbox.core.DbxRequestConfig;
 import com.dropbox.core.DbxWriteMode;
+import com.xAwesom3.ranking.Human;
 
 public class DropBoxHandler {
 
@@ -30,6 +33,7 @@ public class DropBoxHandler {
 			stream.close();
 		}
 		catch (Exception e) {
+			e.printStackTrace();
 			xLogger.log("Failed to save file " + source + " to DropBox: " + e.getMessage());
 		}
 		xLogger.log("Finished saving file " + source + ".xml to " + target + ".xml");
@@ -42,12 +46,35 @@ public class DropBoxHandler {
 			FileOutputStream stream = new FileOutputStream(f);
 			client.getFile(dbPath + source + ".xml", null, stream);
 			stream.close();
-			System.out.println();
 		}
 		catch (Exception e) {
-			xLogger.log("Failed to load file " + source + " from DropBox: " + e.getMessage());
+			xLogger.log("Failed to load file " + dbPath + source + " from DropBox: " + e.getMessage());
 		}
-		xLogger.log("Finished loading file " + source + ".xml to " + target + ".xml");
+		xLogger.log("Finished loading file " + dbPath + source + ".xml to " + target + ".xml");
 		return f;
+	}
+
+	public static DbxEntry.WithChildren listFiles() {
+		xLogger.log("listing files from: " + dbPath + Human.getUser().getName());
+		try {
+			return client.getMetadataWithChildren(dbPath + Human.getUser().getName());
+		}
+		catch (DbxException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public static boolean fileExists(String name) {
+		name = name + ".xml";
+		DbxEntry.WithChildren list = listFiles();
+		for (DbxEntry child : list.children) {
+			xLogger.log("comparing file " + name + " with " + child.name);
+			if (child.name.equalsIgnoreCase(name)) {
+				xLogger.log("Found file: " + name + " in " + child);
+				return true;
+			}
+		}
+		return false;
 	}
 }

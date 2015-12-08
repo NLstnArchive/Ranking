@@ -8,7 +8,15 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 import com.xAwesom3.ranking.Human;
+import com.xAwesom3.ranking.UI.MainFrame;
 import com.xAwesom3.ranking.UI.View;
+import com.xAwesom3.ranking.UI.views.AveragePupilView;
+import com.xAwesom3.ranking.UI.views.AveragePupilView2;
+import com.xAwesom3.ranking.UI.views.AveragePupilView3;
+import com.xAwesom3.ranking.UI.views.AveragePupilView4;
+import com.xAwesom3.ranking.UI.views.KeywordView;
+import com.xAwesom3.ranking.UI.views.PersonalView;
+import com.xAwesom3.ranking.UI.views.QuestionView;
 
 public class FileHandler {
 
@@ -66,13 +74,13 @@ public class FileHandler {
 	public static void saveProgress(List<View> views, boolean finished) {
 		String name = Human.getUser().getName();
 
-		XMLHandler personalHandler = new XMLHandler(name);
+		XMLHandler personalHandler = new XMLHandler("personal");
 		personalHandler.create();
 		personalHandler.addElementList(views.get(0).getResults(personalHandler));
 
 		xLogger.log("Added averagePupilView results to xmlFile");
 
-		XMLHandler averagePupilHandler = new XMLHandler("personal");
+		XMLHandler averagePupilHandler = new XMLHandler("average");
 		averagePupilHandler.create();
 		averagePupilHandler.addElementList(views.get(1).getResults(averagePupilHandler));
 		averagePupilHandler.addElementList(views.get(2).getResults(averagePupilHandler));
@@ -88,7 +96,8 @@ public class FileHandler {
 
 		xLogger.log("Added averagePupilView results to xmlFile");
 
-		XMLHandler keyWordHandler = new XMLHandler("keyWords");
+		XMLHandler keyWordHandler = new XMLHandler("keyWord");
+		keyWordHandler.create();
 		keyWordHandler.addElementList(views.get(7).getResults(keyWordHandler));
 
 		xLogger.log("Added averagePupilView results to xmlFile");
@@ -96,7 +105,7 @@ public class FileHandler {
 		XMLHandler indexHandler = xmlFiles.get("index");
 		String state = "finished";
 		if (!finished)
-			state = "process";
+			state = "progress";
 		indexHandler.addElement(indexHandler.createElement(state, name));
 
 		xLogger.log("Finished saving index File");
@@ -125,7 +134,53 @@ public class FileHandler {
 		return NONE;
 	}
 
-	public static void loadProgress() {
-		
+	public static void loadProgress(MainFrame frame, String name) {
+		XMLHandler personalHandler = new XMLHandler("personal");
+		if (personalHandler.existInCloud()) {
+			personalHandler.loadFromDropBox(name + "/personal");
+
+			PersonalView personalView = (PersonalView) frame.views.get(0);
+			personalView.loadResults(personalHandler);
+		}
+
+		XMLHandler averagePupilHandler = new XMLHandler("average");
+
+		if (averagePupilHandler.existInCloud()) {
+
+			averagePupilHandler.loadFromDropBox(name + "/average");
+			AveragePupilView averageView = (AveragePupilView) frame.views.get(1);
+			averageView.loadResults(averagePupilHandler);
+
+			AveragePupilView2 average2View = (AveragePupilView2) frame.views.get(2);
+			average2View.loadResults(averagePupilHandler);
+
+			AveragePupilView3 average3View = (AveragePupilView3) frame.views.get(3);
+			average3View.loadResults(averagePupilHandler);
+
+			AveragePupilView4 average4View = (AveragePupilView4) frame.views.get(4);
+			average4View.loadResults(averagePupilHandler);
+		}
+
+		XMLHandler questionHandler = new XMLHandler("question");
+
+		if (questionHandler.existInCloud()) {
+			questionHandler.loadFromDropBox(name + "/question");
+
+			QuestionView questionView1 = (QuestionView) frame.views.get(5);
+			questionView1.loadResults(questionHandler);
+
+			QuestionView questionView2 = (QuestionView) frame.views.get(6);
+			questionView2.loadResults(questionHandler);
+		}
+
+		XMLHandler keyWordHandler = new XMLHandler("keyWord");
+
+		if (keyWordHandler.existInCloud()) {
+			keyWordHandler.loadFromDropBox(name + "/keyWord");
+
+			KeywordView keyWordView = (KeywordView) frame.views.get(7);
+			keyWordView.loadResults(keyWordHandler);
+		}
+
 	}
 }

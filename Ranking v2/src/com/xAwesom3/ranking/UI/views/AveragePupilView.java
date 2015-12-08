@@ -13,6 +13,7 @@ import com.xAwesom3.ranking.UI.components.BorderedTextField;
 import com.xAwesom3.ranking.UI.components.BorderedTextField.Type;
 import com.xAwesom3.ranking.UI.components.xCheckBox;
 import com.xAwesom3.ranking.util.XMLHandler;
+import com.xAwesom3.ranking.util.xLogger;
 
 public class AveragePupilView extends AbstractAveragePupilView {
 	private static final long	serialVersionUID		= 1L;
@@ -282,5 +283,35 @@ public class AveragePupilView extends AbstractAveragePupilView {
 		resultList.add(handler.createElement("checkWorkSubmitted", checkWorkSubmitted.isChecked().toString()));
 		resultList.add(handler.createElement("checkWorkCanceled", checkWorkCanceled.isChecked().toString()));
 		return resultList;
+	}
+
+	public void loadResults(XMLHandler handler) {
+		txtHeight.setText(handler.getUniqueElementText("txtHeight"));
+		txtWeight.setText(handler.getUniqueElementText("txtWeight"));
+		txtShoeSize.setText(handler.getUniqueElementText("txtShoeSize"));
+		txtShower.setText(handler.getUniqueElementText("txtShower"));
+		txtSiblings.setText(handler.getUniqueElementText("txtSiblings"));
+		txtAbiPreparations.setText(handler.getUniqueElementText("txtAbiPreparations"));
+		txtTimeLearning.setText(handler.getUniqueElementText("txtTimeLearning"));
+		txtHoursMissed.setText(handler.getUniqueElementText("txtHoursMissed"));
+
+		hairLengthBox.setSelectedItem(handler.getUniqueElementText("hairLengthBox"));
+		hairColorBox.setSelectedItem(handler.getUniqueElementText("hairColorBox"));
+		eyeColorBox.setSelectedItem(handler.getUniqueElementText("eyeColorBox"));
+		livingLocationBox.setSelectedItem(handler.getUniqueElementText("livingLocationBox"));
+		starSignBox.setSelectedItem(handler.getUniqueElementText("starSignBox"));
+
+		checkPiercing.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkPiercing")));
+		checkTattoo.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkTattoo")));
+		checkSmoker.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkSmoker")));
+		checkGlasses.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkGlasses")));
+		checkVegetarian.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkVegetarian")));
+		checkRegretLK.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkRegretLK")));
+		checkRepeated.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkRepeated")));
+		checkSkipped.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkSkipped")));
+		checkWorkSubmitted.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkWorkSubmitted")));
+		checkWorkCanceled.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkWorkCanceled")));
+
+		xLogger.log("Finished loading results for AveragePupilView");
 	}
 }

@@ -14,6 +14,7 @@ import com.xAwesom3.ranking.Human;
 import com.xAwesom3.ranking.UI.View;
 import com.xAwesom3.ranking.UI.components.BorderedTextArea;
 import com.xAwesom3.ranking.util.XMLHandler;
+import com.xAwesom3.ranking.util.xLogger;
 
 public class PersonalView extends View {
 	private static final long	serialVersionUID	= 1L;
@@ -143,6 +144,7 @@ public class PersonalView extends View {
 		resultList.add(handler.createElement("lk3Box", (String) lk3Box.getSelectedItem()));
 		resultList.add(handler.createElement("favoriteTeacherBox", (String) favoriteTeacherBox.getSelectedItem()));
 
+		//TODO: doesnt work
 		resultList.add(handler.createElement("txtFuture", txtFuture.getText()));
 		resultList.add(handler.createElement("txtThank", txtThank.getText()));
 
@@ -151,6 +153,22 @@ public class PersonalView extends View {
 
 	public boolean isFilledIn() {
 		return dayBox.getSelectedIndex() != 0 && monthBox.getSelectedIndex() != 0 && yearBox.getSelectedIndex() != 0;
+	}
+
+	public void loadResults(XMLHandler handler) {
+		txtFuture.setText(handler.getUniqueElementText("txtFuture"));
+		txtThank.setText(handler.getUniqueElementText("txtThank"));
+		
+		dayBox.setSelectedItem(handler.getUniqueElementText("dayBox"));
+		monthBox.setSelectedItem(handler.getUniqueElementText("monthBox"));
+		yearBox.setSelectedItem(handler.getUniqueElementText("yearBox"));
+		lk1Box.setSelectedItem(handler.getUniqueElementText("lk1Box"));
+		lk2Box.setSelectedItem(handler.getUniqueElementText("lk2Box"));
+		lk3Box.setSelectedItem(handler.getUniqueElementText("lk3Box"));
+		
+		favoriteTeacherBox.setSelectedItem(handler.getUniqueElementText("favoriteTeacherBox"));
+		
+		xLogger.log("Finished loading results for PersonalView");
 	}
 
 }
