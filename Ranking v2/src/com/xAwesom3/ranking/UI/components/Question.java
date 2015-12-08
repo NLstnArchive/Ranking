@@ -294,7 +294,7 @@ public class Question extends JPanel {
 				setFemaleAnswerUnchangeable();
 			}
 			else {
-				xLogger.log("CRITICAL ERROR: trying to load answer: " + answer + " to " + text);
+				xLogger.log("[CRITICAL ERROR] Trying to load answer: " + answer + " to " + text);
 			}
 		}
 	}
