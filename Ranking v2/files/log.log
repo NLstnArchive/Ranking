@@ -1,270 +1,562 @@
-[20:56:15][FileHandler] Loading index...
-[20:56:15][DropBoxHandler] Staticly initialised
-[20:56:15][Login] Starting to build login frame
-[20:56:17][DropBoxHandler] Finished loading file /ranking/bcgk/index.xml to index.xml
-[20:56:17][FileHandler] Finished loading index!
-[20:56:17][FileHandler] Loading names...
-[20:56:17][DropBoxHandler] Finished loading file /ranking/bcgk/names.xml to names.xml
-[20:56:17][FileHandler] Finished loading names!
-[20:56:17][FileHandler] Loading questions...
-[20:56:18][DropBoxHandler] Finished loading file /ranking/bcgk/questions.xml to questions.xml
-[20:56:18][FileHandler] Finished loading questions!
-[20:56:18][FileHandler] Finished processing names!
-[20:56:18][MainFrame] Starting to build main frame
-[20:56:18][MainFrame] Finished building main frame
-[20:56:18][MainFrame] Starting to init views
-[20:56:18][MainFrame] Finished initing views
-[20:56:18][MainFrame] Set view to 0
-[20:56:19][Login] Right password!
-[20:56:19][Login] Found progress, loading...
-[20:56:19][DropBoxHandler] listing files from: /ranking/bcgk/Niklas Lahnstein
-[20:56:20][DropBoxHandler] comparing file personal.xml with average.xml
-[20:56:20][DropBoxHandler] comparing file personal.xml with keyWord.xml
-[20:56:20][DropBoxHandler] comparing file personal.xml with personal.xml
-[20:56:20][DropBoxHandler] Found file: personal.xml in File("/ranking/bcgk/Niklas Lahnstein/personal.xml", iconName="page_white_code", mightHaveThumbnail=false, numBytes=322, humanSize="322 Bytes", lastModified="2015/12/07 14:20:15 UTC", clientMtime="2015/12/07 14:20:16 UTC", rev="234007c0bd7f")
-[20:56:20][XMLHandler] personal does exists: true
-[20:56:21][DropBoxHandler] Finished loading file /ranking/bcgk/Niklas Lahnstein/personal.xml to personal.xml
-[20:56:21][PersonalView] Finished loading results for PersonalView
-[20:56:21][DropBoxHandler] listing files from: /ranking/bcgk/Niklas Lahnstein
-[20:56:21][DropBoxHandler] comparing file average.xml with average.xml
-[20:56:21][DropBoxHandler] Found file: average.xml in File("/ranking/bcgk/Niklas Lahnstein/average.xml", iconName="page_white_code", mightHaveThumbnail=false, numBytes=1993, humanSize="1,9 KB", lastModified="2015/12/07 14:20:16 UTC", clientMtime="2015/12/07 14:20:17 UTC", rev="234107c0bd7f")
-[20:56:21][XMLHandler] average does exists: true
-[20:56:21][DropBoxHandler] Finished loading file /ranking/bcgk/Niklas Lahnstein/average.xml to average.xml
-[20:56:21][AveragePupilView] Finished loading results for AveragePupilView
-[20:56:21][AveragePupilView2] Finished loading results for AveragePupilView2
-[20:56:21][AveragePupilView3] Finished loading results for AveragePupilView3
-[20:56:21][AveragePupilView4] Finished loading results for AveragePupilView4
-[20:56:21][DropBoxHandler] listing files from: /ranking/bcgk/Niklas Lahnstein
-[20:56:22][DropBoxHandler] comparing file question.xml with average.xml
-[20:56:22][DropBoxHandler] comparing file question.xml with keyWord.xml
-[20:56:22][DropBoxHandler] comparing file question.xml with personal.xml
-[20:56:22][DropBoxHandler] comparing file question.xml with question.xml
-[20:56:22][DropBoxHandler] Found file: question.xml in File("/ranking/bcgk/Niklas Lahnstein/question.xml", iconName="page_white_code", mightHaveThumbnail=false, numBytes=3729, humanSize="3,6 KB", lastModified="2015/12/07 14:20:18 UTC", clientMtime="2015/12/07 14:20:18 UTC", rev="234207c0bd7f")
-[20:56:22][XMLHandler] question does exists: true
-[20:56:22][DropBoxHandler] Finished loading file /ranking/bcgk/Niklas Lahnstein/question.xml to question.xml
-[20:56:22][Question] Element [question0: null] loading to Wer macht grundsätzlich keine Hausaufgaben?
-[20:56:22][Question] Setting Simon Breitbach/Simon Breitbach to Question Wer macht grundsätzlich keine Hausaufgaben?
-[20:56:22][Question] Element [question0: null] loading to Wer ist der/ die perfekte Schwiegersohn/ -tochter?
-[20:56:22][Question] Setting Franz Büttner/Franz Büttner to Question Wer ist der/ die perfekte Schwiegersohn/ -tochter?
-[20:56:22][Question] Element [question0: null] loading to Wer hat den Führerschein im Lotto gewonnen?
-[20:56:22][Question] Setting Lennard Burgmer/Lennard Burgmer to Question Wer hat den Führerschein im Lotto gewonnen?
-[20:56:22][Question] Element [question0: null] loading to Wer bekommt einmal den Nobelpreis?
-[20:56:22][Question] Setting Christopher Dreide/Christopher Dreide to Question Wer bekommt einmal den Nobelpreis?
-[20:56:22][Question] Element [question0: null] loading to Wer wird einmal Bundeskanzler?
-[20:56:22][Question] Setting Simon Emmerich/Simon Emmerich to Question Wer wird einmal Bundeskanzler?
-[20:56:22][Question] Element [question0: null] loading to Wer  wird einmal Millionär?
-[20:56:22][Question] Setting Simon Emmerich/Simon Emmerich to Question Wer  wird einmal Millionär?
-[20:56:22][Question] Element [question0: null] loading to Wer bringt die besten Sprüche?
-[20:56:22][Question] Setting Leonard Esser/Leonard Esser to Question Wer bringt die besten Sprüche?
-[20:56:22][Question] Element [question0: null] loading to Wer wird einmal ein Buch schreiben?
-[20:56:22][Question] Setting Marcus Flöck/Marcus Flöck to Question Wer wird einmal ein Buch schreiben?
-[20:56:22][Question] Element [question0: null] loading to Wer wird mal Lehrer?
-[20:56:22][Question] Setting / to Question Wer wird mal Lehrer?
-[20:56:22][Question] Element [question0: null] loading to Wer gewinnt mal einen Oscar?
-[20:56:22][Question] Setting / to Question Wer gewinnt mal einen Oscar?
-[20:56:22][Question] Element [question0: null] loading to Wer greift nach der Weltherrschaft
-[20:56:22][Question] Setting / to Question Wer greift nach der Weltherrschaft
-[20:56:22][Question] Element [question0: null] loading to Wer versucht immer, die Welt zu retten?
-[20:56:22][Question] Setting / to Question Wer versucht immer, die Welt zu retten?
-[20:56:22][Question] Element [question0: null] loading to Wer ist der Schwarm der Mittelstufler?
-[20:56:22][Question] Setting / to Question Wer ist der Schwarm der Mittelstufler?
-[20:56:22][Question] Element [question0: null] loading to Wer ist der Schwarm unserer Stufe?
-[20:56:22][Question] Setting / to Question Wer ist der Schwarm unserer Stufe?
-[20:56:22][Question] Element [question0: null] loading to Wer hat das Zeug zum Topmodel?
-[20:56:22][Question] Setting / to Question Wer hat das Zeug zum Topmodel?
-[20:56:22][Question] Element [question0: null] loading to Wer kommt immer zu spät?
-[20:56:22][Question] Setting / to Question Wer kommt immer zu spät?
-[20:56:22][Question] Element [question0: null] loading to Wer finanziert Höfer?
-[20:56:22][Question] Setting / to Question Wer finanziert Höfer?
-[20:56:22][Question] Element [question0: null] loading to Wer ist am verpeiltesten?
-[20:56:22][Question] Setting / to Question Wer ist am verpeiltesten?
-[20:56:22][Question] Element [question0: null] loading to Wer hat das lauteste Organ?
-[20:56:22][Question] Setting / to Question Wer hat das lauteste Organ?
-[20:56:22][Question] Element [question0: null] loading to Wer hat die dreckigste Lache?
-[20:56:22][Question] Setting / to Question Wer hat die dreckigste Lache?
-[20:56:22][Question] Element [question0: null] loading to Wer ist ständig nur am essen?
-[20:56:22][Question] Setting / to Question Wer ist ständig nur am essen?
-[20:56:22][Question] Element [question0: null] loading to Wer ist ein absolutes Kind geblieben?
-[20:56:22][Question] Setting / to Question Wer ist ein absolutes Kind geblieben?
-[20:56:22][Question] Element [question0: null] loading to Wer ist einfach nur süß?
-[20:56:22][Question] Setting / to Question Wer ist einfach nur süß?
-[20:56:22][Question] Element [question0: null] loading to Wer labert am meisten im Unterricht?
-[20:56:22][Question] Setting / to Question Wer labert am meisten im Unterricht?
-[20:56:22][Question] Element [question0: null] loading to Wer ist ein Frauenversteher/Männerversteher?
-[20:56:22][Question] Setting / to Question Wer ist ein Frauenversteher/Männerversteher?
-[20:56:22][Question] Element [question0: null] loading to Wer ist Gentleman/Lady der Stufe?
-[20:56:22][Question] Setting / to Question Wer ist Gentleman/Lady der Stufe?
-[20:56:22][Question] Element [question0: null] loading to Wer ist das stillste Wasser?
-[20:56:22][Question] Setting / to Question Wer ist das stillste Wasser?
-[20:56:22][Question] Element [question0: null] loading to Wer heiratet als Erste(r)?
-[20:56:22][Question] Setting / to Question Wer heiratet als Erste(r)?
-[20:56:22][Question] Element [question0: null] loading to Wer hat als erstes Kinder?
-[20:56:22][Question] Setting / to Question Wer hat als erstes Kinder?
-[20:56:22][Question] Element [question0: null] loading to Wer ist Stufepapa/-mama?
-[20:56:22][Question] Setting / to Question Wer ist Stufepapa/-mama?
-[20:56:22][Question] Element [question0: null] loading to Wer kann am besten über sich selbst lachen?
-[20:56:22][Question] Setting / to Question Wer kann am besten über sich selbst lachen?
-[20:56:22][Question] Element [question0: null] loading to Wer ist das Traumpärchen der Stufe?
-[20:56:22][Question] Setting / to Question Wer ist das Traumpärchen der Stufe?
-[20:56:22][Question] Element [question0: null] loading to Wer wäre das Traumpärchen?
-[20:56:22][Question] Setting / to Question Wer wäre das Traumpärchen?
-[20:56:22][Question] Element [question0: null] loading to Wer ist betrunken am lustigsten?
-[20:56:22][Question] Setting / to Question Wer ist betrunken am lustigsten?
-[20:56:22][Question] Element [question0: null] loading to Wer hat absolut keine Manieren?
-[20:56:22][Question] Setting / to Question Wer hat absolut keine Manieren?
-[20:56:22][Question] Element [question0: null] loading to Wer ust süchtig nach Fittnessstudio?
-[20:56:22][Question] Setting / to Question Wer ust süchtig nach Fittnessstudio?
-[20:56:22][Question] Element [question0: null] loading to Wer ist der größte Schnorrer?
-[20:56:22][Question] Setting / to Question Wer ist der größte Schnorrer?
-[20:56:22][Question] Element [question0: null] loading to Wer macht am meisten blau?
-[20:56:22][Question] Setting / to Question Wer macht am meisten blau?
-[20:56:22][Question] Element [question0: null] loading to Wer ist supersportlich?
-[20:56:22][Question] Setting / to Question Wer ist supersportlich?
-[20:56:22][Question] Element [question0: null] loading to Wer nimmt die Schule zu ernst?
-[20:56:22][Question] Setting / to Question Wer nimmt die Schule zu ernst?
-[20:56:22][Question] Element [question0: null] loading to Wem lassen die Lehrer alles durchgehen?
-[20:56:22][Question] Setting / to Question Wem lassen die Lehrer alles durchgehen?
-[20:56:22][Question] Element [question0: null] loading to Wer ist der LehrerLiebling schlechthin?
-[20:56:22][Question] Setting / to Question Wer ist der LehrerLiebling schlechthin?
-[20:56:22][Question] Element [question0: null] loading to Wer lernt am meisten?
-[20:56:22][Question] Setting / to Question Wer lernt am meisten?
-[20:56:22][Question] Element [question0: null] loading to Wer ist ein absoluter Musterschüler?
-[20:56:22][Question] Setting / to Question Wer ist ein absoluter Musterschüler?
-[20:56:22][Question] Element [question0: null] loading to Wer ist der gefürchteteste Lehrerschreck?
-[20:56:22][Question] Setting / to Question Wer ist der gefürchteteste Lehrerschreck?
-[20:56:22][Question] Element [question0: null] loading to Wer wird am meisten von Lehrern verarscht?
-[20:56:22][Question] Setting / to Question Wer wird am meisten von Lehrern verarscht?
-[20:56:22][Question] Element [question0: null] loading to Wer hat das ausgefallenste Hobby?
-[20:56:22][Question] Setting / to Question Wer hat das ausgefallenste Hobby?
-[20:56:22][Question] Element [question0: null] loading to Wer verarscht die Lehrer am meisten?
-[20:56:22][Question] Setting / to Question Wer verarscht die Lehrer am meisten?
-[20:56:22][Question] Element [question0: null] loading to Wer rennt ständig auf Klo?
-[20:56:22][Question] Setting / to Question Wer rennt ständig auf Klo?
-[20:56:22][Question] Element [question0: null] loading to Wer glaubt einfach alles?
-[20:56:22][Question] Setting / to Question Wer glaubt einfach alles?
-[20:56:22][Question] Element [question0: null] loading to Wer kann sich im Unterricht nicht konzentrieren?
-[20:56:22][Question] Setting / to Question Wer kann sich im Unterricht nicht konzentrieren?
-[20:56:22][Question] Element [question0: null] loading to Wer spickt am meisten?
-[20:56:22][Question] Setting / to Question Wer spickt am meisten?
-[20:56:22][Question] Element [question0: null] loading to Wer hat das größte Allgemeinwissen?
-[20:56:22][Question] Setting / to Question Wer hat das größte Allgemeinwissen?
-[20:56:22][Question] Element [question0: null] loading to Wer muss am wenigsten für die Schule tun?
-[20:56:22][Question] Setting / to Question Wer muss am wenigsten für die Schule tun?
-[20:56:22][Question] Element [question0: null] loading to Wer ist der Ausredenkönig?
-[20:56:22][Question] Setting / to Question Wer ist der Ausredenkönig?
-[20:56:22][Question] Element [question0: null] loading to Wer ist am hilfsbereitesten?
-[20:56:22][Question] Setting / to Question Wer ist am hilfsbereitesten?
-[20:56:22][Question] Element [question0: null] loading to Wer ist der größte Rebell?
-[20:56:22][Question] Setting / to Question Wer ist der größte Rebell?
-[20:56:22][Question] Element [question0: null] loading to Wer bekommt das beste Abitur?
-[20:56:22][Question] Setting / to Question Wer bekommt das beste Abitur?
-[20:56:22][Question] Element [question0: null] loading to Wer hängt ständig am Handy?
-[20:56:22][Question] Setting / to Question Wer hängt ständig am Handy?
-[20:56:22][Question] Element [question0: null] loading to Wer ist am sportlichsten?
-[20:56:22][Question] Setting / to Question Wer ist am sportlichsten?
-[20:56:22][Question] Element [question0: null] loading to Wer ist am weltoffensten?
-[20:56:22][Question] Setting / to Question Wer ist am weltoffensten?
-[20:56:22][Question] Element [question0: null] loading to Wer ist am ehrlichsten?
-[20:56:22][Question] Setting / to Question Wer ist am ehrlichsten?
-[20:56:22][Question] Element [question0: null] loading to Wer ist am entspanntesten?
-[20:56:22][Question] Setting / to Question Wer ist am entspanntesten?
-[20:56:22][Question] Element [question0: null] loading to Wer ist immer gut drauf?
-[20:56:22][Question] Setting / to Question Wer ist immer gut drauf?
-[20:56:22][Question] Element [question0: null] loading to Wer ist der größte Künstler?
-[20:56:22][Question] Setting / to Question Wer ist der größte Künstler?
-[20:56:22][Question] Element [question0: null] loading to Wer ist ein heimliches Genie?
-[20:56:22][Question] Setting / to Question Wer ist ein heimliches Genie?
-[20:56:22][Question] Element [question0: null] loading to Wer kommt nie auf den Punkt?
-[20:56:22][Question] Setting / to Question Wer kommt nie auf den Punkt?
-[20:56:22][Question] Element [question0: null] loading to Wer erzählt die besten Geschichten?
-[20:56:22][Question] Setting / to Question Wer erzählt die besten Geschichten?
-[20:56:22][Question] Element [question0: null] loading to Wer ist everybody's darling?
-[20:56:22][Question] Setting / to Question Wer ist everybody's darling?
-[20:56:22][Question] Element [question0: null] loading to Wer weiß sich zu benehmen?
-[20:56:22][Question] Setting / to Question Wer weiß sich zu benehmen?
-[20:56:22][Question] Element [question0: null] loading to Wer wird mal die Welt umreisen?
-[20:56:22][Question] Setting / to Question Wer wird mal die Welt umreisen?
-[20:56:22][Question] Element [question0: null] loading to Wer ist am entspanntesten vor Kursarbeiten?
-[20:56:22][Question] Setting / to Question Wer ist am entspanntesten vor Kursarbeiten?
-[20:56:22][Question] Element [question0: null] loading to Wer macht sich und andere vor Kursarbeiten total verrückt?
-[20:56:22][Question] Setting / to Question Wer macht sich und andere vor Kursarbeiten total verrückt?
-[20:56:22][QuestionView] Finished loading results for QuestionView0
-[20:56:22][Question] Element [question1: null] loading to Wer gibt die fairsten Noten?
-[20:56:22][Question] Setting Herr Barth/Herr Barth to Question Wer gibt die fairsten Noten?
-[20:56:22][Question] Element [question1: null] loading to Wer lebt seinen Beruf?
-[20:56:22][Question] Setting Herr Berends/Herr Berends to Question Wer lebt seinen Beruf?
-[20:56:22][Question] Element [question1: null] loading to Wer ist Schulmama/-papa?
-[20:56:22][Question] Setting Herr Bock/Herr Bock to Question Wer ist Schulmama/-papa?
-[20:56:22][Question] Element [question1: null] loading to Wer ist Schülerschwarm?
-[20:56:22][Question] Setting Herr Fuchs/Herr Fuchs to Question Wer ist Schülerschwarm?
-[20:56:22][Question] Element [question1: null] loading to Wer wäre der perfekte Telefonjoker?
-[20:56:22][Question] Setting / to Question Wer wäre der perfekte Telefonjoker?
-[20:56:22][Question] Element [question1: null] loading to Wer kann sich am besten mit der Schule identifizieren?
-[20:56:22][Question] Setting / to Question Wer kann sich am besten mit der Schule identifizieren?
-[20:56:22][Question] Element [question1: null] loading to Wer ist ein Genie?
-[20:56:22][Question] Setting / to Question Wer ist ein Genie?
-[20:56:22][Question] Element [question1: null] loading to Wer macht die meisten Kopien?
-[20:56:22][Question] Setting / to Question Wer macht die meisten Kopien?
-[20:56:22][Question] Element [question1: null] loading to Wer macht den interessantesten Unterricht?
-[20:56:22][Question] Setting / to Question Wer macht den interessantesten Unterricht?
-[20:56:22][Question] Element [question1: null] loading to Wer ist am besten vorbereitet?
-[20:56:22][Question] Setting / to Question Wer ist am besten vorbereitet?
-[20:56:22][Question] Element [question1: null] loading to Wer improvisiert gerne?
-[20:56:22][Question] Setting / to Question Wer improvisiert gerne?
-[20:56:22][Question] Element [question1: null] loading to Wer ist der HÜ-Schreck?
-[20:56:22][Question] Setting / to Question Wer ist der HÜ-Schreck?
-[20:56:22][Question] Element [question1: null] loading to Wer ist am verpeiltesten?
-[20:56:22][Question] Setting / to Question Wer ist am verpeiltesten?
-[20:56:22][Question] Element [question1: null] loading to Wer kommt meistens zu spät?
-[20:56:22][Question] Setting / to Question Wer kommt meistens zu spät?
-[20:56:22][Question] Element [question1: null] loading to Mit wem kann man sich am besten Unterhalten?
-[20:56:22][Question] Setting / to Question Mit wem kann man sich am besten Unterhalten?
-[20:56:22][Question] Element [question1: null] loading to Wer versteht die Schüler am besten?
-[20:56:22][Question] Setting / to Question Wer versteht die Schüler am besten?
-[20:56:22][Question] Element [question1: null] loading to Wer gibt immer zu viele Hausaufgaben?
-[20:56:22][Question] Setting / to Question Wer gibt immer zu viele Hausaufgaben?
-[20:56:22][Question] Element [question1: null] loading to Wer sollte Teil der Schulleitung sein?
-[20:56:22][Question] Setting / to Question Wer sollte Teil der Schulleitung sein?
-[20:56:22][Question] Element [question1: null] loading to Wer macht die besten Witze?
-[20:56:22][Question] Setting / to Question Wer macht die besten Witze?
-[20:56:22][Question] Element [question1: null] loading to Wer glaubt, es gäbe nur sein Fach?
-[20:56:22][Question] Setting / to Question Wer glaubt, es gäbe nur sein Fach?
-[20:56:22][Question] Element [question1: null] loading to Wer ist überengagiert?
-[20:56:22][Question] Setting / to Question Wer ist überengagiert?
-[20:56:22][Question] Element [question1: null] loading to Wer hält uns für faule Egotaktiker?
-[20:56:22][Question] Setting / to Question Wer hält uns für faule Egotaktiker?
-[20:56:22][Question] Element [question1: null] loading to Wer lässt sich schnell ablenken?
-[20:56:22][Question] Setting / to Question Wer lässt sich schnell ablenken?
-[20:56:22][Question] Element [question1: null] loading to Bei wem lernt man was fürs Leben?
-[20:56:22][Question] Setting / to Question Bei wem lernt man was fürs Leben?
-[20:56:22][Question] Element [question1: null] loading to Wer korrigiert am schnellsten?
-[20:56:22][Question] Setting / to Question Wer korrigiert am schnellsten?
-[20:56:22][Question] Element [question1: null] loading to Wer ist ein absolutes Kind geblieben?
-[20:56:22][Question] Setting / to Question Wer ist ein absolutes Kind geblieben?
-[20:56:22][Question] Element [question1: null] loading to Wer hat am meisten Ahnung von seinem Fach?
-[20:56:22][Question] Setting / to Question Wer hat am meisten Ahnung von seinem Fach?
-[20:56:22][Question] Element [question1: null] loading to Wer hat ein Herz für Schüler?
-[20:56:22][Question] Setting / to Question Wer hat ein Herz für Schüler?
-[20:56:22][Question] Element [question1: null] loading to Wer macht die besten Kurstreffen?
-[20:56:22][Question] Setting / to Question Wer macht die besten Kurstreffen?
-[20:56:22][Question] Element [question1: null] loading to Wer ist ständig von Schülern umringt?
-[20:56:22][Question] Setting / to Question Wer ist ständig von Schülern umringt?
-[20:56:22][Question] Element [question1: null] loading to Wer hört und sieht alles?
-[20:56:22][Question] Setting / to Question Wer hört und sieht alles?
-[20:56:22][Question] Element [question1: null] loading to Wer würde am liebsten immer alles selbst in die Hand nehmen?
-[20:56:22][Question] Setting / to Question Wer würde am liebsten immer alles selbst in die Hand nehmen?
-[20:56:22][QuestionView] Finished loading results for QuestionView1
-[20:56:22][DropBoxHandler] listing files from: /ranking/bcgk/Niklas Lahnstein
-[20:56:23][DropBoxHandler] comparing file keyWord.xml with average.xml
-[20:56:23][DropBoxHandler] comparing file keyWord.xml with keyWord.xml
-[20:56:23][DropBoxHandler] Found file: keyWord.xml in File("/ranking/bcgk/Niklas Lahnstein/keyWord.xml", iconName="page_white_code", mightHaveThumbnail=false, numBytes=1674, humanSize="1,6 KB", lastModified="2015/12/07 14:20:18 UTC", clientMtime="2015/12/07 14:20:19 UTC", rev="234307c0bd7f")
-[20:56:23][XMLHandler] keyWord does exists: true
-[20:56:25][DropBoxHandler] Finished loading file /ranking/bcgk/Niklas Lahnstein/keyWord.xml to keyWord.xml
-[20:56:25][KeywordView] Finished loading results for KeywordView
-[20:56:25][Login] Finished loading progress!
-[20:56:25][Login] Finished building login frame.
-[20:56:30][MainFrame] Set view to 1
-[20:56:30][MainFrame] Set view to 2
-[20:56:30][MainFrame] Set view to 3
-[20:56:31][MainFrame] Set view to 4
-[20:56:31][MainFrame] Set view to 5
+[13:50:01][FileHandler] Loading index...
+[13:50:01][DropBoxHandler] Staticly initialised
+[13:50:01][Login] Starting to build login frame
+[13:50:03][DropBoxHandler] Finished loading file /ranking/bcgk/index.xml to index.xml
+[13:50:03][FileHandler] Finished loading index!
+[13:50:03][FileHandler] Loading names...
+[13:50:03][DropBoxHandler] Finished loading file /ranking/bcgk/names.xml to names.xml
+[13:50:03][FileHandler] Finished loading names!
+[13:50:03][FileHandler] Loading questions...
+[13:50:04][DropBoxHandler] Finished loading file /ranking/bcgk/questions.xml to questions.xml
+[13:50:04][FileHandler] Finished loading questions!
+[13:50:04][FileHandler] Finished processing names!
+[13:50:04][MainFrame] Starting to build main frame
+[13:50:04][MainFrame] Finished building main frame
+[13:50:04][MainFrame] Starting to init views
+[13:50:04][MainFrame] Finished initing views
+[13:50:04][MainFrame] Set view to 0
+[13:50:05][Login] Right password!
+[13:50:05][Login] Found progress, loading...
+[13:50:05][DropBoxHandler] listing files from: /ranking/bcgk/Niklas Lahnstein
+[13:50:06][DropBoxHandler] comparing file personal.xml with average.xml
+[13:50:06][DropBoxHandler] comparing file personal.xml with keyWord.xml
+[13:50:06][DropBoxHandler] comparing file personal.xml with personal.xml
+[13:50:06][DropBoxHandler] Found file: personal.xml in File("/ranking/bcgk/Niklas Lahnstein/personal.xml", iconName="page_white_code", mightHaveThumbnail=false, numBytes=206, humanSize="206 Bytes", lastModified="2015/12/10 12:36:01 UTC", clientMtime="2015/12/10 12:36:01 UTC", rev="237807c0bd7f")
+[13:50:06][XMLHandler] personal does exists: true
+[13:50:07][DropBoxHandler] Finished loading file /ranking/bcgk/Niklas Lahnstein/personal.xml to personal.xml
+[13:50:07][PersonalView] Finished loading results for PersonalView
+[13:50:07][DropBoxHandler] listing files from: /ranking/bcgk/Niklas Lahnstein
+[13:50:07][DropBoxHandler] comparing file average.xml with average.xml
+[13:50:07][DropBoxHandler] Found file: average.xml in File("/ranking/bcgk/Niklas Lahnstein/average.xml", iconName="page_white_code", mightHaveThumbnail=false, numBytes=1781, humanSize="1,7 KB", lastModified="2015/12/10 12:36:02 UTC", clientMtime="2015/12/10 12:36:02 UTC", rev="237a07c0bd7f")
+[13:50:07][XMLHandler] average does exists: true
+[13:50:07][DropBoxHandler] Finished loading file /ranking/bcgk/Niklas Lahnstein/average.xml to average.xml
+[13:50:07][AveragePupilView] Finished loading results for AveragePupilView
+[13:50:07][AveragePupilView2] Finished loading results for AveragePupilView2
+[13:50:07][AveragePupilView3] Finished loading results for AveragePupilView3
+[13:50:07][AveragePupilView4] Finished loading results for AveragePupilView4
+[13:50:07][DropBoxHandler] listing files from: /ranking/bcgk/Niklas Lahnstein
+[13:50:08][DropBoxHandler] comparing file question.xml with average.xml
+[13:50:08][DropBoxHandler] comparing file question.xml with keyWord.xml
+[13:50:08][DropBoxHandler] comparing file question.xml with personal.xml
+[13:50:08][DropBoxHandler] comparing file question.xml with question.xml
+[13:50:08][DropBoxHandler] Found file: question.xml in File("/ranking/bcgk/Niklas Lahnstein/question.xml", iconName="page_white_code", mightHaveThumbnail=false, numBytes=3475, humanSize="3,4 KB", lastModified="2015/12/10 12:36:03 UTC", clientMtime="2015/12/10 12:36:03 UTC", rev="237b07c0bd7f")
+[13:50:08][XMLHandler] question does exists: true
+[13:50:08][DropBoxHandler] Finished loading file /ranking/bcgk/Niklas Lahnstein/question.xml to question.xml
+[13:50:08][QuestionView] Searching for result for Question: Wer macht grundsätzlich keine Hausaufgaben?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting Simon Breitbach; to Question Wer macht grundsätzlich keine Hausaufgaben?
+[13:50:08][Question] Setting txtMaleInputArea to Simon Breitbach
+[13:50:08][Question] [CRITICAL ERROR] Trying to load answer: Simon Breitbach to Wer macht grundsätzlich keine Hausaufgaben?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist der/ die perfekte Schwiegersohn/ -tochter?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting Simon Breitbach; to Question Wer ist der/ die perfekte Schwiegersohn/ -tochter?
+[13:50:08][Question] Setting txtMaleInputArea to Simon Breitbach
+[13:50:08][Question] [CRITICAL ERROR] Trying to load answer: Simon Breitbach to Wer ist der/ die perfekte Schwiegersohn/ -tochter?
+[13:50:08][QuestionView] Searching for result for Question: Wer hat den Führerschein im Lotto gewonnen?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting Simon Breitbach; to Question Wer hat den Führerschein im Lotto gewonnen?
+[13:50:08][Question] Setting txtMaleInputArea to Simon Breitbach
+[13:50:08][Question] [CRITICAL ERROR] Trying to load answer: Simon Breitbach to Wer hat den Führerschein im Lotto gewonnen?
+[13:50:08][QuestionView] Searching for result for Question: Wer bekommt einmal den Nobelpreis?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting Simon Breitbach; to Question Wer bekommt einmal den Nobelpreis?
+[13:50:08][Question] Setting txtMaleInputArea to Simon Breitbach
+[13:50:08][Question] [CRITICAL ERROR] Trying to load answer: Simon Breitbach to Wer bekommt einmal den Nobelpreis?
+[13:50:08][QuestionView] Searching for result for Question: Wer wird einmal Bundeskanzler?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer wird einmal Bundeskanzler?
+[13:50:08][QuestionView] Searching for result for Question: Wer  wird einmal Millionär?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer  wird einmal Millionär?
+[13:50:08][QuestionView] Searching for result for Question: Wer bringt die besten Sprüche?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer bringt die besten Sprüche?
+[13:50:08][QuestionView] Searching for result for Question: Wer wird einmal ein Buch schreiben?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer wird einmal ein Buch schreiben?
+[13:50:08][QuestionView] Searching for result for Question: Wer wird mal Lehrer?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer wird mal Lehrer?
+[13:50:08][QuestionView] Searching for result for Question: Wer gewinnt mal einen Oscar?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer gewinnt mal einen Oscar?
+[13:50:08][QuestionView] Searching for result for Question: Wer greift nach der Weltherrschaft
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer greift nach der Weltherrschaft
+[13:50:08][QuestionView] Searching for result for Question: Wer versucht immer, die Welt zu retten?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer versucht immer, die Welt zu retten?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist der Schwarm der Mittelstufler?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist der Schwarm der Mittelstufler?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist der Schwarm unserer Stufe?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist der Schwarm unserer Stufe?
+[13:50:08][QuestionView] Searching for result for Question: Wer hat das Zeug zum Topmodel?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer hat das Zeug zum Topmodel?
+[13:50:08][QuestionView] Searching for result for Question: Wer kommt immer zu spät?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer kommt immer zu spät?
+[13:50:08][QuestionView] Searching for result for Question: Wer finanziert Höfer?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer finanziert Höfer?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist am verpeiltesten?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist am verpeiltesten?
+[13:50:08][QuestionView] Searching for result for Question: Wer hat das lauteste Organ?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer hat das lauteste Organ?
+[13:50:08][QuestionView] Searching for result for Question: Wer hat die dreckigste Lache?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer hat die dreckigste Lache?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist ständig nur am essen?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist ständig nur am essen?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist ein absolutes Kind geblieben?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist ein absolutes Kind geblieben?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist einfach nur süß?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist einfach nur süß?
+[13:50:08][QuestionView] Searching for result for Question: Wer labert am meisten im Unterricht?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer labert am meisten im Unterricht?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist ein Frauenversteher/Männerversteher?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist ein Frauenversteher/Männerversteher?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist Gentleman/Lady der Stufe?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist Gentleman/Lady der Stufe?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist das stillste Wasser?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist das stillste Wasser?
+[13:50:08][QuestionView] Searching for result for Question: Wer heiratet als Erste(r)?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer heiratet als Erste(r)?
+[13:50:08][QuestionView] Searching for result for Question: Wer hat als erstes Kinder?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer hat als erstes Kinder?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist Stufepapa/-mama?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist Stufepapa/-mama?
+[13:50:08][QuestionView] Searching for result for Question: Wer kann am besten über sich selbst lachen?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer kann am besten über sich selbst lachen?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist das Traumpärchen der Stufe?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist das Traumpärchen der Stufe?
+[13:50:08][QuestionView] Searching for result for Question: Wer wäre das Traumpärchen?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer wäre das Traumpärchen?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist betrunken am lustigsten?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist betrunken am lustigsten?
+[13:50:08][QuestionView] Searching for result for Question: Wer hat absolut keine Manieren?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer hat absolut keine Manieren?
+[13:50:08][QuestionView] Searching for result for Question: Wer ust süchtig nach Fittnessstudio?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ust süchtig nach Fittnessstudio?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist der größte Schnorrer?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist der größte Schnorrer?
+[13:50:08][QuestionView] Searching for result for Question: Wer macht am meisten blau?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer macht am meisten blau?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist supersportlich?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist supersportlich?
+[13:50:08][QuestionView] Searching for result for Question: Wer nimmt die Schule zu ernst?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer nimmt die Schule zu ernst?
+[13:50:08][QuestionView] Searching for result for Question: Wem lassen die Lehrer alles durchgehen?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wem lassen die Lehrer alles durchgehen?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist der LehrerLiebling schlechthin?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist der LehrerLiebling schlechthin?
+[13:50:08][QuestionView] Searching for result for Question: Wer lernt am meisten?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer lernt am meisten?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist ein absoluter Musterschüler?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist ein absoluter Musterschüler?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist der gefürchteteste Lehrerschreck?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist der gefürchteteste Lehrerschreck?
+[13:50:08][QuestionView] Searching for result for Question: Wer wird am meisten von Lehrern verarscht?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer wird am meisten von Lehrern verarscht?
+[13:50:08][QuestionView] Searching for result for Question: Wer hat das ausgefallenste Hobby?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer hat das ausgefallenste Hobby?
+[13:50:08][QuestionView] Searching for result for Question: Wer verarscht die Lehrer am meisten?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer verarscht die Lehrer am meisten?
+[13:50:08][QuestionView] Searching for result for Question: Wer rennt ständig auf Klo?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer rennt ständig auf Klo?
+[13:50:08][QuestionView] Searching for result for Question: Wer glaubt einfach alles?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer glaubt einfach alles?
+[13:50:08][QuestionView] Searching for result for Question: Wer kann sich im Unterricht nicht konzentrieren?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer kann sich im Unterricht nicht konzentrieren?
+[13:50:08][QuestionView] Searching for result for Question: Wer spickt am meisten?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer spickt am meisten?
+[13:50:08][QuestionView] Searching for result for Question: Wer hat das größte Allgemeinwissen?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer hat das größte Allgemeinwissen?
+[13:50:08][QuestionView] Searching for result for Question: Wer muss am wenigsten für die Schule tun?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer muss am wenigsten für die Schule tun?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist der Ausredenkönig?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist der Ausredenkönig?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist am hilfsbereitesten?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist am hilfsbereitesten?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist der größte Rebell?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist der größte Rebell?
+[13:50:08][QuestionView] Searching for result for Question: Wer bekommt das beste Abitur?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer bekommt das beste Abitur?
+[13:50:08][QuestionView] Searching for result for Question: Wer hängt ständig am Handy?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer hängt ständig am Handy?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist am sportlichsten?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist am sportlichsten?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist am weltoffensten?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist am weltoffensten?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist am ehrlichsten?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist am ehrlichsten?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist am entspanntesten?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist am entspanntesten?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist immer gut drauf?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist immer gut drauf?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist der größte Künstler?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist der größte Künstler?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist ein heimliches Genie?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist ein heimliches Genie?
+[13:50:08][QuestionView] Searching for result for Question: Wer kommt nie auf den Punkt?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer kommt nie auf den Punkt?
+[13:50:08][QuestionView] Searching for result for Question: Wer erzählt die besten Geschichten?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer erzählt die besten Geschichten?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist everybody's darling?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist everybody's darling?
+[13:50:08][QuestionView] Searching for result for Question: Wer weiß sich zu benehmen?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer weiß sich zu benehmen?
+[13:50:08][QuestionView] Searching for result for Question: Wer wird mal die Welt umreisen?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer wird mal die Welt umreisen?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist am entspanntesten vor Kursarbeiten?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist am entspanntesten vor Kursarbeiten?
+[13:50:08][QuestionView] Searching for result for Question: Wer macht sich und andere vor Kursarbeiten total verrückt?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer macht sich und andere vor Kursarbeiten total verrückt?
+[13:50:08][QuestionView] Finished loading results for QuestionView0
+[13:50:08][QuestionView] Searching for result for Question: Wer gibt die fairsten Noten?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer gibt die fairsten Noten?
+[13:50:08][QuestionView] Searching for result for Question: Wer lebt seinen Beruf?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer lebt seinen Beruf?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist Schulmama/-papa?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist Schulmama/-papa?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist Schülerschwarm?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist Schülerschwarm?
+[13:50:08][QuestionView] Searching for result for Question: Wer wäre der perfekte Telefonjoker?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer wäre der perfekte Telefonjoker?
+[13:50:08][QuestionView] Searching for result for Question: Wer kann sich am besten mit der Schule identifizieren?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer kann sich am besten mit der Schule identifizieren?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist ein Genie?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist ein Genie?
+[13:50:08][QuestionView] Searching for result for Question: Wer macht die meisten Kopien?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer macht die meisten Kopien?
+[13:50:08][QuestionView] Searching for result for Question: Wer macht den interessantesten Unterricht?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer macht den interessantesten Unterricht?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist am besten vorbereitet?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist am besten vorbereitet?
+[13:50:08][QuestionView] Searching for result for Question: Wer improvisiert gerne?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer improvisiert gerne?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist der HÜ-Schreck?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist der HÜ-Schreck?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist am verpeiltesten?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist am verpeiltesten?
+[13:50:08][QuestionView] Searching for result for Question: Wer kommt meistens zu spät?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer kommt meistens zu spät?
+[13:50:08][QuestionView] Searching for result for Question: Mit wem kann man sich am besten Unterhalten?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Mit wem kann man sich am besten Unterhalten?
+[13:50:08][QuestionView] Searching for result for Question: Wer versteht die Schüler am besten?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer versteht die Schüler am besten?
+[13:50:08][QuestionView] Searching for result for Question: Wer gibt immer zu viele Hausaufgaben?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer gibt immer zu viele Hausaufgaben?
+[13:50:08][QuestionView] Searching for result for Question: Wer sollte Teil der Schulleitung sein?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer sollte Teil der Schulleitung sein?
+[13:50:08][QuestionView] Searching for result for Question: Wer macht die besten Witze?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer macht die besten Witze?
+[13:50:08][QuestionView] Searching for result for Question: Wer glaubt, es gäbe nur sein Fach?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer glaubt, es gäbe nur sein Fach?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist überengagiert?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist überengagiert?
+[13:50:08][QuestionView] Searching for result for Question: Wer hält uns für faule Egotaktiker?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer hält uns für faule Egotaktiker?
+[13:50:08][QuestionView] Searching for result for Question: Wer lässt sich schnell ablenken?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer lässt sich schnell ablenken?
+[13:50:08][QuestionView] Searching for result for Question: Bei wem lernt man was fürs Leben?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Bei wem lernt man was fürs Leben?
+[13:50:08][QuestionView] Searching for result for Question: Wer korrigiert am schnellsten?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer korrigiert am schnellsten?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist ein absolutes Kind geblieben?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist ein absolutes Kind geblieben?
+[13:50:08][QuestionView] Searching for result for Question: Wer hat am meisten Ahnung von seinem Fach?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer hat am meisten Ahnung von seinem Fach?
+[13:50:08][QuestionView] Searching for result for Question: Wer hat ein Herz für Schüler?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer hat ein Herz für Schüler?
+[13:50:08][QuestionView] Searching for result for Question: Wer macht die besten Kurstreffen?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer macht die besten Kurstreffen?
+[13:50:08][QuestionView] Searching for result for Question: Wer ist ständig von Schülern umringt?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer ist ständig von Schülern umringt?
+[13:50:08][QuestionView] Searching for result for Question: Wer hört und sieht alles?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer hört und sieht alles?
+[13:50:08][QuestionView] Searching for result for Question: Wer würde am liebsten immer alles selbst in die Hand nehmen?
+[13:50:08][QuestionView] e false
+[13:50:08][Question] Setting ; to Question Wer würde am liebsten immer alles selbst in die Hand nehmen?
+[13:50:08][QuestionView] Finished loading results for QuestionView1
+[13:50:08][DropBoxHandler] listing files from: /ranking/bcgk/Niklas Lahnstein
+[13:50:09][DropBoxHandler] comparing file keyWord.xml with average.xml
+[13:50:09][DropBoxHandler] comparing file keyWord.xml with keyWord.xml
+[13:50:09][DropBoxHandler] Found file: keyWord.xml in File("/ranking/bcgk/Niklas Lahnstein/keyWord.xml", iconName="page_white_code", mightHaveThumbnail=false, numBytes=1608, humanSize="1,6 KB", lastModified="2015/12/10 12:36:04 UTC", clientMtime="2015/12/10 12:36:04 UTC", rev="237c07c0bd7f")
+[13:50:09][XMLHandler] keyWord does exists: true
+[13:50:09][DropBoxHandler] Finished loading file /ranking/bcgk/Niklas Lahnstein/keyWord.xml to keyWord.xml
+[13:50:09][KeywordView] Converted Sophia Ackermann to Sophia_Ackermann
+[13:50:09][KeywordView] Answer for Sophia Ackermann = 
+[13:50:09][KeywordView] Converted Anna Altenhofen to Anna_Altenhofen
+[13:50:09][KeywordView] Answer for Anna Altenhofen = 
+[13:50:09][KeywordView] Converted Michelle Bartz to Michelle_Bartz
+[13:50:09][KeywordView] Answer for Michelle Bartz = 
+[13:50:09][KeywordView] Converted Julia Böhm to Julia_Böhm
+[13:50:09][KeywordView] Answer for Julia Böhm = 
+[13:50:09][KeywordView] Converted Clara Born to Clara_Born
+[13:50:09][KeywordView] Answer for Clara Born = 
+[13:50:09][KeywordView] Converted Rebecca Britz to Rebecca_Britz
+[13:50:09][KeywordView] Answer for Rebecca Britz = 
+[13:50:09][KeywordView] Converted Annemarie Bruchof to Annemarie_Bruchof
+[13:50:09][KeywordView] Answer for Annemarie Bruchof = 
+[13:50:09][KeywordView] Converted Verena Bruchof to Verena_Bruchof
+[13:50:09][KeywordView] Answer for Verena Bruchof = 
+[13:50:09][KeywordView] Converted Saskia Clemens to Saskia_Clemens
+[13:50:09][KeywordView] Answer for Saskia Clemens = 
+[13:50:09][KeywordView] Converted Lea Dorgeist to Lea_Dorgeist
+[13:50:09][KeywordView] Answer for Lea Dorgeist = 
+[13:50:09][KeywordView] Converted Elina Emsbach to Elina_Emsbach
+[13:50:09][KeywordView] Answer for Elina Emsbach = 
+[13:50:09][KeywordView] Converted Laura Fink to Laura_Fink
+[13:50:09][KeywordView] Answer for Laura Fink = 
+[13:50:09][KeywordView] Converted Svenja Fischer to Svenja_Fischer
+[13:50:09][KeywordView] Answer for Svenja Fischer = 
+[13:50:09][KeywordView] Converted Johanna Franz to Johanna_Franz
+[13:50:09][KeywordView] Answer for Johanna Franz = 
+[13:50:09][KeywordView] Converted Paula Franz to Paula_Franz
+[13:50:09][KeywordView] Answer for Paula Franz = 
+[13:50:09][KeywordView] Converted Jil Götsch to Jil_Götsch
+[13:50:09][KeywordView] Answer for Jil Götsch = 
+[13:50:09][KeywordView] Converted Sophia Hammes to Sophia_Hammes
+[13:50:09][KeywordView] Answer for Sophia Hammes = 
+[13:50:09][KeywordView] Converted Laura Hansen to Laura_Hansen
+[13:50:09][KeywordView] Answer for Laura Hansen = 
+[13:50:09][KeywordView] Converted Lea Hartig to Lea_Hartig
+[13:50:09][KeywordView] Answer for Lea Hartig = 
+[13:50:09][KeywordView] Converted Kyra Hoffmann to Kyra_Hoffmann
+[13:50:09][KeywordView] Answer for Kyra Hoffmann = 
+[13:50:09][KeywordView] Converted Antonia Hofmeir to Antonia_Hofmeir
+[13:50:09][KeywordView] Answer for Antonia Hofmeir = 
+[13:50:09][KeywordView] Converted Paula Homburg to Paula_Homburg
+[13:50:09][KeywordView] Answer for Paula Homburg = 
+[13:50:09][KeywordView] Converted Julia Keller to Julia_Keller
+[13:50:09][KeywordView] Answer for Julia Keller = 
+[13:50:09][KeywordView] Converted Ines Klein to Ines_Klein
+[13:50:09][KeywordView] Answer for Ines Klein = 
+[13:50:09][KeywordView] Converted Maike Klöckner to Maike_Klöckner
+[13:50:09][KeywordView] Answer for Maike Klöckner = 
+[13:50:09][KeywordView] Converted Mara Koch to Mara_Koch
+[13:50:09][KeywordView] Answer for Mara Koch = 
+[13:50:09][KeywordView] Converted Lara Kraemer to Lara_Kraemer
+[13:50:09][KeywordView] Answer for Lara Kraemer = 
+[13:50:09][KeywordView] Converted Emilia Krames to Emilia_Krames
+[13:50:09][KeywordView] Answer for Emilia Krames = 
+[13:50:09][KeywordView] Converted Theresa Krings to Theresa_Krings
+[13:50:09][KeywordView] Answer for Theresa Krings = 
+[13:50:09][KeywordView] Converted Jennifer Lahner to Jennifer_Lahner
+[13:50:09][KeywordView] Answer for Jennifer Lahner = 
+[13:50:09][KeywordView] Converted Michaela Märtig to Michaela_Märtig
+[13:50:09][KeywordView] Answer for Michaela Märtig = 
+[13:50:09][KeywordView] Converted Nicola Missing to Nicola_Missing
+[13:50:09][KeywordView] Answer for Nicola Missing = 
+[13:50:09][KeywordView] Converted Vanessa Müden to Vanessa_Müden
+[13:50:09][KeywordView] Answer for Vanessa Müden = 
+[13:50:09][KeywordView] Converted Christine Müller to Christine_Müller
+[13:50:09][KeywordView] Answer for Christine Müller = 
+[13:50:09][KeywordView] Converted Miriam Nebenführ to Miriam_Nebenführ
+[13:50:09][KeywordView] Answer for Miriam Nebenführ = 
+[13:50:09][KeywordView] Converted Clara Nollen to Clara_Nollen
+[13:50:09][KeywordView] Answer for Clara Nollen = 
+[13:50:09][KeywordView] Converted Katharina Oden to Katharina_Oden
+[13:50:09][KeywordView] Answer for Katharina Oden = 
+[13:50:09][KeywordView] Converted Carina Pretz to Carina_Pretz
+[13:50:09][KeywordView] Answer for Carina Pretz = 
+[13:50:09][KeywordView] Converted Miriam Radermacher to Miriam_Radermacher
+[13:50:09][KeywordView] Answer for Miriam Radermacher = 
+[13:50:09][KeywordView] Converted Alessia Radomski to Alessia_Radomski
+[13:50:09][KeywordView] Answer for Alessia Radomski = 
+[13:50:09][KeywordView] Converted Désirée Rau to Désirée_Rau
+[13:50:09][KeywordView] Answer for Désirée Rau = 
+[13:50:09][KeywordView] Converted Franziska Rech to Franziska_Rech
+[13:50:09][KeywordView] Answer for Franziska Rech = 
+[13:50:09][KeywordView] Converted Luisa Rönsch to Luisa_Rönsch
+[13:50:09][KeywordView] Answer for Luisa Rönsch = 
+[13:50:09][KeywordView] Converted Annemarie Röser to Annemarie_Röser
+[13:50:09][KeywordView] Answer for Annemarie Röser = 
+[13:50:09][KeywordView] Converted Anne Rünz to Anne_Rünz
+[13:50:09][KeywordView] Answer for Anne Rünz = 
+[13:50:09][KeywordView] Converted Alina Theodorou to Alina_Theodorou
+[13:50:09][KeywordView] Answer for Alina Theodorou = 
+[13:50:09][KeywordView] Converted Vanessa Vogt to Vanessa_Vogt
+[13:50:09][KeywordView] Answer for Vanessa Vogt = 
+[13:50:09][KeywordView] Converted Katrin Weinand to Katrin_Weinand
+[13:50:09][KeywordView] Answer for Katrin Weinand = 
+[13:50:09][KeywordView] Converted Patrizia Werner-Meier to Patrizia_Werner-Meier
+[13:50:09][KeywordView] Answer for Patrizia Werner-Meier = 
+[13:50:09][KeywordView] Converted Esther Witte to Esther_Witte
+[13:50:09][KeywordView] Answer for Esther Witte = 
+[13:50:09][KeywordView] Converted Simon Breitbach to Simon_Breitbach
+[13:50:09][KeywordView] Answer for Simon Breitbach = 
+[13:50:09][KeywordView] Converted Franz Büttner to Franz_Büttner
+[13:50:09][KeywordView] Answer for Franz Büttner = 
+[13:50:09][KeywordView] Converted Lennard Burgmer to Lennard_Burgmer
+[13:50:09][KeywordView] Answer for Lennard Burgmer = 
+[13:50:09][KeywordView] Converted Christopher Dreide to Christopher_Dreide
+[13:50:09][KeywordView] Answer for Christopher Dreide = 
+[13:50:09][KeywordView] Converted Simon Emmerich to Simon_Emmerich
+[13:50:09][KeywordView] Answer for Simon Emmerich = 
+[13:50:09][KeywordView] Converted Leonard Esser to Leonard_Esser
+[13:50:09][KeywordView] Answer for Leonard Esser = 
+[13:50:09][KeywordView] Converted Marcus Flöck to Marcus_Flöck
+[13:50:09][KeywordView] Answer for Marcus Flöck = 
+[13:50:09][KeywordView] Converted Lucas Freimuth to Lucas_Freimuth
+[13:50:09][KeywordView] Answer for Lucas Freimuth = 
+[13:50:09][KeywordView] Converted Benedikt Fresenius to Benedikt_Fresenius
+[13:50:09][KeywordView] Answer for Benedikt Fresenius = 
+[13:50:09][KeywordView] Converted Florian Geißen to Florian_Geißen
+[13:50:09][KeywordView] Answer for Florian Geißen = 
+[13:50:09][KeywordView] Converted Jonas Grunau to Jonas_Grunau
+[13:50:09][KeywordView] Answer for Jonas Grunau = 
+[13:50:09][KeywordView] Converted Tobias Hermann to Tobias_Hermann
+[13:50:09][KeywordView] Answer for Tobias Hermann = 
+[13:50:09][KeywordView] Converted Kai Hoffend to Kai_Hoffend
+[13:50:09][KeywordView] Answer for Kai Hoffend = 
+[13:50:09][KeywordView] Converted Frederik Jaeger to Frederik_Jaeger
+[13:50:09][KeywordView] Answer for Frederik Jaeger = 
+[13:50:09][KeywordView] Converted Simon Jesse to Simon_Jesse
+[13:50:09][KeywordView] Answer for Simon Jesse = 
+[13:50:09][KeywordView] Converted Josua Kirsch to Josua_Kirsch
+[13:50:09][KeywordView] Answer for Josua Kirsch = 
+[13:50:09][KeywordView] Converted Dominik Knopp to Dominik_Knopp
+[13:50:09][KeywordView] Answer for Dominik Knopp = 
+[13:50:09][KeywordView] Converted Timo Krämer to Timo_Krämer
+[13:50:09][KeywordView] Answer for Timo Krämer = 
+[13:50:09][KeywordView] Converted Niklas Lahnstein to Niklas_Lahnstein
+[13:50:09][KeywordView] Answer for Niklas Lahnstein = 
+[13:50:09][KeywordView] Converted Simon Lohner to Simon_Lohner
+[13:50:09][KeywordView] Answer for Simon Lohner = 
+[13:50:09][KeywordView] Converted David Maus to David_Maus
+[13:50:09][KeywordView] Answer for David Maus = 
+[13:50:09][KeywordView] Converted Tim Malte Mülhöfer to Tim_Malte_Mülhöfer
+[13:50:09][KeywordView] Answer for Tim Malte Mülhöfer = 
+[13:50:09][KeywordView] Converted Philipp Naunheim to Philipp_Naunheim
+[13:50:09][KeywordView] Answer for Philipp Naunheim = 
+[13:50:09][KeywordView] Converted Leonard Niekerken to Leonard_Niekerken
+[13:50:09][KeywordView] Answer for Leonard Niekerken = 
+[13:50:09][KeywordView] Converted Emil Op den Camp to Emil_Op_den_Camp
+[13:50:09][KeywordView] Answer for Emil Op den Camp = 
+[13:50:09][KeywordView] Converted Niklas Oster to Niklas_Oster
+[13:50:09][KeywordView] Answer for Niklas Oster = 
+[13:50:09][KeywordView] Converted Philipp Ott to Philipp_Ott
+[13:50:09][KeywordView] Answer for Philipp Ott = 
+[13:50:09][KeywordView] Converted Alexander Quirin to Alexander_Quirin
+[13:50:09][KeywordView] Answer for Alexander Quirin = 
+[13:50:09][KeywordView] Converted Florian Rech to Florian_Rech
+[13:50:09][KeywordView] Answer for Florian Rech = 
+[13:50:09][KeywordView] Converted Eric Schmitz to Eric_Schmitz
+[13:50:09][KeywordView] Answer for Eric Schmitz = 
+[13:50:09][KeywordView] Converted Justus Schneider to Justus_Schneider
+[13:50:09][KeywordView] Answer for Justus Schneider = 
+[13:50:09][KeywordView] Converted Sebastian Schneider to Sebastian_Schneider
+[13:50:09][KeywordView] Answer for Sebastian Schneider = 
+[13:50:09][KeywordView] Converted Alexander Schultheis to Alexander_Schultheis
+[13:50:09][KeywordView] Answer for Alexander Schultheis = 
+[13:50:09][KeywordView] Converted Jan Simon to Jan_Simon
+[13:50:09][KeywordView] Answer for Jan Simon = 
+[13:50:09][KeywordView] Converted Jonas Spurzem to Jonas_Spurzem
+[13:50:09][KeywordView] Answer for Jonas Spurzem = 
+[13:50:09][KeywordView] Converted Leon Steffens to Leon_Steffens
+[13:50:09][KeywordView] Answer for Leon Steffens = 
+[13:50:09][KeywordView] Converted Robert Stein to Robert_Stein
+[13:50:09][KeywordView] Answer for Robert Stein = 
+[13:50:09][KeywordView] Converted Daniel Ternes to Daniel_Ternes
+[13:50:09][KeywordView] Answer for Daniel Ternes = 
+[13:50:09][KeywordView] Converted Vincent Vogler to Vincent_Vogler
+[13:50:09][KeywordView] Answer for Vincent Vogler = 
+[13:50:09][KeywordView] Converted Sebastian Weber to Sebastian_Weber
+[13:50:09][KeywordView] Answer for Sebastian Weber = 
+[13:50:09][KeywordView] Converted Vincent Wener to Vincent_Wener
+[13:50:09][KeywordView] Answer for Vincent Wener = 
+[13:50:09][KeywordView] Converted Paul Will to Paul_Will
+[13:50:09][KeywordView] Answer for Paul Will = 
+[13:50:09][KeywordView] Finished loading results for KeywordView
+[13:50:09][Login] Finished loading progress!
+[13:50:09][Login] Finished building login frame.

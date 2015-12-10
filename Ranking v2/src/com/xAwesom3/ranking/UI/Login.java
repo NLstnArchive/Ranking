@@ -192,14 +192,21 @@ public class Login extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new Thread("FileLoading") {
-			public void run() {
-				FileHandler.loadFiles();
-				mainFrame = new MainFrame();
-				finishedLoading();
-			}
-		}.start();
-		new Login();
+		try {
+			new Thread("FileLoading") {
+				public void run() {
+					FileHandler.loadFiles();
+					mainFrame = new MainFrame();
+					finishedLoading();
+				}
+			}.start();
+			new Login();			
+		} catch(Exception e) {
+			JFrame f = new JFrame();
+			f.add(new JLabel(e.getStackTrace().toString()));
+			f.pack();
+			f.setVisible(true);
+		}
 	}
 
 }

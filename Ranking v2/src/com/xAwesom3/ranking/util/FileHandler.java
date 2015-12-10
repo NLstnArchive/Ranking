@@ -1,5 +1,9 @@
 package com.xAwesom3.ranking.util;
 
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,15 +21,56 @@ import com.xAwesom3.ranking.UI.views.AveragePupilView4;
 import com.xAwesom3.ranking.UI.views.KeywordView;
 import com.xAwesom3.ranking.UI.views.PersonalView;
 import com.xAwesom3.ranking.UI.views.QuestionView;
+import com.xAwesom3.xLib.threadPool.ThreadPool;
 
 public class FileHandler {
 
-	public static final int					NONE		= 0,
-													PROGRESS = 1, FINISHED = 2;
+	public static final int		NONE		= 0,
+										PROGRESS = 1, FINISHED = 2;
 
-	private static String					path		= ("./files/");
+	// private static String path = ("./files/");
+	private static String		path;
+	private static ThreadPool	threadPool	= new ThreadPool(6);
 
-	private static Map<String, XMLHandler>	xmlFiles	= new HashMap<String, XMLHandler>();
+	static {
+		Class<?> aclass = new FileHandler().getClass();
+		URL url;
+		String extURL;
+
+		try {
+			url = aclass.getProtectionDomain().getCodeSource().getLocation();
+		}
+		catch (SecurityException ex) {
+			url = aclass.getResource(aclass.getSimpleName() + ".class");
+		}
+
+		extURL = url.toExternalForm();
+
+		if (extURL.endsWith(".jar"))
+			extURL = extURL.substring(0, extURL.lastIndexOf("/"));
+		else {
+			String suffix = "/" + (aclass.getName()).replace(".", "/") + ".class";
+			extURL = extURL.replace(suffix, "");
+			if (extURL.startsWith("jar:") && extURL.endsWith(".jar!"))
+				extURL = extURL.substring(4, extURL.lastIndexOf("/"));
+		}
+
+		try {
+			url = new URL(extURL);
+		}
+		catch (MalformedURLException mux) {
+
+		}
+
+		try {
+			path = new File(url.toURI()).getPath() + "/Ranking/files/";
+		}
+		catch (URISyntaxException ex) {
+			path = new File(url.getPath()).getPath() + "/Ranking/files/";
+		}
+	}
+
+	private static Map<String, XMLHandler> xmlFiles = new HashMap<String, XMLHandler>();
 
 	public static void loadFiles() {
 		xLogger.log("Loading index...");

@@ -133,7 +133,9 @@ public class Question extends JPanel {
 				SwingUtilities.invokeLater(new Runnable() {
 					public void run() {
 						setAnswered(maleList.getSelectedIndex() != -1);
+						txtFemaleInputArea.getDocument().removeDocumentListener(femaleDocListener);
 						txtFemaleInputArea.setText(femaleList.getSelectedValue());
+						txtFemaleInputArea.getDocument().addDocumentListener(femaleDocListener);
 					}
 				});
 			}
@@ -152,7 +154,9 @@ public class Question extends JPanel {
 				SwingUtilities.invokeLater(new Runnable() {
 					public void run() {
 						setAnswered(femaleList.getSelectedIndex() != -1);
+						txtMaleInputArea.getDocument().removeDocumentListener(maleDocListener);
 						txtMaleInputArea.setText(maleList.getSelectedValue());
+						txtMaleInputArea.getDocument().addDocumentListener(maleDocListener);
 					}
 				});
 			}
@@ -171,21 +175,25 @@ public class Question extends JPanel {
 
 	private void changeMaleContents() {
 		setAnswered(false);
+		txtMaleInputArea.getDocument().removeDocumentListener(maleDocListener);
 		DefaultListModel<String> model = new DefaultListModel<String>();
 		for (int i = 0; i < menList.size(); i++) {
 			if (toNamesArray(menList)[i].toLowerCase().startsWith(txtMaleInputArea.getText().toLowerCase()))
 				model.addElement(toNamesArray(menList)[i]);
 		}
+		txtMaleInputArea.getDocument().addDocumentListener(maleDocListener);
 		maleList.setModel(model);
 	}
 
 	private void changeFemaleContent() {
 		setAnswered(false);
+		txtFemaleInputArea.getDocument().removeDocumentListener(femaleDocListener);
 		DefaultListModel<String> model = new DefaultListModel<String>();
 		for (int i = 0; i < toNamesArray(womenList).length; i++) {
 			if (toNamesArray(womenList)[i].toLowerCase().startsWith(txtFemaleInputArea.getText().toLowerCase()))
 				model.addElement(toNamesArray(womenList)[i]);
 		}
+		txtFemaleInputArea.getDocument().addDocumentListener(femaleDocListener);
 		femaleList.setModel(model);
 	}
 
@@ -227,14 +235,13 @@ public class Question extends JPanel {
 		StringBuilder answer = new StringBuilder();
 		if (txtMaleInputArea.getText() != "")
 			answer.append(txtMaleInputArea.getText());
-		answer.append("/");
+		answer.append(";");
 		if (txtFemaleInputArea.getText() != "")
-			answer.append(txtMaleInputArea.getText());
+			answer.append(txtFemaleInputArea.getText());
 		return answer.toString();
 	}
 
 	public void setAnswer(Element element) {
-		xLogger.log("Element " + element + " loading to " + text);
 		if (element != null) {
 			String answer = element.getTextContent();
 			xLogger.log("Setting " + answer + " to Question " + text);
@@ -273,28 +280,32 @@ public class Question extends JPanel {
 	}
 
 	private void applyAnswer(String answer) {
-		String[] strings = answer.split("/");
+		String[] strings = answer.split(";");
 
 		if (strings.length == 2) {
 			txtMaleInputArea.setText(strings[0]);
 			setMaleAnswerUnchangeable();
+			xLogger.log("Setting txtMaleInputArea to " + strings[0]);
 
 			txtFemaleInputArea.setText(strings[1]);
 			setFemaleAnswerUnchangeable();
+			xLogger.log("Setting txtFemaleInputArea to " + strings[1]);
 		}
 
 		if (strings.length == 1) {
 			String string = strings[0];
-			if (menList.contains(string)) {
+			if (menList.contains(Human.getByName(string))) {
 				txtMaleInputArea.setText(string);
 				setMaleAnswerUnchangeable();
+				xLogger.log("Setting txtMaleInputArea to " + string);
 			}
 			if (womenList.contains(string)) {
 				txtFemaleInputArea.setText(string);
 				setFemaleAnswerUnchangeable();
+				xLogger.log("Setting txtFemaleInputArea to " + string);
 			}
 			else {
-				xLogger.log("[CRITICAL ERROR] Trying to load answer: " + answer + " to " + text);
+				xLogger.log("[CRITICAL ERROR] Trying to load answer: " + string + " to " + text);
 			}
 		}
 	}

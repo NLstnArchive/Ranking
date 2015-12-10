@@ -9,8 +9,6 @@ import javax.swing.text.DocumentFilter;
 
 public class IntFilter extends DocumentFilter {
 
-	int	currentValue	= 0;
-
 	public void insertString(DocumentFilter.FilterBypass fb, int offset, String string, AttributeSet attr) throws BadLocationException {
 
 		if (string == null) {
@@ -29,20 +27,13 @@ public class IntFilter extends DocumentFilter {
 				currentBuffer.insert(offset, string);
 				newValue = currentBuffer.toString();
 			}
-			currentValue = checkInput(newValue);
-			if (currentValue != 0)
-				fb.insertString(offset, newValue, attr);
+			boolean valid = checkInput(newValue);
+			if(valid)
+			fb.insertString(offset, newValue, attr);
 		}
 	}
 
 	public void remove(DocumentFilter.FilterBypass fb, int offset, int length) throws BadLocationException {
-
-		Document doc = fb.getDocument();
-		int currentLength = doc.getLength();
-		String currentContent = doc.getText(0, currentLength);
-		String after = currentContent.substring(length + offset, currentLength);
-		String newValue = after;
-		currentValue = checkInput(newValue);
 		fb.remove(offset, length);
 	}
 
@@ -53,21 +44,22 @@ public class IntFilter extends DocumentFilter {
 		String currentContent = doc.getText(0, currentLength);
 		String before = currentContent.substring(0, offset);
 		String newValue = before + (text == null ? "" : text);
-		currentValue = checkInput(newValue);
-		if (currentValue != 0)
-			fb.replace(offset, length, text, attrs);
+		boolean valid = checkInput(newValue);
+		if(valid)
+		fb.replace(offset, length, text, attrs);
 	}
 
-	private int checkInput(String proposedValue) throws BadLocationException {
-		int newValue = 0;
+	private boolean checkInput(String proposedValue) throws BadLocationException {
 		if (proposedValue.length() > 0) {
 			try {
-				newValue = Integer.parseInt(proposedValue);
+				Integer.parseInt(proposedValue);
 			}
 			catch (NumberFormatException e) {
 				Toolkit.getDefaultToolkit().beep();
+				return false;
 			}
+			return true;
 		}
-		return newValue;
+		return false;
 	}
 }

@@ -13,7 +13,7 @@ public class BorderedTextField extends JPanel {
 	private JTextField			field;
 
 	public enum Type {
-		FLOAT, TEXT, INT
+		TEXT, INT
 	}
 
 	public BorderedTextField(int x, int y, int width, int height, Type type) {
@@ -21,8 +21,6 @@ public class BorderedTextField extends JPanel {
 		setBorder(LineBorder.createBlackLineBorder());
 		setLayout(null);
 
-		if (type == Type.FLOAT)
-			field = new FloatTextField();
 		if (type == Type.INT)
 			field = new IntegerTextField();
 		else

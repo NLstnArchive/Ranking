@@ -60,10 +60,19 @@ public class KeywordView extends View {
 
 	public void loadResults(XMLHandler handler) {
 		for (int i = 0; i < keyWords.size(); i++) {
-			keyWords.get(i).setContent(handler.getUniqueElementText(keyWords.get(i).getName()));
+			String answer = handler.getUniqueElementText(toValidString(keyWords.get(i).getName()));
+			xLogger.log("Answer for " + keyWords.get(i).getName() + " = " + answer);
+			keyWords.get(i).setContent(answer);
 		}
 
 		xLogger.log("Finished loading results for KeywordView");
 	}
 
+	private String toValidString(String string) {
+		String newString = string;
+		if (string != null)
+			newString = string.replace(' ', '_');
+		xLogger.log("Converted " + string + " to " + newString);
+		return newString;
+	}
 }

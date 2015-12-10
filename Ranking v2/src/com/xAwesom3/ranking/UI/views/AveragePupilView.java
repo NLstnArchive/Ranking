@@ -61,10 +61,10 @@ public class AveragePupilView extends AbstractAveragePupilView {
 		lblSize.setBounds(leftX, aboutMeStartY, lblWidth, lblHeight);
 		add(lblSize);
 
-		txtHeight = processTextField(lblSize, Type.FLOAT);
+		txtHeight = processTextField(lblSize, Type.INT);
 		add(txtHeight);
 
-		lblM = createUnitLabel("m", txtHeight);
+		lblM = createUnitLabel("cm", txtHeight);
 		add(lblM);
 
 		lblWeight = processLabel("Gewicht", leftX, lblSize);

@@ -143,7 +143,7 @@ public class AveragePupilView4 extends AbstractAveragePupilView {
 		lblBeer = processLabel("Bier pro Woche", leftX, lblConcerts);
 		add(lblBeer);
 
-		txtBeer = processTextField(lblBeer, Type.FLOAT);
+		txtBeer = processTextField(lblBeer, Type.INT);
 		add(txtBeer);
 
 		lblL = createUnitLabel("L", txtBeer);
@@ -152,7 +152,7 @@ public class AveragePupilView4 extends AbstractAveragePupilView {
 		lblSchnapps = processLabel("Schnaps pro Woche", leftX, lblBeer);
 		add(lblSchnapps);
 
-		txtSchnapps = processTextField(lblSchnapps, Type.FLOAT);
+		txtSchnapps = processTextField(lblSchnapps, Type.INT);
 		add(txtSchnapps);
 
 		lblL2 = createUnitLabel("L", txtSchnapps);

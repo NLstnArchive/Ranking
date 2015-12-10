@@ -168,7 +168,7 @@ public class AveragePupilView3 extends AbstractAveragePupilView {
 
 	public List<Element> getResults(XMLHandler handler) {
 		List<Element> resultList = new ArrayList<Element>();
-		resultList.add(handler.createElement("futureHomeTown", (String) futureHomeTownBox.getSelectedItem()));
+		resultList.add(handler.createElement("futureHomeTownBox", (String) futureHomeTownBox.getSelectedItem()));
 
 		resultList.add(handler.createElement("checkWedding", checkWedding.isChecked().toString()));
 		resultList.add(handler.createElement("checkChildren", checkChildren.isChecked().toString()));
@@ -207,7 +207,7 @@ public class AveragePupilView3 extends AbstractAveragePupilView {
 		checkBoygroupfan.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkBoygroupfan")));
 
 		futureHomeTownBox.setSelectedItem(handler.getUniqueElementText("futureHomeTownBox"));
-		
+
 		xLogger.log("Finished loading results for AveragePupilView3");
 	}
 

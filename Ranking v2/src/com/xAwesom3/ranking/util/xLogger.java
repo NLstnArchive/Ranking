@@ -8,8 +8,6 @@ import java.util.Calendar;
 
 public class xLogger {
 
-	private static boolean		debug	= true;
-
 	private static File			f;
 	private static PrintStream	writer;
 
@@ -24,15 +22,12 @@ public class xLogger {
 		catch (IOException e) {
 			e.printStackTrace();
 		}
-		if(!debug)
 		System.setErr(writer);
 	}
 
 	public static void log(String log) {
 		String timeStamp = new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
 		String logString = "[" + timeStamp + "][" + getCallerClassName() + "] " + log;
-		if (debug)
-			System.out.println(logString);
 		writer.println(logString);
 	}
 

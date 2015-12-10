@@ -66,6 +66,22 @@ public class Human {
 		else
 			return null;
 	}
+	
+	public static Human getByName(String name) {
+		for(Human human : men)
+			if(human.getName().equals(name))
+				return human;
+		for(Human human : women)
+			if(human.getName().equals(name))
+				return human;
+		for(Human human : menTeachers)
+			if(human.getName().equals(name))
+				return human;
+		for(Human human : womenTeachers)
+			if(human.getName().equals(name))
+				return human;
+		return null;
+	}
 
 	public static void add(Human human) {
 		if (human.getGender() == 3)

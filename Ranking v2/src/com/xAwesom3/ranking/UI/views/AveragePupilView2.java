@@ -69,7 +69,7 @@ public class AveragePupilView2 extends AbstractAveragePupilView {
 		lblSchoolWayTime = processLabel("Dauer des Schulwegs", leftX, lblTimeInBath);
 		add(lblSchoolWayTime);
 
-		txtSchoolWayTime = processTextField(lblSchoolWayTime, Type.FLOAT);
+		txtSchoolWayTime = processTextField(lblSchoolWayTime, Type.INT);
 		add(txtSchoolWayTime);
 
 		lblMins2 = createUnitLabel("min", txtSchoolWayTime);
@@ -147,7 +147,7 @@ public class AveragePupilView2 extends AbstractAveragePupilView {
 		lblPC = processLabel("PC pro Tag", leftX, lblTV);
 		add(lblPC);
 
-		txtPC = processTextField(lblPC, Type.FLOAT);
+		txtPC = processTextField(lblPC, Type.INT);
 		add(txtPC);
 
 		lblH2 = createUnitLabel("h", txtPC);
@@ -156,7 +156,7 @@ public class AveragePupilView2 extends AbstractAveragePupilView {
 		lblMusic = processLabel("Musik am Tag", leftX, lblPC);
 		add(lblMusic);
 
-		txtMusic = processTextField(lblMusic, Type.FLOAT);
+		txtMusic = processTextField(lblMusic, Type.INT);
 		add(txtMusic);
 
 		lblH3 = createUnitLabel("h", txtMusic);
@@ -165,7 +165,7 @@ public class AveragePupilView2 extends AbstractAveragePupilView {
 		lblHandy = processLabel("Handy am Tag", leftX, lblMusic);
 		add(lblHandy);
 
-		txtHandy = processTextField(lblHandy, Type.FLOAT);
+		txtHandy = processTextField(lblHandy, Type.INT);
 		add(txtHandy);
 
 		lblH4 = createUnitLabel("h", txtHandy);
@@ -174,7 +174,7 @@ public class AveragePupilView2 extends AbstractAveragePupilView {
 		lblGaming = processLabel("Computer/Konsole pro Tag", leftX, lblHandy);
 		add(lblGaming);
 
-		txtGaming = processTextField(lblGaming, Type.FLOAT);
+		txtGaming = processTextField(lblGaming, Type.INT);
 		add(txtGaming);
 
 		lblH5 = createUnitLabel("h", txtGaming);
@@ -189,7 +189,7 @@ public class AveragePupilView2 extends AbstractAveragePupilView {
 		lblSports = processLabel("Sport pro Woche", leftX, lblBooks);
 		add(lblSports);
 
-		txtSports = processTextField(lblSports, Type.FLOAT);
+		txtSports = processTextField(lblSports, Type.INT);
 		add(txtSports);
 
 		lblH6 = createUnitLabel("h", txtSports);
@@ -198,7 +198,7 @@ public class AveragePupilView2 extends AbstractAveragePupilView {
 		lblSleep = processLabel("Schlaf pro Nacht", leftX, lblSports);
 		add(lblSleep);
 
-		txtSleep = processTextField(lblSleep, Type.FLOAT);
+		txtSleep = processTextField(lblSleep, Type.INT);
 		add(txtSleep);
 
 		lblH7 = createUnitLabel("h", txtSleep);
@@ -257,6 +257,7 @@ public class AveragePupilView2 extends AbstractAveragePupilView {
 		resultList.add(handler.createElement("txtSchoolWayTime", txtSchoolWayTime.getText()));
 		resultList.add(handler.createElement("txtTV", txtTV.getText()));
 		resultList.add(handler.createElement("txtPC", txtPC.getText()));
+		resultList.add(handler.createElement("txtMusic", txtMusic.getText()));
 		resultList.add(handler.createElement("txtHandy", txtHandy.getText()));
 		resultList.add(handler.createElement("txtGaming", txtGaming.getText()));
 		resultList.add(handler.createElement("txtBooks", txtBooks.getText()));
@@ -281,13 +282,14 @@ public class AveragePupilView2 extends AbstractAveragePupilView {
 		txtSchoolWayTime.setText(handler.getUniqueElementText("txtSchoolWayTime"));
 		txtTV.setText(handler.getUniqueElementText("txtTV"));
 		txtPC.setText(handler.getUniqueElementText("txtPC"));
+		txtMusic.setText(handler.getUniqueElementText("txtMusic"));
 		txtHandy.setText(handler.getUniqueElementText("txtHandy"));
 		txtGaming.setText(handler.getUniqueElementText("txtGaming"));
 		txtBooks.setText(handler.getUniqueElementText("txtBooks"));
 		txtSports.setText(handler.getUniqueElementText("txtSports"));
 		txtSleep.setText(handler.getUniqueElementText("txtSleep"));
 
-		alarmClockHBox.setSelectedItem(handler.getUniqueElementText("alarmClockBox"));
+		alarmClockHBox.setSelectedItem(handler.getUniqueElementText("alarmClockHBox"));
 		alarmClockMinBox.setSelectedItem(handler.getUniqueElementText("alarmClockMinBox"));
 		schoolWayBox.setSelectedItem(handler.getUniqueElementText("schoolWayBox"));
 		confessionBox.setSelectedItem(handler.getUniqueElementText("confessionBox"));
@@ -296,7 +298,7 @@ public class AveragePupilView2 extends AbstractAveragePupilView {
 
 		checkBreakfast.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkBreakfast")));
 		checkBelieve.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkBelieve")));
-		
+
 		xLogger.log("Finished loading results for AveragePupilView2");
 	}
 }

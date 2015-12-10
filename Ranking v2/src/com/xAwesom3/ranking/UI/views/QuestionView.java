@@ -73,7 +73,9 @@ public class QuestionView extends View {
 
 	public void loadResults(XMLHandler handler) {
 		for (int i = 0; i < questions.size(); i++) {
+			xLogger.log("Searching for result for Question: " + questions.get(i).getText());
 			Element e = getQuestionByID(handler.getNodeList("question" + sort), i);
+			xLogger.log("e " + (e == null));
 			questions.get(i).setAnswer(e);
 		}
 		xLogger.log("Finished loading results for QuestionView" + sort);
