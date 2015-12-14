@@ -134,6 +134,7 @@ public class PersonalView extends View {
 	// private BorderedTextArea txtFuture, txtThank;
 
 	public List<Element> getResults(XMLHandler handler) {
+		xLogger.log("Getting results...");
 		List<Element> resultList = new ArrayList<Element>();
 
 		resultList.add(handler.createElement("dayBox", (String) dayBox.getSelectedItem()));
@@ -144,10 +145,11 @@ public class PersonalView extends View {
 		resultList.add(handler.createElement("lk3Box", (String) lk3Box.getSelectedItem()));
 		resultList.add(handler.createElement("favoriteTeacherBox", (String) favoriteTeacherBox.getSelectedItem()));
 
-		//TODO: doesnt work
 		resultList.add(handler.createElement("txtFuture", txtFuture.getText()));
 		resultList.add(handler.createElement("txtThank", txtThank.getText()));
 
+		xLogger.log("Finished getting results.");
+		
 		return resultList;
 	}
 
@@ -156,6 +158,8 @@ public class PersonalView extends View {
 	}
 
 	public void loadResults(XMLHandler handler) {
+		xLogger.log("Starting to load results...");
+		
 		txtFuture.setText(handler.getUniqueElementText("txtFuture"));
 		txtThank.setText(handler.getUniqueElementText("txtThank"));
 		

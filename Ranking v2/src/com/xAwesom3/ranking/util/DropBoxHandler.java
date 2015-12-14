@@ -50,7 +50,7 @@ public class DropBoxHandler {
 		catch (Exception e) {
 			xLogger.log("Failed to load file " + dbPath + source + " from DropBox: " + e.getMessage());
 		}
-		xLogger.log("Finished loading file " + dbPath + source + ".xml to " + target + ".xml");
+		xLogger.log("Finished loading file " + dbPath + source + ".xml to " + FileHandler.getPath() + target + ".xml");
 		return f;
 	}
 

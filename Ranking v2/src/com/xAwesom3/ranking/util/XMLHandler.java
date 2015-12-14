@@ -28,6 +28,7 @@ public class XMLHandler {
 
 	public XMLHandler(String name) {
 		this.name = name;
+		xLogger.log("Creating new XMLHandler: " + name);
 		f = new File(FileHandler.getPath() + name + ".xml");
 		try {
 			f.createNewFile();
@@ -36,6 +37,7 @@ public class XMLHandler {
 			e.printStackTrace();
 		}
 		f.deleteOnExit();
+		xLogger.log("Finished creating new XMLHandler");
 	}
 
 	public void load() {
@@ -47,6 +49,7 @@ public class XMLHandler {
 			return;
 		}
 		rootElement = (Element) doc.getElementsByTagName("root").item(0);
+		xLogger.log("Succesfully loaded XMLHandler: " + name);
 	}
 
 	public void loadFromDropBox(String dbPath) {
@@ -65,6 +68,7 @@ public class XMLHandler {
 		System.out.println(toValidString(name));
 		rootElement = doc.createElement(toValidString(name));
 		doc.appendChild(rootElement);
+		xLogger.log("Successfully created XMLHandler");
 	}
 
 	public void save() {
@@ -80,6 +84,7 @@ public class XMLHandler {
 		catch (Exception e) {
 			xLogger.log("Failed to save File " + f.getPath() + "cause: " + e.getMessage());
 		}
+		xLogger.log("Finished saving " + name);
 	}
 
 	public void addElement(Element element) {
@@ -139,5 +144,9 @@ public class XMLHandler {
 		boolean value = DropBoxHandler.fileExists(name);
 		xLogger.log(name + " does exists: " + value);
 		return value;
+	}
+
+	public void remove(Node item) {
+		rootElement.removeChild(item);
 	}
 }

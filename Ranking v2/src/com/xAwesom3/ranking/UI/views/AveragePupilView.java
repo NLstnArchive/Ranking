@@ -88,7 +88,7 @@ public class AveragePupilView extends AbstractAveragePupilView {
 		txtShower = processTextField(lblShower, Type.INT);
 		add(txtShower);
 
-		lblSiblings = processLabel("Geschweisterzahl", leftX, lblShower);
+		lblSiblings = processLabel("Geschwisterzahl", leftX, lblShower);
 		add(lblSiblings);
 
 		txtSiblings = processTextField(lblSiblings);
@@ -256,6 +256,7 @@ public class AveragePupilView extends AbstractAveragePupilView {
 	}
 
 	public List<Element> getResults(XMLHandler handler) {
+		xLogger.log("Getting results...");
 		List<Element> resultList = new ArrayList<Element>();
 		resultList.add(handler.createElement("txtHeight", txtHeight.getText()));
 		resultList.add(handler.createElement("txtWeight", txtWeight.getText()));
@@ -282,10 +283,12 @@ public class AveragePupilView extends AbstractAveragePupilView {
 		resultList.add(handler.createElement("checkSkipped", checkSkipped.isChecked().toString()));
 		resultList.add(handler.createElement("checkWorkSubmitted", checkWorkSubmitted.isChecked().toString()));
 		resultList.add(handler.createElement("checkWorkCanceled", checkWorkCanceled.isChecked().toString()));
+		xLogger.log("Finished getting results.");
 		return resultList;
 	}
 
 	public void loadResults(XMLHandler handler) {
+		xLogger.log("Starting to load results...");
 		txtHeight.setText(handler.getUniqueElementText("txtHeight"));
 		txtWeight.setText(handler.getUniqueElementText("txtWeight"));
 		txtShoeSize.setText(handler.getUniqueElementText("txtShoeSize"));

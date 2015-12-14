@@ -44,6 +44,7 @@ public class MainFrame {
 		 * init variables
 		 */
 
+		// int width = (int) (GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth() * 0.75);
 		int width = (int) (1920 * 0.75);
 		int height = width / 16 * 9;
 		int buttonWidth = (int) (width * 0.17);
@@ -133,18 +134,29 @@ public class MainFrame {
 
 	private void onExit() {
 		int answer = JOptionPane.showConfirmDialog(f, "Alle nicht gespeicherten Ergenisse werde gelöscht! Beenden?");
-		if (answer == JOptionPane.OK_OPTION)
+		if (answer == JOptionPane.OK_OPTION) {
+			xLogger.log("User requesting stop!");
 			System.exit(0);
+		}
 	}
 
 	private void onVoteButtonPressed() {
+		xLogger.log("Vote button pressed");
 		boolean ready = true;
 		for (View view : views) {
-			if (!view.isFilledIn())
+			if (!view.isFilledIn()) {
 				ready = false;
+				xLogger.log("View " + view.toString() + " is not filled in!");
+			}
 		}
-		if (ready)
+		if (ready) {
+			xLogger.log("Starting to save finished progress..");
 			FileHandler.saveProgress(views, true);
+			xLogger.log("Finished saving progress!");
+			JOptionPane.showMessageDialog(f, "Ergebnisse gespeichert!");
+			f.dispose();
+			System.exit(0);
+		}
 		if (!ready) {
 			xLogger.log("Not all questions answered");
 			int decision = JOptionPane.showConfirmDialog(f, "Du hast nicht alles beantwortet. Möchtest du deine bisherigen Antworten speichern und später weiter machen?");
@@ -152,6 +164,7 @@ public class MainFrame {
 				xLogger.log("User wants to save and quit");
 				FileHandler.saveProgress(views, false);
 				xLogger.log("Finished saving progress");
+				JOptionPane.showMessageDialog(f, "Ergebnisse gespeichert!");
 				f.dispose();
 				System.exit(0);
 			}
@@ -196,6 +209,7 @@ public class MainFrame {
 	public void show(String name) {
 		f.setTitle("Ranking - " + name);
 		f.setVisible(true);
+		((KeywordView) views.get(7)).remove(name);
 	}
 
 }

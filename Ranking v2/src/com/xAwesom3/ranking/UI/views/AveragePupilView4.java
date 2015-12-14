@@ -1,6 +1,5 @@
 package com.xAwesom3.ranking.UI.views;
 
-import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,9 +17,9 @@ import com.xAwesom3.ranking.util.xLogger;
 public class AveragePupilView4 extends AbstractAveragePupilView {
 	private static final long	serialVersionUID	= 1L;
 
-	private JLabel				lblMine, lblHandy, lblSwitchOn, lblDrivingLicense, lblOwnCar, lblShoes, lblInstrument, lblJob, lblIncome, lblPocketMoney, lblRock, lblMusic, lblConcerts, lblRaR, lblBeer, lblSchnapps, lblCoffee, lblDrugs, lblSingle, lblJungfrau;
+	private JLabel				lblMine, lblHandy, lblSwitchOn, lblDrivingLicense, lblOwnCar, lblShoes, lblInstrument, lblJob, lblIncome, lblPocketMoney, lblRock, lblMusic, lblConcerts, lblRaR, lblBeer, lblSchnapps, lblCoffee, lblSingle;
 	private JLabel				lblEuro1, lblEuro2, lblL, lblL2, lblTasse;
-	private xCheckBox			checkHandy, checkSwitchOn, checkDrivingLicense, checkOwnCar, checkInstrument, checkJob, checkRaR, checkDrugs, checkSingle, checkJungfrau;
+	private xCheckBox			checkHandy, checkSwitchOn, checkDrivingLicense, checkOwnCar, checkInstrument, checkJob, checkRaR, checkSingle;
 	private BorderedTextField	txtShoes, txtIncome, txtPocketMoney, txtConcerts, txtBeer, txtSchnapps, txtCoffee;
 	private JComboBox<String>	musicBox;
 
@@ -179,24 +178,11 @@ public class AveragePupilView4 extends AbstractAveragePupilView {
 		checkRaR = new xCheckBox(getRightSideX(lblRaR), centerBoxY(lblRaR));
 		add(checkRaR);
 
-		lblDrugs = processLabel("Schonmal Drogen genommen?", midX, lblRaR);
-		lblDrugs.setFont(new Font(lblFont.getName(), lblFont.getStyle(), 18));
-		add(lblDrugs);
-
-		checkDrugs = new xCheckBox(getRightSideX(lblDrugs), centerBoxY(lblDrugs));
-		add(checkDrugs);
-
-		lblSingle = processLabel("Single?", midX, lblDrugs);
+		lblSingle = processLabel("Single?", midX, lblRaR);
 		add(lblSingle);
 
 		checkSingle = new xCheckBox(getRightSideX(lblSingle), centerBoxY(lblSingle));
 		add(checkSingle);
-
-		lblJungfrau = processLabel("Jungfrau?", midX, lblSingle);
-		add(lblJungfrau);
-
-		checkJungfrau = new xCheckBox(getRightSideX(lblJungfrau), centerBoxY(lblJungfrau));
-		add(checkJungfrau);
 
 		/*
 		 * RIGHT
@@ -216,6 +202,8 @@ public class AveragePupilView4 extends AbstractAveragePupilView {
 	// private JComboBox<String> musicBox;
 
 	public List<Element> getResults(XMLHandler handler) {
+		xLogger.log("Getting results...");
+
 		List<Element> resultList = new ArrayList<Element>();
 		resultList.add(handler.createElement("checkHandy", checkHandy.isChecked().toString()));
 		resultList.add(handler.createElement("checkSwitchOn", checkSwitchOn.isChecked().toString()));
@@ -224,9 +212,7 @@ public class AveragePupilView4 extends AbstractAveragePupilView {
 		resultList.add(handler.createElement("checkInstrument", checkInstrument.isChecked().toString()));
 		resultList.add(handler.createElement("checkJob", checkJob.isChecked().toString()));
 		resultList.add(handler.createElement("checkRaR", checkRaR.isChecked().toString()));
-		resultList.add(handler.createElement("checkDrugs", checkDrugs.isChecked().toString()));
 		resultList.add(handler.createElement("checkSingle", checkSingle.isChecked().toString()));
-		resultList.add(handler.createElement("checkJungfrau", checkJungfrau.isChecked().toString()));
 
 		resultList.add(handler.createElement("txtShoes", txtShoes.getText()));
 		resultList.add(handler.createElement("txtIncome", txtIncome.getText()));
@@ -238,14 +224,18 @@ public class AveragePupilView4 extends AbstractAveragePupilView {
 
 		resultList.add(handler.createElement("musicBox", (String) musicBox.getSelectedItem()));
 
+		xLogger.log("Finished getting results.");
+
 		return resultList;
 	}
 
 	public boolean isFilledIn() {
-		return false;
+		return txtShoes.getText() != "" && txtIncome.getText() != "" && txtPocketMoney.getText() != "" && txtConcerts.getText() != "" && txtBeer.getText() != "" && txtSchnapps.getText() != "" && txtCoffee.getText() != "" && musicBox.getSelectedIndex() != 0;
 	}
 
 	public void loadResults(XMLHandler handler) {
+		xLogger.log("Starting to load results...");
+
 		txtShoes.setText(handler.getUniqueElementText("txtShoes"));
 		txtIncome.setText(handler.getUniqueElementText("txtIncome"));
 		txtPocketMoney.setText(handler.getUniqueElementText("txtPocketMoney"));
@@ -261,12 +251,10 @@ public class AveragePupilView4 extends AbstractAveragePupilView {
 		checkInstrument.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkInstrument")));
 		checkJob.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkJob")));
 		checkRaR.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkRaR")));
-		checkDrugs.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkDrugs")));
 		checkSingle.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkSingle")));
-		checkJungfrau.setChecked(Boolean.valueOf(handler.getUniqueElementText("checkJungfrau")));
 
 		musicBox.setSelectedItem(handler.getUniqueElementText("musicBox"));
-		
+
 		xLogger.log("Finished loading results for AveragePupilView4");
 	}
 

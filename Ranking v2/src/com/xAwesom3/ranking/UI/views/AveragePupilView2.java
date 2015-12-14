@@ -26,7 +26,7 @@ public class AveragePupilView2 extends AbstractAveragePupilView {
 	private xCheckBox			checkBreakfast, checkBelieve;
 
 	private static String[]		hourValues			= { "", "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" };
-	private static String[]		minuteValues		= { "", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" };
+	private static String[]		minuteValues		= { "", "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" };
 	private static String[]		schoolWayValues		= { "", "Bus", "Zug", "Auto", "Fahrrad", "Zu Fuﬂ" };
 	private static String[]		confessionValues	= { "", "katholisch", "evangelisch" };
 	private static String[]		schoolMessValues	= { "", "immer", "selten", "oft", "nie" };
@@ -252,6 +252,7 @@ public class AveragePupilView2 extends AbstractAveragePupilView {
 	// private xCheckBox checkBreakfast, checkBelieve;
 
 	public List<Element> getResults(XMLHandler handler) {
+		xLogger.log("Getting results...");
 		List<Element> resultList = new ArrayList<Element>();
 		resultList.add(handler.createElement("txtTimeInBath", txtTimeInBath.getText()));
 		resultList.add(handler.createElement("txtSchoolWayTime", txtSchoolWayTime.getText()));
@@ -274,10 +275,14 @@ public class AveragePupilView2 extends AbstractAveragePupilView {
 		resultList.add(handler.createElement("checkBreakfast", checkBreakfast.isChecked().toString()));
 		resultList.add(handler.createElement("checkBelieve", checkBelieve.isChecked().toString()));
 
+		xLogger.log("Finished getting results.");
+		
 		return resultList;
 	}
 
 	public void loadResults(XMLHandler handler) {
+		xLogger.log("Starting to load results...");
+		
 		txtTimeInBath.setText(handler.getUniqueElementText("txtTimeInBath"));
 		txtSchoolWayTime.setText(handler.getUniqueElementText("txtSchoolWayTime"));
 		txtTV.setText(handler.getUniqueElementText("txtTV"));

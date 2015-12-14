@@ -89,7 +89,7 @@ public class Login extends JFrame {
 		lblName.setBounds(10, (int) (height * 0.1f), width - 20, lblName.getFont().getSize());
 		add(lblName);
 
-		txtName = new JTextField("Niklas Lahnstein");
+		txtName = new JTextField();
 		txtName.setFont(txtFont);
 		txtName.setForeground(Color.BLACK);
 		txtName.setHorizontalAlignment(SwingConstants.CENTER);
@@ -103,7 +103,7 @@ public class Login extends JFrame {
 		lblPassword.setBounds(10, (int) (height * 0.4), width - 20, lblPassword.getFont().getSize());
 		add(lblPassword);
 
-		txtPassword = new JPasswordField("31Mai1997");
+		txtPassword = new JPasswordField();
 		txtPassword.setFont(txtFont);
 		txtPassword.setForeground(Color.BLACK);
 		txtPassword.setHorizontalAlignment(SwingConstants.CENTER);
@@ -143,6 +143,8 @@ public class Login extends JFrame {
 	}
 
 	private void login() {
+		xLogger.log("Logging in!");
+		xLogger.log("Name passed in: " + txtName.getText());
 		Human human = Human.getManByName(txtName.getText());
 		if (human == null)
 			human = Human.getWomanByName(txtName.getText());
@@ -152,6 +154,7 @@ public class Login extends JFrame {
 				Human.setUser(human);
 				switch (FileHandler.getProgress(txtName.getText())) {
 				case FileHandler.NONE:
+					xLogger.log("Found Human: " + human.getName() + ", no progress found!");
 					mainFrame.show(human.getName());
 					dispose();
 					break;
@@ -163,21 +166,22 @@ public class Login extends JFrame {
 					dispose();
 					break;
 				case FileHandler.FINISHED:
-					JOptionPane.showConfirmDialog(this, "Du hast schon alle Fragen beantwortet!");
+					xLogger.log("All answers are already given!");
+					JOptionPane.showMessageDialog(this, "Du hast schon alle Fragen beantwortet!");
 					dispose();
 					System.exit(0);
 				}
 			}
 			else {
 				xLogger.log("Wrong password was entered for " + human.getName() + new String(txtPassword.getPassword()) + " != " + human.getPassword());
-				JOptionPane.showConfirmDialog(this, "Falsches Passwort!");
+				JOptionPane.showMessageDialog(this, "Falsches Passwort!");
 				txtPassword.setText("");
 				return;
 			}
 		}
 		else {
 			xLogger.log("Name was not found in the list");
-			JOptionPane.showConfirmDialog(this, "Name wurde nicht in der Liste deiner Stufe gefunden!");
+			JOptionPane.showMessageDialog(this, "Name wurde nicht in der Liste deiner Stufe gefunden!");
 			txtName.setText("");
 			txtPassword.setText("");
 			return;
@@ -187,26 +191,21 @@ public class Login extends JFrame {
 
 	private static void finishedLoading() {
 		finishedLoading = true;
+		xLogger.log("Finished loading resources!");
 		btnStart.setText("Start");
 		btnStart.setEnabled(!txtName.getText().equalsIgnoreCase("") && !new String(txtPassword.getPassword()).equalsIgnoreCase(""));
 	}
 
 	public static void main(String[] args) {
-		try {
-			new Thread("FileLoading") {
-				public void run() {
-					FileHandler.loadFiles();
-					mainFrame = new MainFrame();
-					finishedLoading();
-				}
-			}.start();
-			new Login();			
-		} catch(Exception e) {
-			JFrame f = new JFrame();
-			f.add(new JLabel(e.getStackTrace().toString()));
-			f.pack();
-			f.setVisible(true);
-		}
+		new Thread("FileLoading") {
+			public void run() {
+				xLogger.log("Loading resources...");
+				FileHandler.loadFiles();
+				mainFrame = new MainFrame();
+				finishedLoading();
+			}
+		}.start();
+		new Login();
 	}
 
 }

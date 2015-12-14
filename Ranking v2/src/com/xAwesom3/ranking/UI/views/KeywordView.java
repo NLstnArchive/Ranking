@@ -4,6 +4,8 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.SwingUtilities;
+
 import org.w3c.dom.Element;
 
 import com.xAwesom3.ranking.UI.View;
@@ -24,13 +26,15 @@ public class KeywordView extends View {
 	}
 
 	public List<Element> getResults(XMLHandler handler) {
+		xLogger.log("Getting results...");
 		List<Element> resultList = new ArrayList<Element>();
-		for (int i = 0; i < keyWords.size(); i++) {
-			if (keyWords.get(i).getContent() != null)
-				resultList.add(handler.createElement(keyWords.get(i).getName(), keyWords.get(i).getContent()));
+		for (Keyword key : keyWords) {
+			if (key.getContent() != null)
+				resultList.add(handler.createElement(key.getName(), key.getContent()));
 			else
-				resultList.add(handler.createElement(keyWords.get(i).getName(), ""));
+				resultList.add(handler.createElement(key.getName(), ""));
 		}
+		xLogger.log("Finished getting results.");
 		return resultList;
 	}
 
@@ -49,6 +53,17 @@ public class KeywordView extends View {
 		setPreferredSize(new Dimension(width, currentY));
 	}
 
+	public void remove(String name) {
+		for (Keyword key : keyWords) {
+			if (key.getName() == name)
+				SwingUtilities.invokeLater(new Runnable() {
+					public void run() {
+						keyWords.remove(key);
+					}
+				});
+		}
+	}
+
 	public boolean isFilledIn() {
 		boolean ready = true;
 		for (Keyword keyWord : keyWords) {
@@ -59,6 +74,7 @@ public class KeywordView extends View {
 	}
 
 	public void loadResults(XMLHandler handler) {
+		xLogger.log("Starting to load results...");
 		for (int i = 0; i < keyWords.size(); i++) {
 			String answer = handler.getUniqueElementText(toValidString(keyWords.get(i).getName()));
 			xLogger.log("Answer for " + keyWords.get(i).getName() + " = " + answer);

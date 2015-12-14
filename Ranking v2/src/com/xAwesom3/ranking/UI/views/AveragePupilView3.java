@@ -167,6 +167,8 @@ public class AveragePupilView3 extends AbstractAveragePupilView {
 	// private BorderedTextField txtCigaretts, txtAlcohol;
 
 	public List<Element> getResults(XMLHandler handler) {
+		xLogger.log("Getting results...");
+		
 		List<Element> resultList = new ArrayList<Element>();
 		resultList.add(handler.createElement("futureHomeTownBox", (String) futureHomeTownBox.getSelectedItem()));
 
@@ -184,6 +186,8 @@ public class AveragePupilView3 extends AbstractAveragePupilView {
 		resultList.add(handler.createElement("txtCigaretts", txtCigaretts.getText()));
 		resultList.add(handler.createElement("txtAlcohol", txtAlcohol.getText()));
 
+		xLogger.log("Finished getting results.");
+		
 		return resultList;
 	}
 
@@ -192,6 +196,8 @@ public class AveragePupilView3 extends AbstractAveragePupilView {
 	}
 
 	public void loadResults(XMLHandler handler) {
+		xLogger.log("Starting to load results...");
+		
 		txtCigaretts.setText(handler.getUniqueElementText("txtCigaretts"));
 		txtAlcohol.setText(handler.getUniqueElementText("txtAlcohol"));
 

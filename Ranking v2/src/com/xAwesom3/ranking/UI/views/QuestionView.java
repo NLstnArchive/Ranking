@@ -53,6 +53,7 @@ public class QuestionView extends View {
 	}
 
 	public List<Element> getResults(XMLHandler handler) {
+		xLogger.log("Getting results...");
 		List<Element> resultList = new ArrayList<Element>();
 
 		for (int i = 0; i < questions.size(); i++) {
@@ -60,6 +61,7 @@ public class QuestionView extends View {
 			e.setAttribute("id", String.valueOf(i));
 			resultList.add(e);
 		}
+		xLogger.log("Finished getting results.");
 		return resultList;
 	}
 
@@ -72,6 +74,7 @@ public class QuestionView extends View {
 	}
 
 	public void loadResults(XMLHandler handler) {
+		xLogger.log("Starting to load results...");
 		for (int i = 0; i < questions.size(); i++) {
 			xLogger.log("Searching for result for Question: " + questions.get(i).getText());
 			Element e = getQuestionByID(handler.getNodeList("question" + sort), i);
@@ -87,7 +90,6 @@ public class QuestionView extends View {
 			if (Integer.parseInt(((Element) list.item(i)).getAttribute("id")) == id)
 				result = (Element) list.item(i);
 		}
-		System.out.println("ID: " + id + ", returning " + result.getTextContent());
 		return result;
 	}
 }
